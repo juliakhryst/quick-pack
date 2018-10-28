@@ -13,10 +13,25 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { MaterialModule } from './material/material.module';
 import { CoreModule } from './core/core.module';
+import { MatSelectModule } from '@angular/material/select';
+
+
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { FooterComponent } from './footer/footer.component';
+import { TranslationComponent } from './translation/translation.component';
+
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FooterComponent,
+    TranslationComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -24,6 +39,15 @@ import { CoreModule } from './core/core.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
+    HttpClientModule,
+    MatSelectModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     CoreModule,
     MaterialModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),

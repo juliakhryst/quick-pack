@@ -1,5 +1,11 @@
+<app-translation></app-translation>
+
 <ul>
-  <li *ngFor="let item of items$ | async"><pre>{{ item.value | json }}</pre></li>
+  <li *ngFor="let item of items$ | async">
+    <pre>{{ item.value | json }}</pre>
+  </li>
 </ul>
+
+<app-footer></app-footer>
 
 <router-outlet></router-outlet>

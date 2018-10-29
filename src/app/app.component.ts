@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { TranslateService } from '@ngx-translate/core';
 import { TranslationComponent } from './translation/translation.component';
 
 @Component({

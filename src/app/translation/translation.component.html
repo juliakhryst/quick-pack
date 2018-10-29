@@ -4,12 +4,24 @@
   </div>
   <nav>
     <ul>
-      <li>{{ 'header.changeLang.text' | translate }}
+      <li>
+        <form>
+          <mat-form-field>
+            <mat-select #langSelect (selectionChange)="translate.use(langSelect.value)" [(value)]="selected">
+              <mat-option *ngFor="let lang of translate.getLangs()" [value]="lang">
+                {{ lang }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+      </li>
+
+      <!-- <li>{{ 'header.changeLang.text' | translate }}
         <select #langSelect (change)="translate.use(langSelect.value)">
           <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">
             {{ lang }}</option>
         </select>
-      </li>
+      </li> -->
       <li><a href="#">{{ 'header.logOut.text' | translate }}</a></li>
     </ul>
   </nav>

@@ -2,7 +2,7 @@ header {
     width: 100%;
     height: 50px;
     display: flex;
-    background-color: rgb(151, 253, 168);
+    background-color: rgb(2, 122, 66);
     align-items: center;
 
     #logo {
@@ -16,13 +16,24 @@ header {
         li {
             display: inline-block;
             list-style-type: none;
-            margin: 0 10px;
+            margin: 0 20px;
+            vertical-align: middle;
 
             mat-form-field {
                 width: 60px;
+
+                .mat-select {
+                    color: rgb(0, 0, 255);
+
+                    mat-option {
+                        color: rgb(0, 0, 255);
+                        background-color: white;
+                    }
+                }
             }
 
             a {
+                font-size: 1.25rem;
                 text-decoration: none;
             }
         }

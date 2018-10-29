@@ -1,2 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/purple-green.css";
+header {
+    .mat-select-value {
+        color:rgb(247, 247, 247);
+    }
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: rgb(10, 6, 250);
+    font-weight: bold;
+}
+
+.mat-select-panel {
+    background-color: rgb(91, 97, 74);
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+    text-align: center;
+}

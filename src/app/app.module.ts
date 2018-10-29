@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { AngularFirestoreModule } from "angularfire2/firestore";
 import { AngularFireModule } from "angularfire2";
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -29,6 +30,7 @@ import { MatNativeDateModule } from "@angular/material";
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireAuthModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,

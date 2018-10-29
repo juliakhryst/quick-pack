@@ -1,5 +1,7 @@
 <ul>
-  <li *ngFor="let item of items$ | async"><pre>{{ item.value | json }}</pre></li>
+  <li *ngFor="let item of items$ | async">
+    <pre>{{ item.value | json }}</pre>
+  </li>
 </ul>
-
+<filter-duration></filter-duration>
 <router-outlet></router-outlet>

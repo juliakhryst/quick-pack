@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "serve": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot --prod --sourceMap",
+    "start": "node server/app.js"
   },
   "private": true,
   "dependencies": {
@@ -28,6 +30,8 @@
     "angularfire2": "^5.1.0",
     "core-js": "^2.5.4",
     "firebase": "^5.5.5",
+    "express": "^4.16.4",
+    "path": "^0.12.7",
     "rxjs": "^6.3.3",
     "zone.js": "~0.8.26"
   },

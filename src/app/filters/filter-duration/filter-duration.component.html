@@ -1,0 +1,32 @@
+<h3>Date of travel</h3>
+<mat-form-field>
+  <input 
+    [min]="minDate()" 
+    [(ngModel)]='from' 
+    matInput 
+    [matDatepicker]="datefrom" 
+    (focus)="datefrom.open()"
+    (dateChange)="to = from"
+    placeholder="Choose a date">
+  <mat-datepicker-toggle matSuffix [for]="datefrom"></mat-datepicker-toggle>
+  <mat-datepicker touchUi #datefrom></mat-datepicker>
+</mat-form-field>
+
+
+<mat-form-field>
+  <input 
+    [min]="from" 
+    [disabled]='!from' 
+    [(ngModel)]='to' 
+    matInput 
+    [matDatepicker]="dateTo" 
+    (focus)="dateTo.open()"
+    placeholder="Choose a date">
+  <mat-datepicker-toggle matSuffix [for]="dateTo"></mat-datepicker-toggle>
+  <mat-datepicker touchUi #dateTo></mat-datepicker>
+</mat-form-field>
+
+
+<div *ngIf="from && to">
+  {{from | date}} - {{to | date}}
+</div>

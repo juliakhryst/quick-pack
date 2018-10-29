@@ -17,12 +17,6 @@ import { CoreModule } from "./core/core.module";
 import { FilterDurationComponent } from './filters/filter-duration/filter-duration.component';
 
 
-import { MatFormFieldModule } from "@angular/material";
-import { MatInputModule } from "@angular/material";
-import { MatDatepickerModule } from "@angular/material/datepicker";
-import { MatNativeDateModule } from "@angular/material";
-
-
 
 @NgModule({
   declarations: [AppComponent, FilterDurationComponent],
@@ -34,11 +28,7 @@ import { MatNativeDateModule } from "@angular/material";
     BrowserModule,
     CoreModule,
     MaterialModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatDatepickerModule,
     FormsModule,
-    MatNativeDateModule,
     ServiceWorkerModule.register("ngsw-worker.js", {
       enabled: environment.production
     })

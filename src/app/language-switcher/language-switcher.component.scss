@@ -2,7 +2,7 @@ header {
     width: 100%;
     height: 50px;
     display: flex;
-    background-color: rgb(2, 122, 66);
+    background-color: rgb(49, 209, 134);
     align-items: center;
 
     #logo {
@@ -21,15 +21,6 @@ header {
 
             mat-form-field {
                 width: 60px;
-
-                .mat-select {
-                    color: rgb(0, 0, 255);
-
-                    mat-option {
-                        color: rgb(0, 0, 255);
-                        background-color: white;
-                    }
-                }
             }
 
             a {

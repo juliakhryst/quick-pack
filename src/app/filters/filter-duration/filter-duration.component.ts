@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'filter-duration',
+  selector: 'app-filter-duration',
   templateUrl: './filter-duration.component.html',
   styleUrls: ['./filter-duration.component.scss']
 })

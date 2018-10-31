@@ -1,7 +1,13 @@
+<app-language-switcher></app-language-switcher>
+
 <ul>
   <li *ngFor="let item of items$ | async">
     <pre>{{ item.value | json }}</pre>
   </li>
 </ul>
+
 <filter-duration></filter-duration>
+
+<app-footer></app-footer>
+
 <router-outlet></router-outlet>

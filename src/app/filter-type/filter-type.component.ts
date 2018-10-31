@@ -1,27 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 
+enum Type {
+  Business,
+  Leisure
+}
+
 @Component({
   selector: 'app-qpac-filter-type',
   templateUrl: './filter-type.component.html',
   styleUrls: ['./filter-type.component.scss']
 })
 export class FilterTypeComponent implements OnInit {
-  selectType = '';
-  business = false;
-  leisure = false;
+  Type = Type;
+  selectedType: Type;
 
-  businessSelect() {
-    this.selectType = 'business';
-    this.business = true;
-    this.leisure = false;
-
+  selectType(type: Type) {
+    this.selectedType = type;
   }
-  leisureSelect() {
-    this.selectType = 'leisure';
-    this.business = false;
-    this.leisure = true;
-  }
-
 
   constructor() { }
 

@@ -1,26 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 
+enum Gender {
+  Male,
+  Female
+}
+
 @Component({
   selector: 'app-qpac-filter-gender',
   templateUrl: './filter-gender.component.html',
   styleUrls: ['./filter-gender.component.scss']
 })
 export class FilterGenderComponent implements OnInit {
-  gender = '';
-  male = false;
-  female = false;
 
+  Gender = Gender;
+  selectedGender: Gender;
 
-  maleSelect() {
-    this.gender = 'male';
-    this.male = true;
-    this.female = false;
+  selectGender(gender: Gender) {
+    this.selectedGender = gender;
 
-  }
-  femaleSelect() {
-    this.gender = 'female';
-    this.male = false;
-    this.female = true;
   }
 
   constructor() { }

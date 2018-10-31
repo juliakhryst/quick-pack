@@ -1,10 +1,10 @@
 <h3>For who are you packing?</h3>
 
-<button mat-button [ngClass]="{selected: male}" (click)="maleSelect()">
+<button class="gender" mat-button [class.selected]="selectedGender==Gender.Male" (click)="selectGender(Gender.Male)">
     <i class="material-icons">person</i>
     <p>Male</p>
 </button>
-<button mat-button [ngClass]="{selected: female}" (click)="femaleSelect()">
+<button class="gender" mat-button [class.selected]="selectedGender==Gender.Female" (click)="selectGender(Gender.Female)">
     <i class="material-icons">person</i>
     <p>Female</p>
 </button>

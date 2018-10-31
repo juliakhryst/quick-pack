@@ -1,10 +1,10 @@
 <h3>Type of trip</h3>
 
-  <button mat-button [ngClass]="{selected: business}" (click)="businessSelect()">
+  <button class="trevel-type" mat-button [class.selected]="selectedType==Type.Business" (click)="selectType(Type.Business)">
       <i class="material-icons">work</i>
       <p>Business</p>
   </button>
-  <button mat-button [ngClass]="{selected: leisure}" (click)="leisureSelect()">
+  <button class="trevel-type" mat-button [class.selected]="selectedType==Type.Leisure" (click)="selectType(Type.Leisure)">
       <i class="material-icons">wb_sunny</i>
       <p>Leisure</p>
   </button>

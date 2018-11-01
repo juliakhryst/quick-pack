@@ -4,5 +4,7 @@
     "header.logOut.text": "Вийти з аккаунту",
     "login.header.text": "Увійти з допомогою соціальних мереж",
     "filtersForm.header.text": "Виберіть деталі своєї подорожі",
-    "footer.info.text": "Copyright. Всі права збережено"
+    "footer.info.text": "Copyright. Всі права збережено",
+    "filters.duration.header.text": "Дата подорожі",
+    "filters.duration.placeholder.text": "Оберіть дату"
 }

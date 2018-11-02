@@ -1,4 +1,4 @@
-<h3>Date of travel</h3>
+<h3> {{ 'filters.duration.header.text' | translate}}</h3>
 <mat-form-field>
   <input 
     [min]="minDate()" 
@@ -7,7 +7,7 @@
     [matDatepicker]="datefrom" 
     (focus)="datefrom.open()"
     (dateChange)="to = from"
-    placeholder="Choose a date">
+    placeholder="{{ 'filters.duration.placeholder.text' | translate }}">
   <mat-datepicker-toggle matSuffix [for]="datefrom"></mat-datepicker-toggle>
   <mat-datepicker touchUi #datefrom></mat-datepicker>
 </mat-form-field>
@@ -21,7 +21,7 @@
     matInput 
     [matDatepicker]="dateTo" 
     (focus)="dateTo.open()"
-    placeholder="Choose a date">
+    placeholder="{{ 'filters.duration.placeholder.text' | translate }}">
   <mat-datepicker-toggle matSuffix [for]="dateTo"></mat-datepicker-toggle>
   <mat-datepicker touchUi #dateTo></mat-datepicker>
 </mat-form-field>

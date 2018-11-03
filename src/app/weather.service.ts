@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 
 @Injectable()
@@ -10,11 +11,11 @@ export class WeatherService {
 
   constructor(private http: HttpClient) { }
 
-  getWeather () {
+  getWeather(): Observable<any> {
+    const weatherResponse = this.http.get(this.ROOT_URL);
 
-    return this.http.get(this.ROOT_URL).subscribe(data => {
-      console.log('We have', data);
-    });
+    return weatherResponse.pipe(map(res => res));
+
   }
 
 

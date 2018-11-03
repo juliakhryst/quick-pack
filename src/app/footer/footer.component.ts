@@ -7,12 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-  records = {};
+  response: any;
 
   constructor(private weather: WeatherService) { }
 
   ngOnInit() {
-    this.records = this.weather.getWeather();
+    this.weather.getWeather().subscribe(
+      response => {this.response = response;
+        this.response = Array.of(this.response);
+      },
+      error => console.log(error)
+    );
   }
 
 }

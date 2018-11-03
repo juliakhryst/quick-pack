@@ -20,4 +20,21 @@ export class FooterComponent implements OnInit {
     );
   }
 
+  weatherConclusions() {
+    let overallTemperature;
+    for (const attr of this.response) {
+      if (attr.currently.temperature <= -10) {
+        overallTemperature = 'Very cold';
+     } else if (attr.currently.temperature > -10 && attr.currently.temperature <= 5) {
+        overallTemperature = 'Cold';
+     } else if (attr.currently.temperature > 5 && attr.currently.temperature <= 20) {
+        overallTemperature = 'Average';
+     } else if (attr.currently.temperature > 20) {
+        overallTemperature = 'Warm';
+     }
+    }
+
+    return overallTemperature;
+  }
+
 }

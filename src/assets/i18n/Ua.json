@@ -6,5 +6,9 @@
     "filtersForm.header.text": "Виберіть деталі своєї подорожі",
     "footer.info.text": "Copyright. Всі права збережено",
     "filters.duration.header.text": "Дата подорожі",
-    "filters.duration.placeholder.text": "Оберіть дату"
+    "filters.duration.placeholder.text": "Оберіть дату",
+    "generatedList.weatherAPI.location.text": "Розташування:",
+    "generatedList.weatherAPI.temperature.text": "Очікувана температура:",
+    "generatedList.weatherAPI.cloudiness.text": "Хмарність:",
+    "generatedList.weatherAPI.precipType.text": "Тип опадів:"
 }

@@ -6,5 +6,10 @@
     "filtersForm.header.text": "Choose the details of your journey",
     "footer.info.text": "Copyright. All rights reserved",
     "filters.duration.header.text": "Date of travel",
-    "filters.duration.placeholder.text": "Choose a date"
+    "filters.duration.placeholder.text": "Choose a date",
+    "generatedList.weatherAPI.location.text": "Location:",
+    "generatedList.weatherAPI.temperature.text": "Expected temperature:",
+    "generatedList.weatherAPI.cloudiness.text": "Сloudiness:",
+    "generatedList.weatherAPI.precipType.text": "Precip type:"
+
 }

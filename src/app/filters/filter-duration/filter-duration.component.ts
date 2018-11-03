@@ -10,7 +10,7 @@ export class FilterDurationComponent implements OnInit {
   from: string;
   to: string;
   public minDate() {
-    return new Date();
+    return new Date().toISOString();
   }
   constructor() {}
 

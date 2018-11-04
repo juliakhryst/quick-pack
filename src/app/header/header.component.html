@@ -1,0 +1,11 @@
+<mat-toolbar color="primary" *ngIf="currentUser">
+ <span class="toolbar-header">Quick Pack</span>
+  <span class="example-fill-remaining-space"></span>
+    <span>You are logged in as: {{currentUser.displayName ||'Guest'}}</span>
+      <div>
+        <img class="user-pic" [src]="currentUser.photoURL || defaultAvatar" alt="picture" width="40px" height="40px">
+      </div>
+      <span class="user-email" *ngIf="currentUser.email">{{currentUser.email}}</span>
+      <br>
+      <a class="logout-link" href="" (click)="doLogout()">Logout</a>
+</mat-toolbar>

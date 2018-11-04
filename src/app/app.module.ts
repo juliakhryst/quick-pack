@@ -22,11 +22,15 @@ import { MatFormFieldModule } from "@angular/material";
 import { MatInputModule } from "@angular/material";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material";
+import {MatButtonModule} from '@angular/material';
+import { AuthComponent } from "./auth/auth.component";
+import { HeaderComponent } from './header/header.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, FilterDurationComponent],
+  declarations: [AppComponent, FilterDurationComponent, AuthComponent, HeaderComponent, DashboardComponent],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,

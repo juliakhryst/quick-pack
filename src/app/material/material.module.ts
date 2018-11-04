@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatCardModule} from '@angular/material/card';
+import {MatMenuModule} from '@angular/material/menu';
 
 import {
   MatButtonModule,
@@ -9,6 +12,9 @@ import {
 const MODULES = [
   MatButtonModule,
   MatCheckboxModule,
+  MatToolbarModule,
+  MatCardModule,
+  MatMenuModule
 ];
 
 @NgModule({

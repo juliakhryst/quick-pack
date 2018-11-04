@@ -35,4 +35,26 @@ export class AuthService {
         });
     });
   }
+
+doAnonymousLogin() {
+  return new Promise<any>((resolve, reject) => {
+    this.afAuth.auth.signInAnonymously()
+      .then(res => {
+        resolve(res);
+      });
+  });
+}
+
+
+  doLogout() {
+    return new Promise((resolve, reject) => {
+      if (firebase.auth().currentUser) {
+        this.afAuth.auth.signOut().then(res => {
+          resolve();
+        }, err => reject(err));
+      } else {
+        reject();
+      }
+    });
+  }
 }

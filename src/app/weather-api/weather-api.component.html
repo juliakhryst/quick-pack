@@ -1,0 +1,11 @@
+<div>
+  <p>This is: {{ this.response }}</p>
+</div>
+<div *ngFor="let attr of this.response">
+  <ul>
+    <li> {{ 'generatedList.weatherAPI.location.text' | translate}} {{ attr.timezone | json }}</li>
+    <li> {{ 'generatedList.weatherAPI.temperature.text' | translate}} {{ attr.currently.temperature | json }} &#8451;</li>
+    <li> {{ 'generatedList.weatherAPI.cloudiness.text' | translate}} {{ attr.currently.summary | json }}</li>
+    <li> {{ 'generatedList.weatherAPI.precipType.text' | translate}} {{ attr.currently.precipType | json }}</li>
+  </ul>
+</div>

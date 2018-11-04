@@ -1,12 +1,13 @@
 <h3> {{ 'filters.duration.header.text' | translate}}</h3>
 <mat-form-field>
   <input 
-    [min]="minDate()" 
-    [(ngModel)]='from' 
+    [min]="minDate" 
+    [(ngModel)]='from'
     matInput 
     [matDatepicker]="datefrom" 
     (focus)="datefrom.open()"
-    (dateChange)="to = from"
+    (dateChange)="getDuration(from)"
+    (dateInput) = "getDuration(from)"
     placeholder="{{ 'filters.duration.placeholder.text' | translate }}">
   <mat-datepicker-toggle matSuffix [for]="datefrom"></mat-datepicker-toggle>
   <mat-datepicker touchUi #datefrom></mat-datepicker>
@@ -28,5 +29,8 @@
 
 
 <div *ngIf="from && to">
-  {{from | date}} - {{to | date}}
+  {{from | date }} - {{to | date}}
+
+  <button (click)= "showWeather()"> Submit </button>
 </div>
+

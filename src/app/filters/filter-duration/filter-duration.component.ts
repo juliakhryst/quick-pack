@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { WeatherService } from './../../weather.service';
+import { Input, Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-filter-duration',
@@ -7,13 +9,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilterDurationComponent implements OnInit {
 
-  from: string;
-  to: string;
-  public minDate() {
-    return new Date().toISOString();
-  }
-  constructor() {}
+  response: any;
 
-  ngOnInit() {}
+  @Input() from: any;
+  to: string;
+  minDate = new Date();
+
+  public getDuration(from) {
+    return (moment(from).format('YYYY[-]MM[-]DD'));
+  }
+
+  showWeather() {
+    this.weather.time = this.getDuration(this.from);
+    console.log(this.weather.time);
+
+    this.weather.getWeather().subscribe(
+      response => {this.response = response;
+        this.response = Array.of(this.response);
+      },
+      error => console.log(error)
+    );
+
+    console.log(this.weather.url);
+    console.log(this.response);
+  }
+
+  constructor(private weather: WeatherService) {
+  }
+
+  ngOnInit() {
+  }
 
 }

@@ -1,0 +1,15 @@
+<h3>Where to go</h3>
+<mat-form-field class="dest-container">
+  <input
+    type="text"
+    placeholder="Choose city"
+    matInput
+    [formControl]="searchCity"
+    [matAutocomplete]="auto">
+  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+    <mat-option *ngFor="let city of filteredCity | async" [value]="city">
+      <span>{{ city.name }}</span>
+      <small>{{ city.country }}</small>
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

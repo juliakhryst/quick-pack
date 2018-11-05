@@ -1,36 +1,47 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AngularFirestoreModule } from "angularfire2/firestore";
-import { AngularFireModule } from "angularfire2";
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
-import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
-import { environment } from "../environments/environment";
-import { ServiceWorkerModule } from "@angular/service-worker";
-import { FormsModule } from "@angular/forms";
-
-import { MaterialModule } from "./material/material.module";
-import { CoreModule } from "./core/core.module";
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { environment } from '../environments/environment';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { FormsModule } from '@angular/forms';
+import { MaterialModule } from './material/material.module';
+import { CoreModule } from './core/core.module';
 import { FilterDurationComponent } from './filters/filter-duration/filter-duration.component';
-
-
-import { MatFormFieldModule } from "@angular/material";
-import { MatInputModule } from "@angular/material";
-import { MatDatepickerModule } from "@angular/material/datepicker";
-import { MatNativeDateModule } from "@angular/material";
-import {MatButtonModule} from '@angular/material';
-import { AuthComponent } from "./auth/auth.component";
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { FooterComponent } from './footer/footer.component';
+import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
+import { FilterTypeComponent } from './filter-type/filter-type.component';
+import { FilterGenderComponent } from './filter-gender/filter-gender.component';
+import { AuthComponent } from './auth/auth.component';
 import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
-
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
-  declarations: [AppComponent, FilterDurationComponent, AuthComponent, HeaderComponent, DashboardComponent],
+  declarations: [
+    AppComponent,
+    FooterComponent,
+    LanguageSwitcherComponent,
+    FilterDurationComponent,
+    FilterTypeComponent,
+    FilterGenderComponent,
+    AuthComponent,
+    HeaderComponent,
+    DashboardComponent
+  ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
@@ -38,14 +49,18 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     CoreModule,
     MaterialModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatDatepickerModule,
     FormsModule,
-    MatNativeDateModule,
-    ServiceWorkerModule.register("ngsw-worker.js", {
+    ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
     })
   ],

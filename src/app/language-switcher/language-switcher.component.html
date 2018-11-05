@@ -1,0 +1,24 @@
+<header>
+  <div id="logo">
+    <img src="\src\assets\qplogo.png" alt="Quick Pack Logo">
+  </div>
+  <nav>
+
+    <ul>
+      <li>
+        <form>
+          <mat-form-field>
+            <mat-select #langSelect (selectionChange)="translate.use(langSelect.value)" [(value)]="selected">
+              <mat-option *ngFor="let lang of translate.getLangs()" [value]="lang">
+                {{ lang }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+      </li>
+      
+      <li><a href="#">{{ 'header.logOut.text' | translate }}</a></li>
+    </ul>
+
+  </nav>
+</header>

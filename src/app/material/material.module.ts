@@ -7,6 +7,12 @@ import {MatMenuModule} from '@angular/material/menu';
 import {
   MatButtonModule,
   MatCheckboxModule,
+  MatSelectModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatDatepickerModule,
+  MatNativeDateModule
+
 } from '@angular/material';
 
 const MODULES = [
@@ -14,7 +20,12 @@ const MODULES = [
   MatCheckboxModule,
   MatToolbarModule,
   MatCardModule,
-  MatMenuModule
+  MatMenuModule,
+  MatSelectModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
 ];
 
 @NgModule({

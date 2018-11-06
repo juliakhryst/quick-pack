@@ -6,7 +6,7 @@ enum Gender {
 }
 
 @Component({
-  selector: 'app-qpac-filter-gender',
+  selector: 'qpac-filter-gender',
   templateUrl: './filter-gender.component.html',
   styleUrls: ['./filter-gender.component.scss']
 })

@@ -6,7 +6,7 @@ enum Type {
 }
 
 @Component({
-  selector: 'app-qpac-filter-type',
+  selector: 'qpac-filter-type',
   templateUrl: './filter-type.component.html',
   styleUrls: ['./filter-type.component.scss']
 })

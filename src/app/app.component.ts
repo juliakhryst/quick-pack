@@ -10,4 +10,3 @@ import { LanguageSwitcherComponent } from './language-switcher/language-switcher
 export class AppComponent {
   constructor() {}
 }
-

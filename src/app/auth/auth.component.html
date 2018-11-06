@@ -1,8 +1,7 @@
-<mat-card>
-  <div class="container">
+<qpac-language-switcher></qpac-language-switcher>
+<mat-card class="auth-form">
     <mat-card-title>Welcome to QuickPack App!</mat-card-title>
     <mat-card-subtitle>Please sign in and start packing for your trip :)</mat-card-subtitle>
-    <mat-card-actions>
       <button mat-raised-button color="primary" class="social-login-btn" (click)="doFbLogin()">
         <i class="zmdi zmdi-facebook-box"></i>
         <span>Sign in with FACEBOOK</span>
@@ -11,6 +10,4 @@
         <i class="zmdi zmdi-google-plus-box"></i>Sign in with GOOGLE</button>
       <button mat-raised-button class="social-login-btn" (click)="doAnonymousLogin()">
         <i class="material-icons">face</i>Sign in as a Guest</button>
-    </mat-card-actions>
-  </div>
 </mat-card>

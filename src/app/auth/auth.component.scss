@@ -1,13 +1,15 @@
-.mat-card{
-    display: flex;
-    justify-content: center;
-}
-button i{
-    margin-right: 10px;
-    font-size: 24px;
+.auth-form {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    .social-login-btn {
+        margin-bottom: 15px;
+        width: 100%;
+        i{
+            margin-right: 10px;
+            font-size: 24px;
+        }
+    }
 }
 
-// .social-login-btn{
-//     display: block;
-//     margin-bottom: 15px;
-// }
+

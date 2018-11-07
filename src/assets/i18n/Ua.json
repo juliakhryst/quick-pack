@@ -1,4 +1,9 @@
 {
+    "auth.header.greetings.text": "Вітаємо в додатку QuickApp!",
+    "auth.header.hint.text": "Будь ласка, увійдіть та почніть збиратись у подорож :)",
+    "auth.body.facebook.text": "Увійти через FACEBOOK",
+    "auth.body.google.text": "Увійти через GOOGLE",
+    "auth.body.guest.text": "Увійти, як Гість",
     "header.language.text": "Мова",
     "header.changeLang.text": "Змінити мову",
     "header.logOut.text": "Вийти з аккаунту",

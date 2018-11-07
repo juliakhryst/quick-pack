@@ -1,13 +1,13 @@
 <qpac-language-switcher></qpac-language-switcher>
 <mat-card class="auth-form">
-    <mat-card-title>Welcome to QuickPack App!</mat-card-title>
-    <mat-card-subtitle>Please sign in and start packing for your trip :)</mat-card-subtitle>
+    <mat-card-title>{{ 'auth.header.greetings.text' | translate }}</mat-card-title>
+    <mat-card-subtitle>{{ 'auth.header.hint.text' | translate }}</mat-card-subtitle>
       <button mat-raised-button color="primary" class="social-login-btn" (click)="doFbLogin()">
         <i class="zmdi zmdi-facebook-box"></i>
-        <span>Sign in with FACEBOOK</span>
+        <span>{{ 'auth.body.facebook.text' | translate}}</span>
       </button>
       <button mat-raised-button color="warn" class="social-login-btn" (click)="doGoogleLogin()">
-        <i class="zmdi zmdi-google-plus-box"></i>Sign in with GOOGLE</button>
+        <i class="zmdi zmdi-google-plus-box"></i>{{ 'auth.body.google.text' | translate}}</button>
       <button mat-raised-button class="social-login-btn" (click)="doAnonymousLogin()">
-        <i class="material-icons">face</i>Sign in as a Guest</button>
+        <i class="material-icons">face</i>{{ 'auth.body.guest.text' | translate}}</button>
 </mat-card>

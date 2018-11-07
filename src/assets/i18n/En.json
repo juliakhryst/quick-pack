@@ -1,4 +1,9 @@
 {
+    "auth.header.greetings.text": "Welcome to QuickPack App!",
+    "auth.header.hint.text": "Please sign in and start packing for your trip :)",
+    "auth.body.facebook.text": "Sign in with FACEBOOK",
+    "auth.body.google.text": "Sign in with GOOGLE",
+    "auth.body.guest.text": "Sign in as a Guest",
     "header.language.text": "Language",
     "header.changeLang.text": "Change the language",
     "header.logOut.text": "Log out from account",

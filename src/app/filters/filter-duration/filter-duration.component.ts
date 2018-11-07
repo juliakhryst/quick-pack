@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-filter-duration',
+  selector: 'qpac-filter-duration',
   templateUrl: './filter-duration.component.html',
   styleUrls: ['./filter-duration.component.scss']
 })

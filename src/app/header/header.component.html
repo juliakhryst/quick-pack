@@ -1,0 +1,26 @@
+<mat-toolbar class="head-panel" color="primary" *ngIf="currentUser">
+  <div>
+  <img class="header-logo" src="../../assets/img/qp_logo.png" alt="logo" width="40px" hight="40px">
+</div>
+<span class="toolbar-header">Quick Pack</span>
+  <span class="example-fill-remaining-space"></span>
+  <span>Welcome, {{currentUser.displayName ||'Guest'}}</span>
+  <div>
+    <img [matMenuTriggerFor]="menu" class="user-pic" [src]="currentUser.photoURL || defaultAvatar" alt="picture" width="40px"
+      height="40px">
+  </div>
+  <div class="additional-info">
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item *ngIf="currentUser.email">
+        <mat-icon>email_outline</mat-icon>
+        <span class="user-email">{{currentUser.email}}</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>exit_to_app</mat-icon>
+        <a class="logout-link" (click)="doLogout()">Logout</a>
+      </button>
+    </mat-menu>
+  </div>
+  <br>
+  <qpac-language-switcher></qpac-language-switcher>
+</mat-toolbar>

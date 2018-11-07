@@ -1,0 +1,28 @@
+mat-toolbar{
+    display: flex;
+    font-size: medium;
+}
+
+.toolbar-header{
+    flex-grow: 1;
+    margin-left: 5px;
+}
+
+.user-pic{
+    border-radius: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.logout-link{
+    margin: 10px 0 10px 0;
+}
+
+.additional-info mat-option{
+    width: 10px;
+}
+
+.head-panel{
+    // color: #1d3d1e;
+    // background-color:#B3F2C6;
+}

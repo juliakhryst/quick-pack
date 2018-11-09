@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'qpac-filter-duration',
@@ -15,5 +16,11 @@ export class FilterDurationComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  @Output() onChanged = new EventEmitter<boolean>();
+  change(from:any) {
+      from = (moment(from).format('YYYY[-]MM[-]DD'));
+      this.onChanged.emit(from);
+  }
 
 }

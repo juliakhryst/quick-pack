@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { WeatherService } from '../weather.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'qpac-weather-dashboard',
@@ -6,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./weather-dashboard.component.scss']
 })
 export class WeatherDashboardComponent implements OnInit {
+  response: Object;
 
-  constructor() { }
+  constructor(private weather: WeatherService) { }
 
   ngOnInit() {
+  }
+
+  onChanged(from:any){
+    this.weather.getWeather(from).subscribe(
+      response => {this.response = response;
+        this.response = Array.of(this.response);
+
+        console.log(this.response);
+      },
+      error => console.log(error)
+    );
   }
 
 }

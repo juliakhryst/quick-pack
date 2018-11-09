@@ -6,7 +6,7 @@
     matInput 
     [matDatepicker]="datefrom" 
     (focus)="datefrom.open()"
-    (dateChange)="to = from"
+    (dateChange)="change(from)"
     placeholder="{{ 'filters.duration.placeholder.text' | translate }}">
   <mat-datepicker-toggle matSuffix [for]="datefrom"></mat-datepicker-toggle>
   <mat-datepicker touchUi #datefrom></mat-datepicker>

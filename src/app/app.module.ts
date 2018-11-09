@@ -25,6 +25,8 @@ import { FilterGenderComponent } from './filter-gender/filter-gender.component';
 import { AuthComponent } from './auth/auth.component';
 import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { WeatherDashboardComponent } from './weather-dashboard/weather-dashboard.component';
+import { WeatherDisplayComponent } from './weather-display/weather-display.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -40,7 +42,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     FilterGenderComponent,
     AuthComponent,
     HeaderComponent,
-    DashboardComponent
+    DashboardComponent,
+    WeatherDashboardComponent,
+    WeatherDisplayComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

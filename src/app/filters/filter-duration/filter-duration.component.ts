@@ -7,20 +7,21 @@ import * as moment from 'moment';
   styleUrls: ['./filter-duration.component.scss']
 })
 export class FilterDurationComponent implements OnInit {
-
   from: string;
   to: string;
+  @Output() changedDepartureDate = new EventEmitter<boolean>();
+
   public minDate() {
     return new Date();
   }
+
   constructor() {}
 
   ngOnInit() {}
 
-  @Output() onChanged = new EventEmitter<boolean>();
-  change(from:any) {
+  change(from: any) {
       from = (moment(from).format('YYYY[-]MM[-]DD'));
-      this.onChanged.emit(from);
+      this.changedDepartureDate.emit(from);
   }
 
 }

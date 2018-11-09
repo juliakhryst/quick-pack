@@ -15,7 +15,7 @@ export class WeatherDashboardComponent implements OnInit {
   ngOnInit() {
   }
 
-  onChanged(from:any){
+  changedDepartureDate(from: any) {
     this.weather.getWeather(from).subscribe(
       response => {this.response = response;
         this.response = Array.of(this.response);

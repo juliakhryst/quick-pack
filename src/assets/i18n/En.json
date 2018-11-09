@@ -11,5 +11,7 @@
     "filtersForm.header.text": "Choose the details of your journey",
     "footer.info.text": "Copyright. All rights reserved",
     "filters.duration.header.text": "Date of travel",
-    "filters.duration.placeholder.text": "Choose a date"
+    "filters.duration.placeholder.text": "Choose a date",
+    "weather.display.temperature.text": "Projected temperature:",
+    "weather.display.precip.text": "Precip type:"
 }

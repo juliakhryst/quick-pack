@@ -11,5 +11,7 @@
     "filtersForm.header.text": "Виберіть деталі своєї подорожі",
     "footer.info.text": "Copyright. Всі права збережено",
     "filters.duration.header.text": "Дата подорожі",
-    "filters.duration.placeholder.text": "Оберіть дату"
+    "filters.duration.placeholder.text": "Оберіть дату",
+    "weather.display.temperature.text": "Прогнозована температура:",
+    "weather.display.precip.text": "Тип опадів:"
 }

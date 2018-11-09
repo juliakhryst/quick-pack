@@ -1,3 +1,4 @@
 <div *ngFor="let attr of response">
-   Current temperature: {{ attr.currently.temperature | json }}
+  {{ 'weather.display.temperature.text' | translate }} {{ attr.currently.temperature | json }}
+   {{ 'weather.display.precip.text' | translate}} {{ attr.currently.precipType | json }}
 </div>

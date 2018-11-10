@@ -1,11 +1,11 @@
-<h3>Type of trip</h3>
+<h3>{{ 'filters.type.header.text' | translate }}</h3>
 
   <button class="trevel-type" mat-button [class.selected]="selectedType==Type.Business" (click)="selectType(Type.Business)">
       <i class="material-icons">work</i>
-      <p>Business</p>
+      <p>{{ 'filters.type.business.text' | translate }}</p>
   </button>
   <button class="trevel-type" mat-button [class.selected]="selectedType==Type.Leisure" (click)="selectType(Type.Leisure)">
       <i class="material-icons">wb_sunny</i>
-      <p>Leisure</p>
+      <p>{{ 'filters.type.leisure.text' | translate }}</p>
   </button>
   

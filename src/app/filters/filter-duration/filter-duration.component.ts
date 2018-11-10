@@ -9,7 +9,7 @@ import * as moment from 'moment';
 export class FilterDurationComponent implements OnInit {
   from: string;
   to: string;
-  @Output() changedDepartureDate = new EventEmitter<boolean>();
+  @Output() changedDepartureDate = new EventEmitter<any>();
 
   public minDate() {
     return new Date();

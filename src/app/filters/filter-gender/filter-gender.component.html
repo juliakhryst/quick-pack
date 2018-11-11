@@ -1,10 +1,10 @@
-<h3>For who are you packing?</h3>
+<h3>{{ 'filters.gender.header.text' | translate }}</h3>
 
 <button class="gender" mat-button [class.selected]="selectedGender==Gender.Male" (click)="selectGender(Gender.Male)">
     <i class="material-icons">person</i>
-    <p>Male</p>
+    <p>{{ 'filters.gender.male.text' | translate }}</p>
 </button>
 <button class="gender" mat-button [class.selected]="selectedGender==Gender.Female" (click)="selectGender(Gender.Female)">
     <i class="material-icons">person</i>
-    <p>Female</p>
+    <p>{{ 'filters.gender.female.text' | translate }}</p>
 </button>

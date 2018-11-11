@@ -4,7 +4,7 @@
 </div>
 <span class="toolbar-header">Quick Pack</span>
   <span class="example-fill-remaining-space"></span>
-  <span>Welcome, {{currentUser.displayName ||'Guest'}}</span>
+  <span>{{ 'header.greeting.text' | translate}} {{currentUser.displayName || 'header.greeting.guest.text' | translate }}</span>
   <div>
     <img [matMenuTriggerFor]="menu" class="user-pic" [src]="currentUser.photoURL || defaultAvatar" alt="picture" width="40px"
       height="40px">

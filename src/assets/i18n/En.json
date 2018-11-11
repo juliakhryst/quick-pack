@@ -15,6 +15,7 @@
     "filters.type.leisure.text": "Leisure",
     "filters.duration.header.text": "Date of travel",
     "filters.duration.placeholder.text": "Choose a date",
-    "weather.display.temperature.text": "Projected temperature:",
-    "weather.display.precip.text": "Precip type:"
+    "weather.display.temperature.text": "Forecasted temperature:",
+    "weather.display.summary.text": "Forecasted weather:",
+    "weather.display.location.text": "Location:"
 }

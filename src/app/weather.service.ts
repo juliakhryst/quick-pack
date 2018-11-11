@@ -10,8 +10,9 @@ export class WeatherService {
 
   constructor(private http: HttpClient) {}
 
-  getWeather(time): Observable<any> {
-    this.url = this.domain + 'forecast/06c2092633e864891808d080ca5675d1d/52.520008,13.404954,' + time + 'T12:00:00+02:00?units=si';
+  // t= time, l = language;
+  getWeather(t, l): Observable<any> {
+    this.url = this.domain + 'forecast/6c2092633e864891808d080ca5675d1d/52.520008,13.404954,' + t + 'T12:00:00+02:00?units=si&lang=' + l;
     const weatherResponse = this.http.get(this.url);
 
     return weatherResponse.pipe(map(res => res));

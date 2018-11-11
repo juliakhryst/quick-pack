@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../weather.service';
-import * as moment from 'moment';
 
 @Component({
   selector: 'qpac-weather-dashboard',
@@ -15,8 +14,8 @@ export class WeatherDashboardComponent implements OnInit {
   ngOnInit() {
   }
 
-  changedDepartureDate(from: any) {
-    this.weather.getWeather(from).subscribe(
+  changedDepartureDate(res) {
+    this.weather.getWeather(res.from, res.lang).subscribe(
       response => {this.response = response;
         this.response = Array.of(this.response);
 

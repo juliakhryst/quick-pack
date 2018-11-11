@@ -18,7 +18,6 @@ import { FilterDurationComponent } from './filters/filter-duration/filter-durati
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { FooterComponent } from './footer/footer.component';
 import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
 import { FilterTypeComponent } from './filter-type/filter-type.component';
 import { FilterGenderComponent } from './filter-gender/filter-gender.component';
@@ -36,7 +35,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent,
     LanguageSwitcherComponent,
     FilterDurationComponent,
     FilterTypeComponent,

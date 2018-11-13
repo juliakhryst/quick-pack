@@ -1,7 +1,9 @@
 <qpac-header></qpac-header>
 <qpac-filter-type></qpac-filter-type>
 <qpac-filter-gender></qpac-filter-gender>
-<qpac-weather-dashboard></qpac-weather-dashboard>
+<qpac-filter-duration (changedDepartureDate)="changedDepartureDate($event)"></qpac-filter-duration>
+<qpac-weather-display [response]="response"></qpac-weather-display>
+<button (click)="showFrom()">Click me</button>
 
 <pre>
   {{ item$ | async | json }}

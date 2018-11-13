@@ -24,7 +24,6 @@ import { FilterGenderComponent } from './filters/filter-gender/filter-gender.com
 import { AuthComponent } from './auth/auth.component';
 import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { WeatherDashboardComponent } from './weather-dashboard/weather-dashboard.component';
 import { WeatherDisplayComponent } from './weather-display/weather-display.component';
 import { WeatherService } from './weather.service';
 
@@ -42,7 +41,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     AuthComponent,
     HeaderComponent,
     DashboardComponent,
-    WeatherDashboardComponent,
     WeatherDisplayComponent
   ],
   imports: [

@@ -25,7 +25,10 @@ export class FilterDurationComponent implements OnInit {
       lang = this.translate.currentLang;
       if (lang === 'Ua') {
         lang = 'uk';
+      } else if (lang === 'En') {
+        lang = 'en';
       }
+
       from = (moment(from).format('YYYY[-]MM[-]DD'));
       this.changedDepartureDate.emit({from, lang});
   }

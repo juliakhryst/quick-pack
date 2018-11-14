@@ -1,3 +1,4 @@
+import { GenerationService } from './../generation.service';
 import { WeatherService } from './../weather.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
@@ -14,19 +15,19 @@ export class DashboardComponent implements OnInit {
   fromDate: string;
   typeOfTrip: string;
   typeOfGender: string;
-  constructor(private afs: AngularFirestore, private weather: WeatherService) { }
+  constructor(private afs: AngularFirestore, private weather: WeatherService, private generation: GenerationService) {
+   }
   changedSelectedType(type) {
     this.typeOfTrip = type;
   }
   changedTypeOfGender(type) {
     this.typeOfGender = type;
   }
-  generate() {
-    console.log(this.typeOfTrip);
+  generate(type, gender, weather) {
+    this.item$ = this.generation.getList(type, gender, weather);
   }
 
   ngOnInit() {
-    this.item$ = this.afs.collection('pack-items', ref => ref.where('category', '==', 'Clothing')).valueChanges();
   }
 
   changedDepartureDate(res) {

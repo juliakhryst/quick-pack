@@ -6,7 +6,10 @@
 <div>
   <button
     mat-raised-button color="primary"
-    (click)="generate()">Generate List</button>
+    (click)="generate(this.typeOfTrip, this.typeOfGender, this.response)">Generate List</button>
 </div>
 
 
+<pre>
+  {{ item$ | async | json }}
+</pre>

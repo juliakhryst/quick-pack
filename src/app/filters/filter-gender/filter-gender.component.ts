@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 enum Gender {
-  Male,
-  Female
+  Male = 'male',
+  Female = 'female'
 }
 
 @Component({
@@ -11,13 +11,13 @@ enum Gender {
   styleUrls: ['./filter-gender.component.scss']
 })
 export class FilterGenderComponent implements OnInit {
-
+  @Output() changedTypeOfGender = new EventEmitter<String>();
   Gender = Gender;
   selectedGender: Gender;
 
   selectGender(gender: Gender) {
     this.selectedGender = gender;
-
+    this.changedTypeOfGender.emit(this.selectedGender);
   }
 
   constructor() { }

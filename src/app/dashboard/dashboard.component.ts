@@ -12,9 +12,18 @@ export class DashboardComponent implements OnInit {
   item$: Observable<any>;
   response: Object;
   fromDate: string;
-
-
+  typeOfTrip: string;
+  typeOfGender: string;
   constructor(private afs: AngularFirestore, private weather: WeatherService) { }
+  changedSelectedType(type) {
+    this.typeOfTrip = type;
+  }
+  changedTypeOfGender(type) {
+    this.typeOfGender = type;
+  }
+  generate() {
+    console.log(this.typeOfTrip);
+  }
 
   ngOnInit() {
     this.item$ = this.afs.collection('pack-items', ref => ref.where('category', '==', 'Clothing')).valueChanges();
@@ -30,10 +39,6 @@ export class DashboardComponent implements OnInit {
       },
       error => console.log(error)
     );
-  }
-
-  showFrom() {
-    console.log(this.fromDate);
   }
 
 }

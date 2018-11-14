@@ -1,10 +1,12 @@
 <qpac-header></qpac-header>
-<qpac-filter-type></qpac-filter-type>
-<qpac-filter-gender></qpac-filter-gender>
+<qpac-filter-type (changedSelectedType)="changedSelectedType($event)"></qpac-filter-type>
+<qpac-filter-gender (changedTypeOfGender)="changedTypeOfGender($event)"></qpac-filter-gender>
 <qpac-filter-duration (changedDepartureDate)="changedDepartureDate($event)"></qpac-filter-duration>
 <qpac-weather-display [response]="response"></qpac-weather-display>
 <div>
-  <button (click)="showFrom()">Click me</button>
+  <button
+    mat-raised-button color="primary"
+    (click)="generate()">Generate List</button>
 </div>
 
 

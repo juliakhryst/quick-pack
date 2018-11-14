@@ -3,8 +3,8 @@
 <qpac-filter-gender></qpac-filter-gender>
 <qpac-filter-duration (changedDepartureDate)="changedDepartureDate($event)"></qpac-filter-duration>
 <qpac-weather-display [response]="response"></qpac-weather-display>
-<button (click)="showFrom()">Click me</button>
+<div>
+  <button (click)="showFrom()">Click me</button>
+</div>
 
-<pre>
-  {{ item$ | async | json }}
-</pre>
+

@@ -12,4 +12,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
+  handleFilter(filterObj) {
+    console.log(filterObj);
+  }
 }

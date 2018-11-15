@@ -1,0 +1,9 @@
+.checkbox-wrapper {
+    .mat-checkbox{
+        margin: 10px;
+    
+        label {
+            flex-direction: column;
+        }
+    }
+}

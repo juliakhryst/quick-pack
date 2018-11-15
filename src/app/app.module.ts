@@ -25,6 +25,7 @@ import { FilterGenderComponent } from './filter-gender/filter-gender.component';
 import { AuthComponent } from './auth/auth.component';
 import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ActivitiesFilterComponent } from './filters/activities-filter/activities-filter.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -40,7 +41,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     FilterGenderComponent,
     AuthComponent,
     HeaderComponent,
-    DashboardComponent
+    DashboardComponent,
+    ActivitiesFilterComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

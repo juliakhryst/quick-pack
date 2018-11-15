@@ -1,5 +1,9 @@
 <qpac-header></qpac-header>
-<qpac-filter-duration></qpac-filter-duration>
 <qpac-filter-type></qpac-filter-type>
 <qpac-filter-gender></qpac-filter-gender>
 <qpac-activities-filter (activitiesChanged)="handleFilter($event)"></qpac-activities-filter>
+<qpac-weather-dashboard></qpac-weather-dashboard>
+
+<pre>
+  {{ item$ | async | json }}
+</pre>

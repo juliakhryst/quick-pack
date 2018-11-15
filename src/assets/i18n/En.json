@@ -1,10 +1,20 @@
 {
-    "header.language.text": "Language",
-    "header.changeLang.text": "Change the language",
-    "header.logOut.text": "Log out from account",
-    "loginForm.header.text": "Log in with the social networks",
-    "filtersForm.header.text": "Choose the details of your journey",
-    "footer.info.text": "Copyright. All rights reserved",
+    "auth.header.greetings.text": "Welcome to QuickPack App!",
+    "auth.header.hint.text": "Please sign in and start packing for your trip :)",
+    "auth.body.facebook.text": "Sign in with FACEBOOK",
+    "auth.body.google.text": "Sign in with GOOGLE",
+    "auth.body.guest.text": "Sign in as a Guest",
+    "header.greeting.text": "Welcome,",
+    "header.greeting.guest.text": "Guest",
+    "filters.type.header.text": "Type of the trip",
+    "filters.type.business.text": "Business",
+    "filters.type.leisure.text": "Leisure",
     "filters.duration.header.text": "Date of travel",
-    "filters.duration.placeholder.text": "Choose a date"
+    "filters.duration.placeholder.text": "Choose a date",
+    "filters.gender.header.text": "For whom are you packing?",
+    "filters.gender.male.text": "Male",
+    "filters.gender.female.text": "Female",
+    "weather.display.temperature.text": "Forecasted temperature:",
+    "weather.display.summary.text": "Forecasted weather:",
+    "weather.display.location.text": "Location:"
 }

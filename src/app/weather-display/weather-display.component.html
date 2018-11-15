@@ -1,0 +1,7 @@
+<div *ngFor="let attr of response">
+  <ul>
+    <li> {{ 'weather.display.temperature.text' | translate }} {{ attr.currently.temperature | json }} &#8451; </li>
+    <li> {{ 'weather.display.summary.text' | translate}} {{ attr.currently.summary | json }} </li>
+    <li> {{ 'weather.display.location.text' | translate}} {{ attr.timezone | json }} </li>
+  </ul>
+</div>

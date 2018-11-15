@@ -10,16 +10,16 @@ export class LanguageSwitcherComponent implements OnInit {
   selected: string;
 
   constructor(public translate: TranslateService) {
-    // this language will be used as a fallback when a language-switcher isn't found in the current language
     translate.addLangs(['Ua', 'En']);
     translate.setDefaultLang('Ua');
 
-    // const browserLang = translate.getBrowserLang();
-    translate.use('Ua');
+    if (this.translate.currentLang === undefined) {
+      translate.use('Ua');
+    }
 
     this.selected = this.translate.currentLang;
+    translate.use(this.selected);
   }
-
 
   ngOnInit() {
   }

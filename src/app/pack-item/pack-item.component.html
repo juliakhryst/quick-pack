@@ -1,0 +1,13 @@
+<div class="pack-item">
+  <mat-checkbox [(ngModel)]="isChecked"></mat-checkbox>
+  <div>
+    <span>{{item.name}}</span>
+    <span>{{item.weight}}kg</span>
+    {{isChecked}}
+  </div>
+  <i
+      (click)="removeItem(item)"
+      class="material-icons">
+      delete
+  </i>
+</div>

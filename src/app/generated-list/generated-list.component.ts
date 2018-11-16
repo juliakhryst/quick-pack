@@ -37,25 +37,32 @@ export class GeneratedListComponent implements OnInit {
       }
   ];
   isOpenAddedField = false;
+  isCheckedAll = false;
+  uncheckAll(): void {
+      this.isCheckedAll = false;
+  }
+  checkAll(): void {
+      this.isCheckedAll = true;
+  }
   toggleAddedField(): void {
       this.isOpenAddedField = !this.isOpenAddedField;
   }
   get totalWeight() {
       return this.ITEMS.reduce((accumulator, currentValue) => {
           return accumulator + currentValue.weight;
-      },0);
+      }, 0);
   }
   removeById(id): void {
       this.ITEMS = this.ITEMS.filter( item => item.id !== id);
   }
   addNewItem(item): void {
-      //only for testing
+      // only for testing
     this.ITEMS.push( {
         category: 'Clothing',
         id: this.ITEMS.length,
         name: item.value,
         type: 'Essential',
-        weight: 2
+        weight: 0
     });
   }
   constructor() { }

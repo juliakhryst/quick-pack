@@ -7,13 +7,13 @@
     Weather block.......
   </div>
   <div>
-    <div>
+    <div *ngIf="ITEMS.length > 0">
       <mat-radio-group>
-        <mat-radio-button value="check">
+        <mat-radio-button  (change)="uncheckAll()" value="check">
           Uncheck All
         </mat-radio-button>
 
-        <mat-radio-button value="uncheck">
+        <mat-radio-button (change)="checkAll()" value="uncheck">
           Check All
         </mat-radio-button>
       </mat-radio-group>
@@ -26,7 +26,11 @@
   <h2>General List</h2>
   <ul class="pack-items">
     <li *ngFor="let item of ITEMS">
-      <qpac-pack-item (removeById)="removeById($event)" [item]="item"></qpac-pack-item>
+      <qpac-pack-item
+              (removeById)="removeById($event)"
+              (itemChanged)="handleItemChanged($event)"
+              [isChecked]="isCheckedAll"
+              [item]="item"></qpac-pack-item>
     </li>
   </ul>
   <div *ngIf="isOpenAddedField" class="add-item">

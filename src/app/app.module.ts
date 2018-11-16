@@ -11,10 +11,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { CoreModule } from './core/core.module';
 import { FilterDurationComponent } from './filters/filter-duration/filter-duration.component';
+import { FilterDestinationComponent } from './filters/filter-destination/filter-destination.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -37,6 +38,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     LanguageSwitcherComponent,
     FilterDurationComponent,
+    FilterDestinationComponent,
     FilterTypeComponent,
     FilterGenderComponent,
     AuthComponent,
@@ -63,6 +65,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CoreModule,
     MaterialModule,
     FormsModule,
+    ReactiveFormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
     })

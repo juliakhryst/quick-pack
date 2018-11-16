@@ -1,10 +1,20 @@
 {
-    "header.language.text": "Мова",
-    "header.changeLang.text": "Змінити мову",
-    "header.logOut.text": "Вийти з аккаунту",
-    "login.header.text": "Увійти з допомогою соціальних мереж",
-    "filtersForm.header.text": "Виберіть деталі своєї подорожі",
-    "footer.info.text": "Copyright. Всі права збережено",
+    "auth.header.greetings.text": "Вітаємо в додатку QuickApp!",
+    "auth.header.hint.text": "Будь ласка, увійдіть та почніть збиратись у подорож :)",
+    "auth.body.facebook.text": "Увійти через FACEBOOK",
+    "auth.body.google.text": "Увійти через GOOGLE",
+    "auth.body.guest.text": "Увійти, як Гість",
+    "header.greeting.text": "Вітаємо,",
+    "header.greeting.guest.text": "Гість",
+    "filters.type.header.text": "Тип поїздки",
+    "filters.type.business.text": "Бізнес",
+    "filters.type.leisure.text": "Відпочинок",
     "filters.duration.header.text": "Дата подорожі",
-    "filters.duration.placeholder.text": "Оберіть дату"
+    "filters.duration.placeholder.text": "Оберіть дату",
+    "filters.gender.header.text": "Для кого Ви збираєте речі?",
+    "filters.gender.male.text": "Чоловік",
+    "filters.gender.female.text": "Жінка",
+    "weather.display.temperature.text": "Прогнозована температура:",
+    "weather.display.summary.text": "Прогнозована погода:",
+    "weather.display.location.text": "Місцевість:"
 }

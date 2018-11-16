@@ -1,47 +1,48 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
-import {CitiesService} from './cities.service';
-import {City} from './city';
+import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith, debounceTime } from 'rxjs/operators';
+import { SearchService } from './search.service';
+
+export interface City {
+  country: string;
+  name: string;
+  lat: string;
+  lng: string;
+}
 
 @Component({
-  selector: 'app-qpac-filter-destination',
+  selector: 'qpac-filter-destination',
   templateUrl: './filter-destination.component.html',
-  styleUrls: ['./filter-destination.component.scss'],
-  providers: [CitiesService]
+  styleUrls: ['./filter-destination.component.scss']
 })
 export class FilterDestinationComponent implements OnInit {
 
+  constructor(private searchService: SearchService) { }
+
   searchCity: FormControl;
   minLength = 3;
-  city: City[];
-
   filteredCity: Observable<City[]>;
-
-  constructor(private service: CitiesService) { }
 
   ngOnInit() {
     this.searchCity = new FormControl();
-    this.filteredCity = this.searchCity.valueChanges
+    this.searchCity.valueChanges
       .pipe(
         startWith(this.minLength),
-        map(val => this.displayFn(val)),
-        map(name => this.filterCity(name)['name'])
-      );
-  }
-
-  displayFn(val: any): string {
-    return val && typeof val === 'object' ? val.name : val;
+        debounceTime(200),
+    ).subscribe(val => this.filteredCity = this.filterCity(val));
   }
 
   filterCity(val: string) {
-    return val ? this._filter(val) : this.city;
+    const filterValue = val.toLowerCase();
+
+// return this.searchService.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+
+
+    return this.searchService.searchCity(filterValue);
   }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.service.search(value)['name'].filter(option => option['name'].toLowerCase().indexOf(filterValue) === 0);
+  displayFn(val?: City): string | undefined {
+    return val ? val.name : undefined;
   }
 }

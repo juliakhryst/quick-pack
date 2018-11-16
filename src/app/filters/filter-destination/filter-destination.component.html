@@ -1,8 +1,8 @@
-<h3>Where to go</h3>
+<h3> {{ 'filters.destination.header.text' | translate}}</h3>
 <mat-form-field class="dest-container">
   <input
     type="text"
-    placeholder="Choose city"
+    placeholder="{{ 'filters.destination.placeholder.text' | translate }}"
     matInput
     [formControl]="searchCity"
     [matAutocomplete]="auto">

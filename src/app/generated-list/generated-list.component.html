@@ -9,11 +9,11 @@
   <div>
     <div *ngIf="ITEMS.length > 0">
       <mat-radio-group>
-        <mat-radio-button  (change)="uncheckAll()" value="check">
+        <mat-radio-button (change)="uncheckAll()" value="check">
           Uncheck All
         </mat-radio-button>
 
-        <mat-radio-button (change)="checkAll()" value="uncheck">
+        <mat-radio-button  (change)="checkAll()" value="uncheck">
           Check All
         </mat-radio-button>
       </mat-radio-group>

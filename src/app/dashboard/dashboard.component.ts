@@ -16,4 +16,7 @@ export class DashboardComponent implements OnInit {
     this.item$ = this.afs.collection('pack-items', ref => ref.where('category', '==', 'Clothing')).valueChanges();
   }
 
+  handleFilter(filterObj) {
+    console.log(filterObj);
+  }
 }

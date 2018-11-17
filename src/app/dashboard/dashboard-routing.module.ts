@@ -6,28 +6,9 @@ import { FilterDurationComponent } from './filters/filter-duration/filter-durati
 import { FilterGenderComponent } from './filters/filter-gender/filter-gender.component';
 
 const routes: Routes = [
-    { path: 'dashboard',
+    { path: '',
       component: DashboardComponent,
-      canActivate: [AuthGuard],
-      children: [
-        // { path: '', redirectTo: 'login' },
-        {
-          path: 'trip-duration',
-          component: FilterDurationComponent
-        },
-        {
-          path: 'trip-type',
-          component: FilterGenderComponent
-        },
-        {
-          path: 'gender',
-          component: FilterGenderComponent
-        },
-        // {
-        //   path: 'activities',
-        //   component: ActivitiesFilterComponent
-        // }
-      ]
+      canActivate: [AuthGuard]
     }
   ];
 

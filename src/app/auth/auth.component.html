@@ -1,13 +1,15 @@
 <qpac-language-switcher></qpac-language-switcher>
 <mat-card class="auth-form">
-    <mat-card-title>{{ 'auth.header.greetings.text' | translate }}</mat-card-title>
-    <mat-card-subtitle>{{ 'auth.header.hint.text' | translate }}</mat-card-subtitle>
-      <button mat-raised-button color="primary" class="social-login-btn" (click)="doFbLogin()">
-        <i class="zmdi zmdi-facebook-box"></i>
-        <span>{{ 'auth.body.facebook.text' | translate}}</span>
-      </button>
-      <button mat-raised-button color="warn" class="social-login-btn" (click)="doGoogleLogin()">
-        <i class="zmdi zmdi-google-plus-box"></i>{{ 'auth.body.google.text' | translate}}</button>
-      <button mat-raised-button class="social-login-btn" (click)="doAnonymousLogin()">
-        <i class="material-icons">face</i>{{ 'auth.body.guest.text' | translate}}</button>
+  <mat-card-title>{{ 'auth.header.greetings.text' | translate }}</mat-card-title>
+  <mat-card-subtitle>{{ 'auth.header.hint.text' | translate }}</mat-card-subtitle>
+  <button mat-raised-button color="primary" class="social-login-btn" (click)="doFbLogin()">
+    <i class="zmdi zmdi-facebook-box"></i>
+    <span>{{ 'auth.body.facebook.text' | translate}}</span>
+  </button>
+  <button mat-raised-button color="warn" class="social-login-btn" (click)="doGoogleLogin()">
+    <i class="zmdi zmdi-google-plus-box"></i>{{ 'auth.body.google.text' | translate}}
+  </button>
+  <button mat-raised-button class="social-login-btn" (click)="doAnonymousLogin()">
+    <i class="material-icons">face</i>{{ 'auth.body.guest.text' | translate}}
+  </button>
 </mat-card>

@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  item$: Observable<any>;
+  items$: Observable<any>;
   response: Object;
   weatherParams;
   activitiesParams;
@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit {
     this.typeOfGender = type;
   }
   generate(weather, type, activities) {
-    this.item$ = this.generation.getList(weather, type, activities);
+    this.items$ = this.generation.getList(weather, type, activities);
   }
 
   ngOnInit() {

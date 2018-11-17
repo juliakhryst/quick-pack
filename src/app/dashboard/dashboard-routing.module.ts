@@ -22,7 +22,7 @@ const routes: Routes = [
         {
           path: 'gender',
           component: FilterGenderComponent
-        }
+        },
         // {
         //   path: 'activities',
         //   component: ActivitiesFilterComponent

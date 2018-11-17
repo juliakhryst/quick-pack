@@ -1,18 +1,11 @@
 <h3> {{ 'filters.destination.header.text' | translate}}</h3>
-<mat-form-field class="dest-container">
-  <input
-    type="text"
-    placeholder="{{ 'filters.destination.placeholder.text' | translate }}"
-    matInput
-    [formControl]="searchCity"
-    [matAutocomplete]="auto">
-  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-    <mat-option *ngIf="isLoading" class="is-loading"><mat-spinner diameter="50"></mat-spinner></mat-option>
-    <ng-container *ngIf="!isLoading">
-      <mat-option *ngFor="let user of filteredCity" [value]="city">
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="State" aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let city of filteredStates | async" [value]="city.name">
+        <img class="example-option-img" aria-hidden height="25">
         <span>{{ city.name }}</span>
-        <small> | {{city.id}}</small>
       </mat-option>
-    </ng-container>
-  </mat-autocomplete>
-</mat-form-field>
+    </mat-autocomplete>
+  </mat-form-field>

@@ -26,6 +26,8 @@ import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { WeatherDisplayComponent } from './weather-display/weather-display.component';
 import { WeatherService } from './weather.service';
+import { GeneratedListComponent } from './generated-list/generated-list.component';
+import { PackItemComponent } from './pack-item/pack-item.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -41,7 +43,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     AuthComponent,
     HeaderComponent,
     DashboardComponent,
-    WeatherDisplayComponent
+    WeatherDisplayComponent,
+    GeneratedListComponent,
+    PackItemComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

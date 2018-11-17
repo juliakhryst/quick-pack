@@ -1,0 +1,57 @@
+<div class="card">
+  <h2>Lviv</h2>
+  <p>
+    October 23 - November 7
+  </p>
+  <div>
+    Weather block.......
+  </div>
+  <div>
+    <div *ngIf="ITEMS.length > 0">
+      <mat-radio-group>
+        <mat-radio-button (change)="uncheckAll()" value="check">
+          Uncheck All
+        </mat-radio-button>
+
+        <mat-radio-button  (change)="checkAll()" value="uncheck">
+          Check All
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="item-details">
+      <h3>Total weight</h3>
+      <div class="item-details-weight">{{totalWeight}}kg</div>
+    </div>
+  </div>
+  <h2>General List</h2>
+  <ul class="pack-items">
+    <li *ngFor="let item of ITEMS">
+      <qpac-pack-item
+              (removeById)="removeById($event)"
+              (itemChanged)="handleItemChanged($event)"
+              [isChecked]="isCheckedAll"
+              [item]="item"></qpac-pack-item>
+    </li>
+  </ul>
+  <div *ngIf="isOpenAddedField" class="add-item">
+    <input #newItem  type="text">
+    <button mat-raised-button
+            color="accent"
+            (click)="addNewItem(newItem)">
+      Add
+    </button>
+    <button  mat-raised-button
+             color="accent"
+            (click)="toggleAddedField()">
+      Cancel
+    </button>
+  </div>
+  <div *ngIf="!isOpenAddedField" (click)="toggleAddedField()">
+    <button mat-fab>+</button> Add your item
+  </div>
+  <div class="p">
+    <button mat-raised-button color="accent">Save you list</button>
+  </div>
+</div>
+
+

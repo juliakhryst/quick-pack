@@ -17,20 +17,16 @@ import { CoreModule } from './core/core.module';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
 import { AuthComponent } from './auth/auth.component';
-import { HeaderComponent } from './header/header.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
   declarations: [
     AppComponent,
-    LanguageSwitcherComponent,
     AuthComponent,
-    HeaderComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -43,7 +39,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
+        useFactory: (HttpLoaderFactory),
         deps: [HttpClient]
       }
     }),

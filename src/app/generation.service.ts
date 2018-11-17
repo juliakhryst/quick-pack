@@ -11,8 +11,16 @@ export class GenerationService {
   constructor(private afs: AngularFirestore) {
   }
 
-  getList(type, gender, activities) {
-    return this.item$ = this.afs.collection('pack-items', ref => ref.where('type', '==', type)).valueChanges();
+  getList(weather, type, activities) {
+    if (activities === { baby: true, pet: true, sport: true }) {
+    return this.item$ = this.afs.collection('list-items', ref => ref.where('weather', 'array-contains', weather)
+    .where('type', '==', type)).valueChanges();
+    } else if (activities === { baby: false, pet: false, sport: false }) {
+      return this.item$ = this.afs.collection('list-items', ref => ref.where('activities', '==', 'Essential')).valueChanges();
+    } else {
+      return this.item$ = this.afs.collection('list-items', ref => ref.where('weather', 'array-contains', weather)
+      .where('type', '==', type).where('activities', '==', activities)).valueChanges();
+    }
   }
 
 }

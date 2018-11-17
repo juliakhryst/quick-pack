@@ -11,6 +11,8 @@
     "filters.type.leisure.text": "Leisure",
     "filters.duration.header.text": "Date of travel",
     "filters.duration.placeholder.text": "Choose a date",
+    "filters.destination.header.text": "Where to",
+    "filters.destination.placeholder.text": "Choose a city",
     "filters.gender.header.text": "For whom are you packing?",
     "filters.gender.male.text": "Male",
     "filters.gender.female.text": "Female",

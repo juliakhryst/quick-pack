@@ -28,6 +28,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { WeatherDashboardComponent } from './weather-dashboard/weather-dashboard.component';
 import { WeatherDisplayComponent } from './weather-display/weather-display.component';
 import { WeatherService } from './weather.service';
+import { SearchService } from './filters/filter-destination/search.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -70,7 +71,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       enabled: environment.production
     })
   ],
-  providers: [WeatherService],
+  providers: [WeatherService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

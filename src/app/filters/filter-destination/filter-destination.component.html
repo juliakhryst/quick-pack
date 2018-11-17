@@ -6,10 +6,13 @@
     matInput
     [formControl]="searchCity"
     [matAutocomplete]="auto">
-  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-    <mat-option *ngFor="let city of filteredCity | async" [value]="city">
-      <span>{{ city.name }}</span>
-      <small>{{ city.country }}</small>
-    </mat-option>
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+    <mat-option *ngIf="isLoading" class="is-loading"><mat-spinner diameter="50"></mat-spinner></mat-option>
+    <ng-container *ngIf="!isLoading">
+      <mat-option *ngFor="let user of filteredCity" [value]="city">
+        <span>{{ city.name }}</span>
+        <small> | {{city.id}}</small>
+      </mat-option>
+    </ng-container>
   </mat-autocomplete>
 </mat-form-field>

@@ -1,15 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { map, startWith, debounceTime } from 'rxjs/operators';
-import { SearchService } from './search.service';
-
-export interface City {
-  country: string;
-  name: string;
-  lat: string;
-  lng: string;
-}
+import { switchMap, debounceTime, tap, finalize, startWith } from 'rxjs/operators';
+import { SearchService, City, CityResponse } from './search.service';
 
 @Component({
   selector: 'qpac-filter-destination',
@@ -20,29 +13,37 @@ export class FilterDestinationComponent implements OnInit {
 
   constructor(private searchService: SearchService) { }
 
-  searchCity: FormControl;
+  searchCity = new FormControl();
   minLength = 3;
-  filteredCity: Observable<City[]>;
+  isLoading = false;
+  // filteredCity: Observable<CityResponse>;
+  filteredCity: City[] = [];
 
   ngOnInit() {
-    this.searchCity = new FormControl();
+    // this.searchCity.valueChanges.subscribe(
+    //   term => {
+    //     if (term !== '') {
+    //       this.searchService.searchCity(term).subscribe(
+    //         data => {
+    //           this.filteredCity = data as City[];
+    //       })
+    //     }
+    // })
     this.searchCity.valueChanges
       .pipe(
         startWith(this.minLength),
         debounceTime(200),
-    ).subscribe(val => this.filteredCity = this.filterCity(val));
+        tap(() => this.isLoading = true),
+        switchMap(value => this.searchService.searchCity(value)
+        .pipe(
+          finalize(() => this.isLoading = false),
+          )
+        )
+      )
+      .subscribe(city => this.filteredCity = city.results);
   }
 
-  filterCity(val: string) {
-    const filterValue = val.toLowerCase();
-
-// return this.searchService.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
-
-
-    return this.searchService.searchCity(filterValue);
-  }
-
-  displayFn(val?: City): string | undefined {
+  displayFn(val: City) {
     return val ? val.name : undefined;
   }
 }

@@ -11,6 +11,8 @@
     "filters.type.leisure.text": "Відпочинок",
     "filters.duration.header.text": "Дата подорожі",
     "filters.duration.placeholder.text": "Оберіть дату",
+    "filters.destination.header.text": "Місце подорожі",
+    "filters.destination.placeholder.text": "Оберіть місто",
     "filters.gender.header.text": "Для кого Ви збираєте речі?",
     "filters.gender.male.text": "Чоловік",
     "filters.gender.female.text": "Жінка",

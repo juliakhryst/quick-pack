@@ -30,7 +30,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     LanguageSwitcherComponent,
     AuthComponent,
-    HeaderComponent,
+    HeaderComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { switchMap, debounceTime, tap, finalize, startWith } from 'rxjs/operators';
-import { SearchService, City, CityResponse } from './search.service';
+import { Observable, throwError } from 'rxjs';
+import { switchMap, debounceTime, tap, finalize, filter, catchError } from 'rxjs/operators';
+import { SearchService, City } from './search.service';
 
 @Component({
   selector: 'qpac-filter-destination',
@@ -16,31 +16,20 @@ export class FilterDestinationComponent implements OnInit {
   searchCity = new FormControl();
   minLength = 3;
   isLoading = false;
-  // filteredCity: Observable<CityResponse>;
-  filteredCity: City[] = [];
+  filteredCities: City[] = [];
 
   ngOnInit() {
-    // this.searchCity.valueChanges.subscribe(
-    //   term => {
-    //     if (term !== '') {
-    //       this.searchService.searchCity(term).subscribe(
-    //         data => {
-    //           this.filteredCity = data as City[];
-    //       })
-    //     }
-    // })
-    this.searchCity.valueChanges
-      .pipe(
-        startWith(this.minLength),
-        debounceTime(200),
-        tap(() => this.isLoading = true),
-        switchMap(value => this.searchService.searchCity(value)
-        .pipe(
-          finalize(() => this.isLoading = false),
-          )
-        )
-      )
-      .subscribe(city => this.filteredCity = city.results);
+
+    this.searchCity.valueChanges.pipe(
+      debounceTime(200),
+      filter(query => query && query.length >= this.minLength),
+      tap(() => this.isLoading = true),
+      switchMap(value => this.searchService.searchCity(value).pipe(
+        tap(city => this.filteredCities = city),
+        finalize(() => this.isLoading = false),
+        catchError(err => throwError(new Error('No such city')))
+      ))
+    ).subscribe();
   }
 
   displayFn(val: City) {

@@ -15,9 +15,9 @@
         <mat-icon>email_outline</mat-icon>
         <span class="user-email">{{currentUser.email}}</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="doLogout()">
         <mat-icon>exit_to_app</mat-icon>
-        <a class="logout-link" (click)="doLogout()">Logout</a>
+        <a class="logout-link">Logout</a>
       </button>
     </mat-menu>
   </div>

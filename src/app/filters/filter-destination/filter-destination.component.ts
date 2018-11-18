@@ -1,8 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import { STRING_TYPE } from '@angular/compiler/src/output/output_ast';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 export interface State {
   country: string;
@@ -265,6 +266,7 @@ export class FilterDestinationComponent {
 ];
 
   constructor() {
+
     this.filteredStates = this.stateCtrl.valueChanges
       .pipe(
         startWith(''),
@@ -272,7 +274,17 @@ export class FilterDestinationComponent {
       );
   }
 
+  // getCities(): Observable<any> {
+  //   this.output = this.http.get('https://quick-pack-53fe3.firebaseio.com/cities').pipe(map(res => res));
+  //   console.log(this.output);
+  //   return this.output;
+  // }
+
   private _filterStates(value: string): State[] {
+    // this.getCities();
+    // this.states = this.output;
+    // const subscribe = this.states.subscribe(val => console.log(val));
+
     const filterValue = value.toLowerCase();
 
     return this.states.filter(state => state.name.toLowerCase().indexOf(filterValue) === 0);

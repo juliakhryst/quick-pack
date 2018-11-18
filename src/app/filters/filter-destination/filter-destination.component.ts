@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { STRING_TYPE } from '@angular/compiler/src/output/output_ast';
 
 export interface State {
   country: string;
@@ -21,6 +22,7 @@ export interface State {
 export class FilterDestinationComponent {
   stateCtrl = new FormControl();
   filteredStates: Observable<State[]>;
+  minLength = 3;
 
   states: State[] = [
     {
@@ -266,7 +268,7 @@ export class FilterDestinationComponent {
     this.filteredStates = this.stateCtrl.valueChanges
       .pipe(
         startWith(''),
-        map(state => state ? this._filterStates(state) : this.states.slice())
+        map(state => state.length >= 3 ? this._filterStates(state) : [])
       );
   }
 
@@ -274,6 +276,7 @@ export class FilterDestinationComponent {
     const filterValue = value.toLowerCase();
 
     return this.states.filter(state => state.name.toLowerCase().indexOf(filterValue) === 0);
+
   }
 }
 

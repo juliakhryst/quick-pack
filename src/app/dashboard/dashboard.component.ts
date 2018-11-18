@@ -10,10 +10,10 @@ import { Observable } from 'rxjs';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  items$: Observable<any>;
+  items$;
   response: Object;
-  weatherParams;
-  activitiesParams;
+  weatherParams = 'cold';
+  activitiesParams = { Baby: false, Pet: false, Sport: true};
   fromDate: string;
   typeOfTrip: string;
   typeOfGender: string;
@@ -25,8 +25,9 @@ export class DashboardComponent implements OnInit {
   changedTypeOfGender(type) {
     this.typeOfGender = type;
   }
+
   generate(weather, type, activities) {
-    this.items$ = this.generation.getList(weather, type, activities);
+    this.items$ = Array.of(this.generation.getListByParams(weather, type, activities));
   }
 
   ngOnInit() {

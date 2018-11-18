@@ -6,14 +6,14 @@ export interface ActivityFilter {
 }
 
 @Component({
-  selector: 'qpac-activities-filter',
-  templateUrl: './activities-filter.component.html',
-  styleUrls: ['./activities-filter.component.scss']
+  selector: 'qpac-filter-activities',
+  templateUrl: './filter-activities.component.html',
+  styleUrls: ['./filter-activities.component.scss']
 })
-export class ActivitiesFilterComponent implements OnInit {
+export class FilterActivitiesComponent implements OnInit {
 
 @Output()
-public activitiesChanged: EventEmitter<ActivityFilter> = new EventEmitter<ActivityFilter>();
+public activitiesChanged: EventEmitter<Object> = new EventEmitter<Object>();
 
 public activities: ActivityFilter = {
   baby: false,
@@ -27,7 +27,7 @@ public activities: ActivityFilter = {
   }
 
   activityChange(event) {
-     this.activitiesChanged.emit(this.activities);
+     this.activitiesChanged.emit({activities: this.activities});
   }
 
 }

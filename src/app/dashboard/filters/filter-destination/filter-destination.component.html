@@ -8,9 +8,9 @@
   <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
     <mat-option *ngIf="isLoading" class="is-loading"><mat-spinner diameter="50"></mat-spinner></mat-option>
     <ng-container *ngIf="!isLoading">
-      <mat-option *ngFor="let city of filteredCity | async" [value]="city">
+      <mat-option *ngFor="let city of filteredCities" [value]="city" (click)="cityChange()">
         <span>{{ city.name }}</span>
-        <small> | {{city.id}}</small>
+        <small> | {{city.country}}</small>
       </mat-option>
     </ng-container>
   </mat-autocomplete>

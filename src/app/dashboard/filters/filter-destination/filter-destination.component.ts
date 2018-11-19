@@ -28,7 +28,7 @@ export class FilterDestinationComponent implements OnInit {
       tap(() => this.isLoading = true),
       switchMap(value => this.searchService.searchCity(value).pipe(
         tap(city => this.filteredCities = city),
-        finalize(() => this.isLoading = false),
+        tap(() => this.isLoading = false),
         catchError(err => throwError(new Error('No such city')))
       ))
     ).subscribe();
@@ -36,5 +36,9 @@ export class FilterDestinationComponent implements OnInit {
 
   displayFn(val: City) {
     return val ? val.name : undefined;
+  }
+
+  cityChange() {
+    this.changedCity.emit(this.filteredCities);
   }
 }

@@ -10,7 +10,7 @@ import { Item } from './core/interfaces/item';
 })
 export class GenerationService {
 
-  response: Object;
+  response;
 
   constructor(private afs: AngularFirestore,
     public weather: WeatherService) {
@@ -30,20 +30,25 @@ export class GenerationService {
       }).valueChanges();
   }
 
-  getListByParams(filterObj) {
+  getWeather(filterObj) {
     console.log(filterObj.duration);
     this.weather.getWeather(filterObj.duration).subscribe(
-      response =>  {this.response = response;
+      response => {this.response = response;
                 this.response = Array.of(this.response);
                 console.log(this.response);
               },
-      error => console.log(error)
-    );
+              error => console.log(error)
+            );
+
 
     console.log(this.response);
 
-    filterObj.weather = this.weather.weatherTransformation(this.response);
+    setTimeout(filterObj.weather = this.weather.weatherTransformation(this.response), 2000);
     console.log(filterObj);
+  }
+
+  getListByParams(filterObj) {
+    this.getWeather(filterObj);
 
     const activitiesRequests = this.getActivitiesRequests(filterObj.weather, filterObj.type, filterObj.activities);
     console.log(activitiesRequests);

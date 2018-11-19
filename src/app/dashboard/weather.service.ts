@@ -21,11 +21,12 @@ export class WeatherService {
   }
 
   weatherTransformation(response) {
+    console.log(response);
      for (const weather of response) {
-      if ( response.currently.temperature <= 0 ) {
+      if ( weather.currently.temperature <= 0 ) {
         console.log('cold');
         return 'cold';
-      } else if ( response.currently.temperature > 0 && response.currently.temperature <= 16 ) {
+      } else if ( weather.currently.temperature > 0 && weather.currently.temperature <= 16 ) {
         console.log('average');
         return 'average';
       } else {

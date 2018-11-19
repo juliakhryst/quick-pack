@@ -1,17 +1,47 @@
 <qpac-header></qpac-header>
-<qpac-filter-type (changedSelectedType)="changedSelectedType($event)"></qpac-filter-type>
-<qpac-filter-gender (changedTypeOfGender)="changedTypeOfGender($event)"></qpac-filter-gender>
-<qpac-filter-duration (changedDepartureDate)="changedDepartureDate($event)"></qpac-filter-duration>
-<qpac-weather-display [response]="response"></qpac-weather-display>
+
+<mat-vertical-stepper [linear]="true" #stepper>
+  <mat-step>
+    <ng-template matStepLabel><h3>{{ 'filters.duration.header.text' | translate}}</h3></ng-template>
+    <qpac-filter-duration (changedDepartureDate)="handleFilter($event)"></qpac-filter-duration>
+    <div>
+      <button mat-button matStepperPrevious>{{'dashboard.controls.back' | translate}}</button>
+      <button mat-button matStepperNext>{{'dashboard.controls.next' | translate}}</button>
+    </div>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel><h3>{{ 'filters.type.header.text' | translate }}</h3></ng-template>
+    <qpac-filter-type (changedType)="handleFilter($event)"></qpac-filter-type>
+    <div>
+      <button mat-button matStepperPrevious>{{'dashboard.controls.back' | translate}}</button>
+      <button mat-button matStepperNext>{{'dashboard.controls.next' | translate}}</button>
+    </div>
+  </mat-step>
+
+  <mat-step>
+      <ng-template matStepLabel><h3>{{ 'filters.gender.header.text' | translate}}</h3></ng-template>
+      <qpac-filter-gender (changedGender)="handleFilter($event)"></qpac-filter-gender>
+      <div>
+        <button mat-button matStepperPrevious>{{'dashboard.controls.back' | translate}}</button>
+        <button mat-button matStepperNext>{{'dashboard.controls.next' | translate}}</button>
+      </div>
+    </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel><h3>{{ 'filters.activities.header.text'| translate }}</h3></ng-template>
+    <qpac-filter-activities (activitiesChanged)="handleFilter($event)"></qpac-filter-activities>
+    <div>
+      <button mat-button matStepperPrevious>{{'dashboard.controls.back' | translate}}</button>
+      <button mat-button (click)="stepper.reset()">{{'dashboard.controls.reset' | translate }}</button>
+      <button mat-button color="primary"
+      (click)="generate(this.filterObj)">{{'dashboard.controls.generate' | translate }}</button>
+    </div>
+  </mat-step>
+
+</mat-vertical-stepper>
+
 <div>
-  <button
-    mat-raised-button color="primary"
-    (click)="generate(this.weatherParams, this.typeOfTrip, this.activitiesParams)">Generate List</button>
+  {{ items$ | async | json }}
 </div>
 
-<pre>
-  {{ items$ | async | json }}
-
-</pre>
-
-<qpac-generated-list></qpac-generated-list>

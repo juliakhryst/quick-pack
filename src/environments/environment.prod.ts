@@ -8,4 +8,5 @@ export const environment = {
     storageBucket: 'quick-pack-53fe3.appspot.com',
     messagingSenderId: '285461165149'
   },
+  serverUrl: 'https://quickpack.herokuapp.com'
 };

@@ -14,7 +14,15 @@
     "filters.gender.header.text": "Для кого Ви збираєте речі?",
     "filters.gender.male.text": "Чоловік",
     "filters.gender.female.text": "Жінка",
+    "filters.activities.header.text": "Виберіть вид активності",
+    "filters.activities.label.baby": "Дитина",
+    "filters.activities.label.pet": "Домашні улюбленці",
+    "filters.activities.label.sport": "Спорт",
+    "dashboard.controls.next": "Далі",
+    "dashboard.controls.back": "Назад",
+    "dashboard.controls.reset": "Скинути",
+    "dashboard.controls.generate": "Згенерувати мій список речей",
     "weather.display.temperature.text": "Прогнозована температура:",
     "weather.display.summary.text": "Прогнозована погода:",
     "weather.display.location.text": "Місцевість:"
-}
+} 

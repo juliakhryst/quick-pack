@@ -6,6 +6,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import {MatRadioModule} from '@angular/material/radio';
 
+
 import {
   MatButtonModule,
   MatCheckboxModule,
@@ -13,7 +14,8 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatStepperModule
 
 } from '@angular/material';
 
@@ -29,7 +31,8 @@ const MODULES = [
   MatDatepickerModule,
   MatNativeDateModule,
   MatIconModule,
-  MatRadioModule
+  MatRadioModule,
+  MatStepperModule
 ];
 
 @NgModule({

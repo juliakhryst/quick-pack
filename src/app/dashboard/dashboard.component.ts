@@ -1,10 +1,16 @@
 import { GenerationService } from './../generation.service';
-import { WeatherService } from './../weather.service';
+import { WeatherService } from './weather.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { tap } from 'rxjs/operators';
 import { Item } from '../core/interfaces/item';
 import { Observable } from 'rxjs';
+import { ActivityFilter } from './filters/filter-activities/filter-activities.component';
+
+export interface Filters {
+  activities?: ActivityFilter;
+  duration?: any;
+}
 
 @Component({
   selector: 'qpac-dashboard',
@@ -13,6 +19,7 @@ import { Observable } from 'rxjs';
 })
 
 export class DashboardComponent implements OnInit {
+
   items$: Observable<Item[]>;
   response: Object;
   weatherParams = 'cold';
@@ -20,6 +27,8 @@ export class DashboardComponent implements OnInit {
   fromDate: string;
   typeOfTrip: string;
   typeOfGender: string;
+  filterObj: Filters;
+
   constructor(private afs: AngularFirestore, private weather: WeatherService, private generation: GenerationService) {
    }
   changedSelectedType(type) {
@@ -29,23 +38,18 @@ export class DashboardComponent implements OnInit {
     this.typeOfGender = type;
   }
 
+
   generate(weather, type, activities): void {
     this.items$ = this.generation.getListByParams(weather, type, activities).pipe(
       tap(console.log)
     );
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  changedDepartureDate(res) {
-    this.fromDate = res.from;
-    this.weather.getWeather(res.from, res.lang).subscribe(
-      response => {this.response = [response];
-        console.log(this.response);
-      },
-      error => console.log(error)
-    );
+  handleFilter(filter) {
+    console.log(filter);
+    this.filterObj = Object.assign({}, this.filterObj, filter);
+    console.log(this.filterObj);
   }
-
 }

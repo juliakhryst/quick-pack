@@ -30,6 +30,6 @@ export class FilterDurationComponent implements OnInit {
       }
 
       from = (moment(from).format('YYYY[-]MM[-]DD'));
-      this.changedDepartureDate.emit({from, lang});
+      this.changedDepartureDate.emit({duration: {from, lang}});
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../core/services/user.service';
-import { AuthService } from '../core/services/auth.service';
 import {Router} from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'qpac-header',
@@ -15,15 +15,15 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.user.getCurrentUser().then(userInfo => {
-      console.log(userInfo);
       this.currentUser = userInfo;
     });
   }
 
   public doLogout() {
+    console.log('Do logout');
     this.auth.doLogout().then(res => {
       console.log(res);
-      // console.log('you are logged out');
+      console.log('you are logged out');
       this.router.navigate(['/login']);
     });
   }

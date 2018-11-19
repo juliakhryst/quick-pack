@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 enum Type {
   Business = 'Business',
@@ -11,13 +11,15 @@ enum Type {
   styleUrls: ['./filter-type.component.scss']
 })
 export class FilterTypeComponent implements OnInit {
+  @Output() changedType = new EventEmitter<Object>();
   Type = Type;
   selectedType: Type;
     @Output() changedSelectedType = new EventEmitter<String>();
   selectType(type: Type) {
     this.selectedType = type;
-    this.changedSelectedType.emit(this.selectedType);
+    this.changedType.emit({type: this.selectedType});
   }
+
 
   constructor() { }
 

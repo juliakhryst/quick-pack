@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
   }
 
   generate(weather, type, activities) {
-    this.items$ = Array.of(this.generation.getListByParams(weather, type, activities));
+    this.items$ = this.generation.getListByParams(weather, type, activities);
   }
 
   ngOnInit() {

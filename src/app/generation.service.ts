@@ -12,42 +12,46 @@ export class GenerationService {
   filteredItems$: Observable<any>;
   keys;
 
+  public esent = [];
+
   constructor(private afs: AngularFirestore) {
   }
 
   // get list for no activities(all essentials), ignore weather and type
   getEssentials() {
-    return this.afs.collection('pack-items', ref => ref.where('activities', '==', 'Essential')).valueChanges();
+    const essential = this.afs.collection('pack-items', ref => ref.where('activities', '==', 'Essential')).valueChanges().subscribe(res => this.esent.push(res));
+    console.log(essential);
+
+    return essential;
   }
 
   // get list for selected activity(only for 1 activity per request)
   getItemsByActivity(activity) {
-    return this.afs.collection('pack-items', ref => ref.where('activities', '==', activity)).valueChanges();
+    return this.afs.collection('pack-items', ref => ref.where('activities', '==', activity)).valueChanges().subscribe(res => this.esent.push(res));
   }
 
   // get list for all activities
   getItemsByWeatherAndType(weather, type) {
     return this.afs.collection('pack-items', ref => ref.where('weather', 'array-contains', weather)
-    .where('type', '==', type)).valueChanges();
+    .where('type', '==', type)).valueChanges().subscribe(res => this.esent.push(res));
   }
 
   getListByParams(weather, type, activities) {
     console.log('getListByParams');
+
+    // activities = { baby: true, pet: false, sport: true};
     const activitiesRequests = Object.keys(activities)
                               .filter(activity => activities[activity])
                               .map(activity => this.getItemsByActivity(activity)
                               );
 
-
-    const requests = [this.getEssentials(), this.getItemsByWeatherAndType(weather, type)];
+    this.getEssentials();
+    this.getItemsByWeatherAndType(weather, type);
+    const requests = [this.esent];
     console.log('Requests', requests);
     console.log('activitiesRequests', activitiesRequests);
 
-    console.log('ForkJoin', forkJoin([...requests, ...activitiesRequests]));
-
-    // const subscribe = activitiesRequests.subscribe(val => console.log(val));
-
-    return forkJoin(of(...requests), of(...activitiesRequests));
+    return this.esent;
   }
 
   // getList(weather, type, activities) {
@@ -76,6 +80,3 @@ export class GenerationService {
 
       // return this.items$;
     }
-  }
-
-}

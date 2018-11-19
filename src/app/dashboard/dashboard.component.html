@@ -6,11 +6,12 @@
 <div>
   <button
     mat-raised-button color="primary"
-    (click)="generate(this.typeOfTrip, this.typeOfGender, this.response)">Generate List</button>
+    (click)="generate(this.weatherParams, this.typeOfTrip, this.activitiesParams)">Generate List</button>
 </div>
 
-<qpac-generated-list></qpac-generated-list>
-
 <pre>
-  {{ item$ | async | json }}
+  {{ items$ | async | json }}
+
 </pre>
+
+<qpac-generated-list></qpac-generated-list>

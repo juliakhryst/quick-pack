@@ -2,6 +2,8 @@ import { GenerationService } from './../generation.service';
 import { WeatherService } from './../weather.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { tap } from 'rxjs/operators';
+import { Item } from '../core/interfaces/item';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -9,9 +11,12 @@ import { Observable } from 'rxjs';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
+
 export class DashboardComponent implements OnInit {
-  item$: Observable<any>;
+  items$: Observable<Item[]>;
   response: Object;
+  weatherParams = 'cold';
+  activitiesParams = { Baby: false, Pet: false, Sport: true};
   fromDate: string;
   typeOfTrip: string;
   typeOfGender: string;
@@ -23,8 +28,11 @@ export class DashboardComponent implements OnInit {
   changedTypeOfGender(type) {
     this.typeOfGender = type;
   }
-  generate(type, gender, weather) {
-    this.item$ = this.generation.getList(type, gender, weather);
+
+  generate(weather, type, activities): void {
+    this.items$ = this.generation.getListByParams(weather, type, activities).pipe(
+      tap(console.log)
+    );
   }
 
   ngOnInit() {
@@ -33,9 +41,7 @@ export class DashboardComponent implements OnInit {
   changedDepartureDate(res) {
     this.fromDate = res.from;
     this.weather.getWeather(res.from, res.lang).subscribe(
-      response => {this.response = response;
-        this.response = Array.of(this.response);
-
+      response => {this.response = [response];
         console.log(this.response);
       },
       error => console.log(error)

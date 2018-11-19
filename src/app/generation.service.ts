@@ -1,3 +1,4 @@
+import { WeatherService } from './dashboard/weather.service';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable, forkJoin, of } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -8,7 +9,11 @@ import { Item } from './core/interfaces/item';
   providedIn: 'root'
 })
 export class GenerationService {
-  constructor(private afs: AngularFirestore) {
+
+  response: Object;
+
+  constructor(private afs: AngularFirestore,
+    public weather: WeatherService) {
   }
 
   getEssentials(): Observable<Item[]> {
@@ -16,6 +21,7 @@ export class GenerationService {
   }
 
   getItemsByParams(weather, type, activity): Observable<Item[]> {
+
     console.log(activity);
     return this.afs.collection<Item>('pack-items', ref => {
       return ref.where('weather', 'array-contains', 'cold'/*weather*/)
@@ -25,6 +31,20 @@ export class GenerationService {
   }
 
   getListByParams(filterObj) {
+    console.log(filterObj.duration);
+    this.weather.getWeather(filterObj.duration).subscribe(
+      response =>  {this.response = response;
+                this.response = Array.of(this.response);
+                console.log(this.response);
+              },
+      error => console.log(error)
+    );
+
+    console.log(this.response);
+
+    filterObj.weather = this.weather.weatherTransformation(this.response);
+    console.log(filterObj);
+
     const activitiesRequests = this.getActivitiesRequests(filterObj.weather, filterObj.type, filterObj.activities);
     console.log(activitiesRequests);
 

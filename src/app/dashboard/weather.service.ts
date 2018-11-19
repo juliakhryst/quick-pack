@@ -11,21 +11,25 @@ export class WeatherService {
 
   constructor(private http: HttpClient) {}
 
-  // dest = destination
+  // durObj = duration
   getWeather(durObj): Observable<any> {
     // this.url = this.domain + 'forecast/6c2092633e864891808d080ca5675d1d/52.520008,13.404954,' + t + 'T12:00:00+02:00?units=si&lang=' + l;
     const weatherResponse = this.http.get(`${environment.serverUrl}/weather?t=${durObj.from}&l=${durObj.lang}`);
+    console.log(weatherResponse);
 
     return weatherResponse.pipe(map(res => res));
   }
 
   weatherTransformation(response) {
-    for (const weather of response) {
-      if ( weather.currently.temperature <= 0 ) {
+     for (const weather of response) {
+      if ( response.currently.temperature <= 0 ) {
+        console.log('cold');
         return 'cold';
-      } else if ( weather.currently.temperature > 0 && weather.currently.temperature <= 16 ) {
+      } else if ( response.currently.temperature > 0 && response.currently.temperature <= 16 ) {
+        console.log('average');
         return 'average';
       } else {
+        console.log('warm');
         return 'warm';
       }
     }

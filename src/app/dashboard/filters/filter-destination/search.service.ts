@@ -19,7 +19,7 @@ export class SearchService {
 
     searchCity(name: string): Observable<City[]> {
       return this.formatRequest(name).pipe(
-        map((cities: City[]) => cities.slice(...SUGGESTIONS_QTY_RANGE)),
+        // map((cities: City[]) => cities.slice(...SUGGESTIONS_QTY_RANGE)),
       );
     }
 
@@ -31,6 +31,11 @@ export class SearchService {
      */
 
     private formatRequest(name: string): Observable<City[]> {
-      return this.afs.collection<City>('destination', ref => ref.orderBy('name').startAt(name)).valueChanges();
+      return this.afs.collection<City>(`dest`, ref =>
+      ref.orderBy('name')
+        .startAt(name)
+        .endAt(name + '\uf8ff')
+        .limit(5))
+        .valueChanges();
     }
 }

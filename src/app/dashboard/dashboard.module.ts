@@ -10,7 +10,7 @@ import { WeatherService } from './weather.service';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { FilterActivitiesComponent } from './filters/filter-activities/filter-activities.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 import { CoreModule } from './../core/core.module';
 import { HttpClient } from '@angular/common/http';
@@ -35,6 +35,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     FormsModule,
+    ReactiveFormsModule,
     MaterialModule,
     CoreModule
   ],

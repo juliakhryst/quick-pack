@@ -54,14 +54,13 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  changedDepartureDate(durObj) {
+  showWeather(durObj) {
     this.weather.getWeather(durObj).subscribe(
-      response => {this.response = response;
-        this.response = Array.of(this.response);
-
-        console.log(this.response);
-      },
+      response => [this.response],
       error => console.log(error)
     );
+
+    this.weather.weatherTransformation(this.response);
+    console.log(this.weather.weatherTransformation(this.response));
   }
 }

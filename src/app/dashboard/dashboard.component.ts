@@ -52,4 +52,16 @@ export class DashboardComponent implements OnInit {
     this.filterObj = Object.assign({}, this.filterObj, filter);
     console.log(this.filterObj);
   }
+
+
+  changedDepartureDate(durObj) {
+    this.weather.getWeather(durObj).subscribe(
+      response => {this.response = response;
+        this.response = Array.of(this.response);
+
+        console.log(this.response);
+      },
+      error => console.log(error)
+    );
+  }
 }

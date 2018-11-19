@@ -20,7 +20,7 @@ export class GenerationService {
     return this.afs.collection<Item>('pack-items', ref => {
       return ref.where('weather', 'array-contains', 'cold'/*weather*/)
                 .where('type', '==', type)
-                .where('activities', '==', 'Sport'/*activity*/);
+                .where('activities', '==', activity);
       }).valueChanges();
   }
 

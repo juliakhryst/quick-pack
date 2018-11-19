@@ -39,8 +39,8 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  generate(weather, type, activities): void {
-    this.items$ = this.generation.getListByParams(weather, type, activities).pipe(
+  generate(filterObj): void {
+    this.items$ = this.generation.getListByParams(filterObj).pipe(
       tap(console.log)
     );
   }
@@ -51,5 +51,17 @@ export class DashboardComponent implements OnInit {
     console.log(filter);
     this.filterObj = Object.assign({}, this.filterObj, filter);
     console.log(this.filterObj);
+  }
+
+
+  changedDepartureDate(durObj) {
+    this.weather.getWeather(durObj).subscribe(
+      response => {this.response = response;
+        this.response = Array.of(this.response);
+
+        console.log(this.response);
+      },
+      error => console.log(error)
+    );
   }
 }

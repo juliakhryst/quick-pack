@@ -35,9 +35,13 @@
       <button mat-button matStepperPrevious>{{'dashboard.controls.back' | translate}}</button>
       <button mat-button (click)="stepper.reset()">{{'dashboard.controls.reset' | translate }}</button>
       <button mat-button color="primary"
-      (click)="generate(this.weatherParams, this.typeOfTrip, this.activitiesParams)">{{'dashboard.controls.generate' | translate }}</button>
+      (click)="generate(this.filterObj)">{{'dashboard.controls.generate' | translate }}</button>
     </div>
   </mat-step>
 
 </mat-vertical-stepper>
+
+<div>
+  {{ items$ | async | json }}
+</div>
 

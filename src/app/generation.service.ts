@@ -16,15 +16,17 @@ export class GenerationService {
   }
 
   getItemsByParams(weather, type, activity): Observable<Item[]> {
+    console.log(activity);
     return this.afs.collection<Item>('pack-items', ref => {
-      return ref.where('weather', 'array-contains', weather)
+      return ref.where('weather', 'array-contains', 'cold'/*weather*/)
                 .where('type', '==', type)
                 .where('activities', '==', activity);
       }).valueChanges();
   }
 
-  getListByParams(weather, type, activities) {
-    const activitiesRequests = this.getActivitiesRequests(weather, type, activities);
+  getListByParams(filterObj) {
+    const activitiesRequests = this.getActivitiesRequests(filterObj.weather, filterObj.type, filterObj.activities);
+    console.log(activitiesRequests);
 
     return forkJoin([
       this.getEssentials().pipe(take(1)),
@@ -38,7 +40,7 @@ export class GenerationService {
             .map(activity => this.getItemsByParams(weather, type, activity));
   }
 
-  private extractRequests(requests: Observable<Item[]>[]): Observable<Item[]>[] {
+  private extractRequests(requests) {
     return requests.map(collection => collection.pipe(take(1)));
   }
 }

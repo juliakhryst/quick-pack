@@ -15,7 +15,8 @@ import { MaterialModule } from '../material/material.module';
 import { CoreModule } from './../core/core.module';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
+import { FilterDestinationComponent } from './filters/filter-destination/filter-destination.component';
+import { SearchService } from './filters/filter-destination/search.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -43,8 +44,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     FilterGenderComponent,
     WeatherDisplayComponent,
     DashboardComponent,
-    FilterActivitiesComponent
+    FilterActivitiesComponent,
+    FilterDestinationComponent,
   ],
-  providers: [WeatherService],
+  providers: [WeatherService, SearchService],
 })
 export class DashboardModule { }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, throwError } from 'rxjs';
 import { switchMap, debounceTime, tap, finalize, filter, catchError } from 'rxjs/operators';
@@ -17,6 +17,8 @@ export class FilterDestinationComponent implements OnInit {
   minLength = 3;
   isLoading = false;
   filteredCities: City[] = [];
+
+  @Output() changedCity = new EventEmitter<City[]>();
 
   ngOnInit() {
 

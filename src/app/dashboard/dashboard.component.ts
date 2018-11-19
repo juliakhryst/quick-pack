@@ -39,8 +39,8 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  generate(weather, type, activities): void {
-    this.items$ = this.generation.getListByParams(weather, type, activities).pipe(
+  generate(filterObj): void {
+    this.items$ = this.generation.getListByParams(filterObj).pipe(
       tap(console.log)
     );
   }

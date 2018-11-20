@@ -4,6 +4,7 @@ import { Observable, forkJoin } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { map, take, switchMap } from 'rxjs/operators';
 import { Item } from './core/interfaces/item';
+import { DataSharingService } from './data-sharing.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,11 @@ import { Item } from './core/interfaces/item';
 export class GenerationService {
 
   response;
+  listOfItems;
 
   constructor(private afs: AngularFirestore,
-    public weather: WeatherService) {
+    public weather: WeatherService,
+    public data: DataSharingService) {
   }
 
   getEssentials(): Observable<Item[]> {
@@ -62,7 +65,7 @@ export class GenerationService {
 
   getListByParams(filterObj) {
 
-    return this.getWeatherStringValue(filterObj).pipe(
+    this.listOfItems = this.getWeatherStringValue(filterObj).pipe(
      take(1),
      switchMap((weather) => {
        const activitiesRequests = this.getActivitiesRequests(weather, filterObj.type, filterObj.activities);
@@ -73,6 +76,10 @@ export class GenerationService {
        ]);
      }),
    );
+
+   this.data.packList = this.listOfItems;
+
+   return this.listOfItems;
  }
 
 }

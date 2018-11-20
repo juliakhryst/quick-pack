@@ -36,7 +36,6 @@ export class DashboardComponent implements OnInit {
 
   handleFilter(filter) {
     this.filterObj = Object.assign({}, this.filterObj, filter);
-    console.log(this.filterObj);
   }
 
 }

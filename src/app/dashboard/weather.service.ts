@@ -11,10 +11,8 @@ export class WeatherService {
 
   constructor(private http: HttpClient) {}
 
-  getWeather(durObj, destObj): Observable<any> {
-    // this.url = this.domain + 'forecast/6c2092633e864891808d080ca5675d1d/52.520008,13.404954,' + t + 'T12:00:00+02:00?units=si&lang=' + l;
-    const weatherResponse = this.http.get(`${environment.serverUrl}/weather?lat=${destObj.lat}
-    &lat=${destObj.lng}&t=${durObj.from}&l=${durObj.lang}`);
+  getWeather(dur, dest): Observable<any> {
+    const weatherResponse = this.http.get(`${environment.serverUrl}/weather?lat=${dest.lat}&lng=${dest.lng}&t=${dur.from}&l=${dur.lang}`);
 
     return weatherResponse.pipe(map(res => res));
   }

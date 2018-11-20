@@ -1,8 +1,6 @@
 import { GenerationService } from './../generation.service';
-import { WeatherService } from './weather.service';
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { tap } from 'rxjs/operators';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { Item } from '../core/interfaces/item';
 import { Observable } from 'rxjs';
 import { ActivityFilter } from './filters/filter-activities/filter-activities.component';
@@ -22,46 +20,22 @@ export class DashboardComponent implements OnInit {
 
   items$: Observable<Item[]>;
   response: Object;
-  weatherParams = 'cold';
-  activitiesParams = { Baby: false, Pet: false, Sport: true};
+
   fromDate: string;
   typeOfTrip: string;
   typeOfGender: string;
   filterObj: Filters;
 
-  constructor(private afs: AngularFirestore, private weather: WeatherService, private generation: GenerationService) {
-   }
-  changedSelectedType(type) {
-    this.typeOfTrip = type;
-  }
-  changedTypeOfGender(type) {
-    this.typeOfGender = type;
-  }
-
+  constructor(private afs: AngularFirestore, private generation: GenerationService) {}
 
   generate(filterObj): void {
-    this.items$ = this.generation.getListByParams(filterObj).pipe(
-      tap(console.log)
-    );
+    this.items$ = this.generation.getListByParams(filterObj);
   }
 
   ngOnInit() {}
 
   handleFilter(filter) {
-    console.log(filter);
     this.filterObj = Object.assign({}, this.filterObj, filter);
-    console.log(this.filterObj);
   }
 
-
-  changedDepartureDate(durObj) {
-    this.weather.getWeather(durObj).subscribe(
-      response => {this.response = response;
-        this.response = Array.of(this.response);
-
-        console.log(this.response);
-      },
-      error => console.log(error)
-    );
-  }
 }

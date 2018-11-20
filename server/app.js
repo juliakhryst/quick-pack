@@ -13,7 +13,7 @@ app.use(cors());
 const weatherDomain = 'https://api.darksky.net/';
 
 app.get('/weather', function(req, res) {
-    request.get(`${weatherDomain}forecast/${process.env.DARKSKY_KEY}/52.520008,13.404954,${req.query.t}T12:00:00+02:00?units=si&lang=${req.query.l}`, function (error, response, body) {
+    request.get(`${weatherDomain}forecast/6c2092633e864891808d080ca5675d1d/52.520008,13.404954,${req.query.t}T12:00:00+02:00?units=si&lang=${req.query.l}`, function (error, response, body) {
         if (error) {
             res.status(error.status).send(error);
         }

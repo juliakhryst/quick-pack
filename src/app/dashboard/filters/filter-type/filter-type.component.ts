@@ -14,7 +14,7 @@ export class FilterTypeComponent implements OnInit {
   @Output() changedType = new EventEmitter<Object>();
   Type = Type;
   selectedType: Type;
-    @Output() changedSelectedType = new EventEmitter<String>();
+
   selectType(type: Type) {
     this.selectedType = type;
     this.changedType.emit({type: this.selectedType});

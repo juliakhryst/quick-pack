@@ -32,8 +32,7 @@ export class GenerationService {
   }
 
   getWeatherStringValue(filterObj): Observable<string> {
-
-    return this.weather.getWeather(filterObj.duration).pipe(
+    return this.weather.getWeather(filterObj.duration, filterObj.destination).pipe(
       map( (data) => {
         if ( data.currently.temperature <= 4 ) {
 
@@ -67,6 +66,7 @@ export class GenerationService {
      take(1),
      switchMap((weather) => {
        const activitiesRequests = this.getActivitiesRequests(weather, filterObj.type, filterObj.activities);
+
        return forkJoin([
          this.getEssentials().pipe(take(1)),
        ...this.extractRequests(activitiesRequests),

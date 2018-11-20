@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataSharingService } from '../data-sharing.service';
 
 @Component({
   selector: 'qpac-generated-list',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./generated-list.component.scss']
 })
 export class GeneratedListComponent implements OnInit {
+    listItems;
   ITEMS = [
       {
           category: 'Clothing',
@@ -65,8 +67,14 @@ export class GeneratedListComponent implements OnInit {
         weight: 0
     });
   }
-  constructor() { }
+  constructor(public data: DataSharingService) { }
   ngOnInit() {
+  }
+
+
+  showListService() {
+    this.listItems = this.data.packList;
+    console.log(this.listItems);
   }
 
 }

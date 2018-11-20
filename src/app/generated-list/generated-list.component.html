@@ -5,6 +5,7 @@
   </p>
   <div>
     Weather block.......
+    <button (click)="showListService()">ListItem</button>
   </div>
   <div>
     <div *ngIf="ITEMS.length > 0">
@@ -24,15 +25,11 @@
     </div>
   </div>
   <h2>General List</h2>
-  <ul class="pack-items">
-    <li *ngFor="let item of ITEMS">
-      <qpac-pack-item
-              (removeById)="removeById($event)"
-              (itemChanged)="handleItemChanged($event)"
-              [isChecked]="isCheckedAll"
-              [item]="item"></qpac-pack-item>
-    </li>
-  </ul>
+  <div class="pack-items">
+    <ul *ngFor="let item of listItems">
+        {{ item | async | json }}
+        </ul>
+  </div>
   <div *ngIf="isOpenAddedField" class="add-item">
     <input #newItem  type="text">
     <button mat-raised-button

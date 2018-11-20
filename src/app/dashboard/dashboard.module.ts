@@ -1,3 +1,4 @@
+import { GeneratedListWrapperComponent } from './../generated-list-wrapper/generated-list-wrapper.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -17,9 +18,8 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FilterDestinationComponent } from './filters/filter-destination/filter-destination.component';
 import { SearchService } from './filters/filter-destination/search.service';
-import { GeneratedListComponent } from '../generated-list/generated-list.component';
-import { PackItemComponent } from '../pack-item/pack-item.component';
-
+import { GeneratedListComponent } from '../generated-list-wrapper/generated-list/generated-list.component';
+import { PackItemComponent } from '../generated-list-wrapper/pack-item/pack-item.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -51,7 +51,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     GeneratedListComponent,
     FilterActivitiesComponent,
     FilterDestinationComponent,
-    PackItemComponent
+    PackItemComponent,
+    GeneratedListWrapperComponent
   ],
   providers: [WeatherService, SearchService],
 })

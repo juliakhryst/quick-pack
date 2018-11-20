@@ -1,0 +1,11 @@
+.pack-item {
+  background: #f0f8ff;
+  padding: 15px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  i {
+    cursor: pointer;
+  }
+}

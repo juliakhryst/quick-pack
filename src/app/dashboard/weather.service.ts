@@ -2,7 +2,7 @@ import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map, tap, take } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class WeatherService {
@@ -16,12 +16,6 @@ export class WeatherService {
     const weatherResponse = this.http.get(`${environment.serverUrl}/weather?t=${durObj.from}&l=${durObj.lang}`);
 
     return weatherResponse.pipe(map(res => res));
-  }
-
-  weatherTransformation(response: Observable<any>) {
-    return response.pipe(take(1),
-      tap(console.log)
-      );
   }
 
 }

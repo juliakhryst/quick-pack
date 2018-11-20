@@ -32,8 +32,7 @@ export class GenerationService {
   }
 
   getWeatherStringValue(filterObj): Observable<string> {
-
-    return this.weather.getWeather(filterObj.duration).pipe(
+    return this.weather.getWeather(filterObj.duration, filterObj.destination).pipe(
       map( (data) => {
         if ( data.currently.temperature <= 4 ) {
 

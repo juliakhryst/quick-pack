@@ -1,3 +1,64 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    .header {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        height: 7%;
+        padding: 1rem;
+
+        .header-logo {
+            width: 15%;
+            height: 15%;
+        }
+    }
+
+    .form-wrapper {
+        width: 100%;
+        height: 54vh;
+        background-size: cover;
+        background-image: url('../../assets/img/headpic.png');
+    }
+
+    .pictures {
+        width: 83.2%;
+        height: 28.3%;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: nowrap;
+
+        article {
+            width: 24%;
+        }
+
+        .bg-article1 {
+            width: 165px; height: 177px;
+            background: url('../../assets/img/article_sprite.png') -202px -0;
+        }
+        .bg-article2 {
+            width: 146px; height: 164px;
+            background: url('../../assets/img/article_sprite.png') -0 -182px;
+        }
+        .bg-article3 {
+            width: 202px; height: 182px;
+            background: url('../../assets/img/article_sprite.png') -0 -0;
+        }
+        .bg-article4 {
+            width: 104px; height: 163px;
+            background: url('../../assets/img/article_sprite.png') -146px -182px;
+        }
+    }
+}
+
+
+
+
+
 .auth-form {
     max-width: 400px;
     margin: 0 auto;

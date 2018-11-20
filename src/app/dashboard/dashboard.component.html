@@ -2,6 +2,15 @@
 
 <mat-vertical-stepper [linear]="true" #stepper>
   <mat-step>
+    <ng-template matStepLabel><h3>{{ 'filters.destination.header.text' | translate}}</h3></ng-template>
+    <qpac-filter-destination (changedCity)="handleFilter($event)"></qpac-filter-destination>
+    <div>
+      <button mat-button matStepperPrevious>{{'dashboard.controls.back' | translate}}</button>
+      <button mat-button matStepperNext>{{'dashboard.controls.next' | translate}}</button>
+    </div>
+  </mat-step>
+
+  <mat-step>
     <ng-template matStepLabel><h3>{{ 'filters.duration.header.text' | translate}}</h3></ng-template>
     <qpac-filter-duration (changedDepartureDate)="handleFilter($event)"></qpac-filter-duration>
     <div>

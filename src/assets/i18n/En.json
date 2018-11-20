@@ -9,6 +9,8 @@
     "filters.type.header.text": "Type of the trip",
     "filters.type.business.text": "Business",
     "filters.type.leisure.text": "Leisure",
+    "filters.destination.header.text": "Where to",
+    "filters.destination.placeholder.text": "Choose city",
     "filters.duration.header.text": "Date of travel",
     "filters.duration.placeholder.text": "Choose a date",
     "filters.gender.header.text": "Whom are you packing for?",

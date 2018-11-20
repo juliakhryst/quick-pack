@@ -16,9 +16,10 @@ export class FilterDestinationComponent implements OnInit {
   searchCity = new FormControl();
   minLength = 3;
   isLoading = false;
-  filteredCities: City[] = [];
+  suggestedCities: City[] = [];
+  city: City;
 
-  @Output() changedCity = new EventEmitter<City[]>();
+  @Output() changedCity = new EventEmitter<City>();
 
   ngOnInit() {
 
@@ -27,7 +28,7 @@ export class FilterDestinationComponent implements OnInit {
       filter(query => query && query.length >= this.minLength),
       tap(() => this.isLoading = true),
       switchMap(value => this.searchService.searchCity(value).pipe(
-        tap(city => this.filteredCities = city),
+        tap(city => this.suggestedCities = city),
         tap(() => this.isLoading = false),
         catchError(err => throwError(new Error('No such city')))
       ))
@@ -38,7 +39,7 @@ export class FilterDestinationComponent implements OnInit {
     return val ? val.name : undefined;
   }
 
-  cityChange() {
-    this.changedCity.emit(this.filteredCities);
+  cityChange(city) {
+    this.changedCity.emit(this.city = city);
   }
 }

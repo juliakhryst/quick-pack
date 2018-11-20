@@ -12,9 +12,13 @@ import { FilterActivitiesComponent } from './filters/filter-activities/filter-ac
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
-import { CoreModule } from './../core/core.module';
+import { CoreModule } from '../core/core.module';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { GeneratedListComponent } from '../generated-list/generated-list.component';
+import { PackItemComponent } from '../pack-item/pack-item.component';
+import { GenerationService } from '../core/services/generation.service';
+import { LocalStorageService } from '../core/services/local-storage.service';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -43,8 +47,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     FilterGenderComponent,
     WeatherDisplayComponent,
     DashboardComponent,
-    FilterActivitiesComponent
+    FilterActivitiesComponent,
+    GeneratedListComponent,
+    PackItemComponent
   ],
-  providers: [WeatherService],
+  providers: [WeatherService, GenerationService, LocalStorageService],
 })
 export class DashboardModule { }

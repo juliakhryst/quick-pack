@@ -1,4 +1,4 @@
-import { GenerationService } from './../generation.service';
+import { GenerationService } from '../core/services/generation.service';
 import { WeatherService } from './weather.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
@@ -6,6 +6,8 @@ import { tap } from 'rxjs/operators';
 import { Item } from '../core/interfaces/item';
 import { Observable } from 'rxjs';
 import { ActivityFilter } from './filters/filter-activities/filter-activities.component';
+import { Router } from '@angular/router';
+import { LocalStorageService } from '../core/services/local-storage.service';
 
 export interface Filters {
   activities?: ActivityFilter;
@@ -29,7 +31,12 @@ export class DashboardComponent implements OnInit {
   typeOfGender: string;
   filterObj: Filters;
 
-  constructor(private afs: AngularFirestore, private weather: WeatherService, private generation: GenerationService) {
+  constructor(private afs: AngularFirestore,
+     private weather: WeatherService,
+     private generation: GenerationService,
+     private router: Router,
+     localStorage: LocalStorageService
+    ) {
    }
   changedSelectedType(type) {
     this.typeOfTrip = type;
@@ -43,6 +50,8 @@ export class DashboardComponent implements OnInit {
     this.items$ = this.generation.getListByParams(filterObj).pipe(
       tap(console.log)
     );
+
+    // this.router.navigate(['/dashboard/generated-list']);
   }
 
   ngOnInit() {}

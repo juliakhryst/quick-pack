@@ -2,7 +2,7 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { Observable, forkJoin, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { map, tap, take } from 'rxjs/operators';
-import { Item } from './core/interfaces/item';
+import { Item } from '../interfaces/item';
 
 @Injectable({
   providedIn: 'root'

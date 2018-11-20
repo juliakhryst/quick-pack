@@ -15,10 +15,11 @@ export class SearchService {
     constructor (private afs: AngularFirestore) { }
 
     searchCity(name: string): Observable<City[]> {
+      const firstCharUpper = name.charAt(0).toUpperCase() + name.slice(1);
       return this.afs.collection<City>(`destination`, ref => {
         return ref.orderBy('name')
-                  .startAt(name)
-                  .endAt(name + '\uf8ff')
+                  .startAt(firstCharUpper)
+                  .endAt(firstCharUpper + '\uf8ff')
                   .limit(5);
       }).valueChanges();
     }

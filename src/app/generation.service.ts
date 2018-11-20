@@ -66,14 +66,13 @@ export class GenerationService {
   getListByParams(filterObj) {
 
     this.listOfItems = this.getWeatherStringValue(filterObj).pipe(
-     take(1),
      switchMap((weather) => {
        const activitiesRequests = this.getActivitiesRequests(weather, filterObj.type, filterObj.activities);
 
-       return forkJoin([
+       return forkJoin(
          this.getEssentials().pipe(take(1)),
        ...this.extractRequests(activitiesRequests),
-       ]);
+       );
      }),
    );
 

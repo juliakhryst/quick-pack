@@ -26,8 +26,10 @@
   </div>
   <h2>General List</h2>
   <div class="pack-items">
-    <ul *ngFor="let item of listItems">
-        {{ item | async | json }}
+    <ul *ngFor="let item of listItems| async">
+        <li *ngFor="let it of item" >
+          {{ it | json }}
+        </li>
         </ul>
   </div>
   <div *ngIf="isOpenAddedField" class="add-item">

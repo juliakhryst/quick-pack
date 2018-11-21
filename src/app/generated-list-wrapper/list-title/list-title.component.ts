@@ -1,5 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { DataSharingService } from '../../core/services/data-sharing.service';
+
 
 @Component({
   selector: 'qpac-list-title',
@@ -11,41 +13,21 @@ export class ListTitleComponent implements OnInit {
   @Output() titleForList = new EventEmitter<String>();
 
   name = new FormControl('');
-  durationObj = {};
-  dateFrom = '';
-  city = '';
+  filter;
+  destination;
+  duration;
 
-  filter = {
-    name: 'Lviv',
-    duration: {
-      from: '01/01/01'
-    }
-  };
-
-  constructor() { }
+  constructor(public data: DataSharingService) { }
 
   onKey(event) {
     this.titleForList.emit(event.target.value);
   }
 
   ngOnInit() {
-    for (const p in this.filter) {
-      if (this.filter.hasOwnProperty(p)) {
-        if (p === 'name') {
-          this.city = this.filter[p];
-        }
-        if (p === 'duration') {
-          this.durationObj = this.filter[p];
-          for (const f in this.durationObj) {
-            if (f === 'from') {
-              this.dateFrom = this.durationObj[f];
-            }
-          }
-        }
-      }
-
-    }
-    this.name.setValue(`${this.city} ${this.dateFrom}`);
+    this.filter = this.data.objWithFilters;
+    this.destination = this.filter.destination.name;
+    this.duration = this.filter.duration.from;
+    this.name.setValue(`${this.destination} ${this.duration}`);
   }
 
 }

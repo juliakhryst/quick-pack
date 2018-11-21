@@ -45,3 +45,11 @@ mat-radio-group {
 .btn-save {
   padding: 15px 0;
 }
+.filter-list{
+  display: grid;
+  grid-template-columns: 80% 15%;
+  grid-column-gap: 5%;
+}
+.title-filter{
+  text-align: center;
+}

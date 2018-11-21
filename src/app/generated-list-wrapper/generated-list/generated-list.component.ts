@@ -2,17 +2,23 @@ import { DataSharingService } from '../../core/services/data-sharing.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { tap, take } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'qpac-generated-list',
-  templateUrl: './generated-list.component.html',
-  styleUrls: ['./generated-list.component.scss']
+    selector: 'qpac-generated-list',
+    templateUrl: './generated-list.component.html',
+    styleUrls: ['./generated-list.component.scss']
 })
 export class GeneratedListComponent implements OnInit, OnDestroy {
     sub: Subscription;
     listItems = [];
     items;
     leviyMasiv;
+
+    categories$: Observable<any[]>;
+    icons = ['scatter_plot', 'fastfood', 'create', 'print', 'waves', 'person', 'add_box', 'phone_iphone'];
+    category = '';
 
     ITEMS = [
         {
@@ -61,17 +67,11 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
         }, 0);
     }
     removeById(id): void {
-        for ( this.items of this.listItems ) {
-            console.log(this.items);
-            this.items = this.items.filter( item => item.id !== id);
-            console.log(this.items);
-        }
-
-
+        this.listItems = this.listItems.filter(item => item.id !== id);
     }
     addNewItem(item): void {
         // only for testing
-        this.listItems.push( {
+        this.listItems.push({
             category: 'Clothing',
             id: this.listItems.length,
             name: item.value,
@@ -79,8 +79,9 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
             weight: 0
         });
     }
-    constructor(public data: DataSharingService) { }
+    constructor(public data: DataSharingService, private db: AngularFirestore) { }
     ngOnInit() {
+        this.categories$ = this.db.collection('/pack-items-categories').valueChanges();
         this.sub = this.data.packList.pipe(
             take(1),
             tap(data => this.listItems = data),
@@ -92,5 +93,54 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
         this.sub.unsubscribe();
     }
 
+
+    showListService() {
+        return this.listItems;
+    }
+    selecFilter(event) {
+        this.category = event.currentTarget.id;
+        this.listItems.forEach(function (element) {
+            element.forEach(function (el) {
+                Object.assign(el, { selectedColor: '' });
+                if (el.category === 'Clothing') {
+                    Object.assign(el, { style: '#000099' });
+                }
+                if (el.category === 'Documents') {
+                    Object.assign(el, { style: '#e62e00' });
+                }
+                if (el.category === 'Gadgets') {
+                    Object.assign(el, { style: '#cc00ff' });
+                }
+                if (el.category === 'Health') {
+                    Object.assign(el, { style: '#660066' });
+                }
+                if (el.category === 'Miscellaneous') {
+                    Object.assign(el, { style: '#e62e00' });
+                }
+                if (el.category === 'Food') {
+                    Object.assign(el, { style: '#cc00cc' });
+                }
+                if (el.category === 'To-Dos') {
+                    Object.assign(el, { style: '#e60073' });
+                }
+                if (el.category === 'Hygiene') {
+                    Object.assign(el, { style: '#002db3' });
+                }
+            });
+        });
+        console.log(this.category);
+        console.log(this.listItems);
+
+        this.listItems.forEach(el => {
+            el.forEach(item => {
+                if (item.category === event.currentTarget.id) {
+                    item.selectedColor = item.style;
+                } else {
+                    item.selectedColor = '';
+                }
+            });
+        });
+        return this.category;
+    }
 }
 

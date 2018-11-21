@@ -10,7 +10,6 @@
     <ng-container *ngIf="!isLoading">
       <mat-option *ngFor="let city of suggestedCities" [value]="city" (onSelectionChange)="cityChange(city)">
         <span>{{ city.name }}</span>
-        <small> | {{city.country}}</small>
       </mat-option>
     </ng-container>
   </mat-autocomplete>

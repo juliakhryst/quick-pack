@@ -1,4 +1,5 @@
 <div class="card" *ngIf="listItems.length">
+
   <div class="row">
     <div>
       <mat-radio-group>
@@ -18,14 +19,17 @@
   </div>
   <h2>General List</h2>
   <div class="filter-list">
-    <div class="pack-items">
-      <ul *ngFor="let items of listItems">
-        <li [ngStyle]="{'color': item.selectedColor}" *ngFor="let item of items">
-          <qpac-pack-item (removeById)="removeById($event)" [isChecked]="isCheckedAll" [item]="item">
-          </qpac-pack-item>
-        </li>
-      </ul>
+    <div class="scroll-aria">
+      <div class="pack-items">
+        <ul *ngFor="let items of listItems">
+          <li [ngStyle]="{'color': item.selectedColor}" *ngFor="let item of items">
+            <qpac-pack-item (removeById)="removeById($event)" [isChecked]="isCheckedAll" [item]="item">
+            </qpac-pack-item>
+          </li>
+        </ul>
+      </div>
     </div>
+
     <div>
       <h3 class="title-filter">Highlight the category</h3>
       <button mat-button class="filter-button" id="{{item.value}}" *ngFor="let item of categories$ | async; let i = index"

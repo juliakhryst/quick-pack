@@ -14,6 +14,7 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
     sub: Subscription;
     listItems = [];
     items;
+    leviyMasiv;
 
     categories$: Observable<any[]>;
     icons = ['scatter_plot', 'fastfood', 'create', 'print', 'waves', 'person', 'add_box', 'phone_iphone'];
@@ -85,6 +86,7 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
             take(1),
             tap(data => this.listItems = data),
         ).subscribe();
+
     }
 
     ngOnDestroy(): void {

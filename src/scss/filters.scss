@@ -12,9 +12,12 @@
   min-width: 200px;
   border: none;
   cursor: pointer;
-  transition: all .3s;
+  transition: background-color .3s;
   color: $brown;
   box-shadow: 0 0 4px rgba(0,0,0,.35);
+  &-hover-pink:hover {
+    background: $pink;
+  }
   &-green {
     background: $light-green;
   }
@@ -31,5 +34,11 @@
     opacity: .6;
     margin-right: 8px;
   }
+}
+.mat-step-icon-selected {
+  background: $pink !important;
+}
+.mat-step-header .mat-step-icon-state-edit {
+  background: $yellow !important;
 }
 

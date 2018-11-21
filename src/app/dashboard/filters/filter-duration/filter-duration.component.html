@@ -25,8 +25,3 @@
   <mat-datepicker-toggle matSuffix [for]="dateTo"></mat-datepicker-toggle>
   <mat-datepicker touchUi #dateTo></mat-datepicker>
 </mat-form-field>
-
-
-<div *ngIf="from && to">
-  {{from | date}} - {{to | date}}
-</div>

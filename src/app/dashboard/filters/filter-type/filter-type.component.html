@@ -1,10 +1,10 @@
 <!-- <h3>{{ 'filters.type.header.text' | translate }}</h3> -->
 <div class="row">
-    <button class="trevel-type btn btn-green"  [class.selected]="selectedType==Type.Business" (click)="selectType(Type.Business)">
+    <button class="trevel-type btn btn-green btn-hover-pink"  [class.selected]="selectedType==Type.Business" (click)="selectType(Type.Business)">
         <i class="material-icons">work</i>
         <span>{{ 'filters.type.business.text' | translate }}</span>
     </button>
-    <button class="trevel-type btn btn-green"  [class.selected]="selectedType==Type.Leisure" (click)="selectType(Type.Leisure)">
+    <button class="trevel-type btn btn-green btn-hover-pink"  [class.selected]="selectedType==Type.Leisure" (click)="selectType(Type.Leisure)">
         <i class="material-icons">wb_sunny</i>
         <span>{{ 'filters.type.leisure.text' | translate }}</span>
     </button>

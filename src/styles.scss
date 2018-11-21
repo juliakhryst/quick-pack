@@ -5,15 +5,16 @@
 @import "./scss/variables";
 @import "./scss/filters";
 
-.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
-    font-weight: bold;
-}
 
-.mat-form-field-appearance-legacy .mat-form-field-infix {
-    text-align: center;
-}
-
-.mat-checkbox-checked.mat-accent .mat-checkbox-background, 
-.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
-    background-color: #1c401b;
-}
+//.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+//    font-weight: bold;
+//}
+//
+//.mat-form-field-appearance-legacy .mat-form-field-infix {
+//    text-align: center;
+//}
+//
+//.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+//.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+//    background-color: #1c401b;
+//}

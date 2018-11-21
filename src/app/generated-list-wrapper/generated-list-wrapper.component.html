@@ -1,4 +1,8 @@
 <qpac-header></qpac-header>
-<qpac-list-title></qpac-list-title>
-<qpac-weather-display></qpac-weather-display>
-<qpac-generated-list></qpac-generated-list>
+<qpac-list-title [listTitle]="listName" (titleForList)="handleTitleChange($event)"></qpac-list-title>
+<!-- <qpac-weather-display></qpac-weather-display> -->
+<qpac-generated-list [list]="generatedList" *ngIf="generatedList"></qpac-generated-list>
+
+<div class="p">
+    <button mat-raised-button color="accent" (click)="saveList()">Save you list</button>
+</div>

@@ -43,12 +43,10 @@
     <div>
       <button mat-button matStepperPrevious>{{'dashboard.controls.back' | translate}}</button>
       <button mat-button (click)="stepper.reset()">{{'dashboard.controls.reset' | translate }}</button>
-      <button mat-button>{{'dashboard.controls.generate' | translate }}</button>
+      <button mat-button color="primary"
+      (click)="generate(this.filterObj)">{{'dashboard.controls.generate' | translate }}</button>
     </div>
   </mat-step>
 
 </mat-vertical-stepper>
 
-<!-- <pre>
-  {{ item$ | async | json }}
-</pre> -->

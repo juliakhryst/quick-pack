@@ -1,9 +1,9 @@
 import { GenerationService } from './../generation.service';
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from 'angularfire2/firestore';
 import { Item } from '../core/interfaces/item';
 import { Observable } from 'rxjs';
 import { ActivityFilter } from './filters/filter-activities/filter-activities.component';
+import { Router } from '@angular/router';
 
 export interface Filters {
   activities?: ActivityFilter;
@@ -26,10 +26,11 @@ export class DashboardComponent implements OnInit {
   typeOfGender: string;
   filterObj: Filters;
 
-  constructor(private afs: AngularFirestore, private generation: GenerationService) {}
+  constructor(private generation: GenerationService, private router: Router) {}
 
   generate(filterObj): void {
     this.items$ = this.generation.getListByParams(filterObj);
+    this.router.navigate(['/dashboard/list']);
   }
 
   ngOnInit() {}

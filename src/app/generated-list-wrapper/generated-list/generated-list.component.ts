@@ -104,22 +104,22 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
                     Object.assign(el, { style: '#000099' });
                 }
                 if (el.category === 'Documents') {
-                    Object.assign(el, { style: '#006600' });
+                    Object.assign(el, { style: '#e62e00' });
                 }
                 if (el.category === 'Gadgets') {
-                    Object.assign(el, { style: '#990000' });
+                    Object.assign(el, { style: '#cc00ff' });
                 }
                 if (el.category === 'Health') {
                     Object.assign(el, { style: '#660066' });
                 }
                 if (el.category === 'Miscellaneous') {
-                    Object.assign(el, { style: '#009933' });
+                    Object.assign(el, { style: '#e62e00' });
                 }
                 if (el.category === 'Food') {
                     Object.assign(el, { style: '#cc00cc' });
                 }
                 if (el.category === 'To-Dos') {
-                    Object.assign(el, { style: '#663300' });
+                    Object.assign(el, { style: '#e60073' });
                 }
                 if (el.category === 'Hygiene') {
                     Object.assign(el, { style: '#002db3' });

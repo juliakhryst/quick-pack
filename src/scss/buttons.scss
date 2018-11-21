@@ -1,0 +1,39 @@
+.btn {
+  display: flex;
+  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  min-width: 170px;
+  border: none;
+  cursor: pointer;
+  transition: background-color .3s;
+  color: $brown;
+  box-shadow: 0 0 4px rgba(0,0,0,.35);
+  &-big {
+    padding: 15px 50px;
+  }
+  &-hover-pink:hover {
+    background: $pink;
+    color: $white;
+  }
+  &-green {
+    background: $light-green;
+  }
+  &-yellow {
+    background: $yellow;
+  }
+  &-teal {
+    background: $teal;
+  }
+  &:focus {
+    outline: none;
+  }
+  &.selected {
+    background: $yellow;
+  }
+  i {
+    opacity: .6;
+    margin-right: 8px;
+  }
+}

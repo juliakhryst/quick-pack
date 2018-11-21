@@ -1,23 +1,55 @@
-.card {
-  padding: 50px;
+@import "../../../scss/variables";
+.row {
+  display: flex;
+  justify-content: space-between;
 }
-.p {
-  padding: 15px;
+.card {
+  padding: 20px 100px;
+  color: $brown;
 }
 .pack-items {
   margin: 0;
-  padding: 20px;
+  ul {
+    margin: 0;
+    padding: 0;
+  }
   li {
     list-style: none;
+    margin-bottom: 25px;
   }
-
-  li:not(:last-child) {
+}
+mat-radio-group {
+  display: flex;
+  flex-direction: column;
+  mat-radio-button {
     margin-bottom: 15px;
   }
 }
-.selectedItem{
-  color: red
+.item-details {
+  h3 {
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  &-weight {
+    background: $light-green;
+    display: inline-block;
+    padding: 6px 18px;
+    border-radius: 100px;
+  }
 }
-.some-span{
-  display: inline;
+.scroll-aria {
+  height: 500px;
+  overflow-y: scroll;
+  padding-right: 40px;
+}
+.btn-save {
+  padding: 15px 0;
+}
+.filter-list{
+  display: grid;
+  grid-template-columns: 80% 15%;
+  grid-column-gap: 5%;
+}
+.title-filter{
+  text-align: center;
 }

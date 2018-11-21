@@ -4,5 +4,9 @@
   padding: 30px 100px;
   min-height: 100vh;
   background-color: $light-gray;
-  width: 540px;
+  border-right: 4px;
+}
+.generated-list {
+  width: 740px;
+  background: $green;
 }

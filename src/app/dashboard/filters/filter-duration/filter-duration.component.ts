@@ -23,7 +23,7 @@ export class FilterDurationComponent implements OnInit {
 
   change(from: any, lang: string) {
       lang = this.translate.currentLang;
-      if (lang === 'Ua') {
+      if (lang === 'Ua' || lang === undefined) {
         lang = 'uk';
       } else if (lang === 'En') {
         lang = 'en';

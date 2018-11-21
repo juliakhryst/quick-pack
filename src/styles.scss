@@ -2,15 +2,20 @@
 @import '~normalize.css/normalize.css';
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
-    font-weight: bold;
-}
+@import "./scss/variables";
+@import "./scss/buttons";
+@import "./scss/filters";
 
-.mat-form-field-appearance-legacy .mat-form-field-infix {
-    text-align: center;
-}
 
-.mat-checkbox-checked.mat-accent .mat-checkbox-background, 
-.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
-    background-color: #1c401b;
-}
+//.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+//    font-weight: bold;
+//}
+//
+//.mat-form-field-appearance-legacy .mat-form-field-infix {
+//    text-align: center;
+//}
+//
+//.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+//.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+//    background-color: #1c401b;
+//}

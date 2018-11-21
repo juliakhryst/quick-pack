@@ -1,0 +1,22 @@
+@import "../../scss/variables";
+.container {
+  min-height: 100vh;
+  padding: 30px 100px;
+  background: $light-gray;
+}
+mat-vertical-stepper {
+  background: $green;
+  padding: 10px 60px;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(0,0,0,.4);
+  color: $brown;
+  width: 540px;
+}
+.generate-wrap {
+  margin-top: 40px;
+}
+.filter-title {
+  color: $brown;
+  font-size: 25px;
+  font-weight: normal;
+}

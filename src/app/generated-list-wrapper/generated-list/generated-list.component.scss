@@ -1,0 +1,47 @@
+@import "../../../scss/variables";
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+.card {
+  padding: 20px 100px;
+  color: $brown;
+}
+.pack-items {
+  margin: 0;
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    list-style: none;
+    margin-bottom: 25px;
+  }
+}
+mat-radio-group {
+  display: flex;
+  flex-direction: column;
+  mat-radio-button {
+    margin-bottom: 15px;
+  }
+}
+.item-details {
+  h3 {
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  &-weight {
+    background: $light-green;
+    display: inline-block;
+    padding: 6px 18px;
+    border-radius: 100px;
+  }
+}
+.scroll-aria {
+  height: 500px;
+  overflow-y: scroll;
+  padding-right: 40px;
+}
+.btn-save {
+  padding: 15px 0;
+}

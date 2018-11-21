@@ -1,9 +1,7 @@
 <div class="pack-item">
   <mat-checkbox [(ngModel)]="isChecked"></mat-checkbox>
-  <div>
-    <span>{{item.name}}</span>
-    <span>{{item.weight === 0 ? '' : item.weight + 'kg'}}</span>
-  </div>
+    <span class="pack-item-name">{{item.name}}</span>
+    <span *ngIf="item.weight !== 0" class="pack-item-weight">{{item.weight + "Kg" }}</span>
   <i
       (click)="removeItem(item)"
       class="material-icons">

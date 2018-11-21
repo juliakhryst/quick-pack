@@ -1,4 +1,4 @@
-import { GenerationService } from './../generation.service';
+import { GenerationService } from '../core/services/generation.service';
 import { Component, OnInit } from '@angular/core';
 import { Item } from '../core/interfaces/item';
 import { Observable } from 'rxjs';

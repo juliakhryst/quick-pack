@@ -2,9 +2,9 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable, forkJoin } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { map, take, switchMap } from 'rxjs/operators';
-import { Item } from './core/interfaces/item';
+import { Item } from '../interfaces/item';
 import { DataSharingService } from './data-sharing.service';
-import { WeatherService } from './dashboard/weather.service';
+import { WeatherService } from '../../dashboard/weather.service';
 
 @Injectable({
   providedIn: 'root'

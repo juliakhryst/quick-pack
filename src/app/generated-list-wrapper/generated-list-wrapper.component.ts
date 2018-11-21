@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataSharingService } from '../data-sharing.service';
+import { DataSharingService } from '../core/services/data-sharing.service';
 
 @Component({
   selector: 'qpac-generated-list-wrapper',

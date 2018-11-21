@@ -20,6 +20,7 @@ import { FilterDestinationComponent } from './filters/filter-destination/filter-
 import { SearchService } from './filters/filter-destination/search.service';
 import { GeneratedListComponent } from '../generated-list-wrapper/generated-list/generated-list.component';
 import { PackItemComponent } from '../generated-list-wrapper/pack-item/pack-item.component';
+import { ListTitleComponent } from '../generated-list-wrapper/list-title/list-title.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -52,7 +53,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     FilterActivitiesComponent,
     FilterDestinationComponent,
     PackItemComponent,
-    GeneratedListWrapperComponent
+    GeneratedListWrapperComponent,
+    ListTitleComponent
   ],
   providers: [WeatherService, SearchService],
 })

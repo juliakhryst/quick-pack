@@ -17,7 +17,6 @@ export class GeneratedListWrapperComponent implements OnInit {
     this.filterObj = this.data.objWithFilters;
     this.destination = this.filterObj.destination.name;
     this.duration = this.filterObj.duration.from;
-    console.log(this.filterObj);
   }
 
 

@@ -12,6 +12,7 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
     sub: Subscription;
     listItems = [];
     items;
+    leviyMasiv;
 
     ITEMS = [
         {
@@ -60,7 +61,13 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
         }, 0);
     }
     removeById(id): void {
-        this.listItems = this.listItems.filter( item => item.id !== id);
+        for ( this.items of this.listItems ) {
+            console.log(this.items);
+            this.items = this.items.filter( item => item.id !== id);
+            console.log(this.items);
+        }
+
+
     }
     addNewItem(item): void {
         // only for testing
@@ -78,15 +85,12 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
             take(1),
             tap(data => this.listItems = data),
         ).subscribe();
+
     }
 
     ngOnDestroy(): void {
         this.sub.unsubscribe();
     }
 
-
-    showListService() {
-        return this.listItems;
-    }
 }
 

@@ -16,7 +16,6 @@ export class WeatherDisplayComponent implements OnInit {
 
   ngOnInit() {
     this.filterObj = this.data.objWithFilters;
-    console.log(this.filterObj);
     this.response = this.weather.getWeather(this.filterObj.duration, this.filterObj.destination).pipe(take(1), map(data => [data]));
   }
 

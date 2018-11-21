@@ -84,9 +84,5 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
         this.sub.unsubscribe();
     }
 
-
-    showListService() {
-        return this.listItems;
-    }
 }
 

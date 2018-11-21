@@ -14,42 +14,11 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
     sub: Subscription;
     listItems = [];
     items;
-    leviyMasiv;
 
     categories$: Observable<any[]>;
     icons = ['scatter_plot', 'fastfood', 'create', 'print', 'waves', 'person', 'add_box', 'phone_iphone'];
     category = '';
 
-    ITEMS = [
-        {
-            category: 'Clothing',
-            id: 1,
-            name: 'Bathrobe',
-            type: 'Essential',
-            weight: 2
-        },
-        {
-            category: 'Clothing',
-            id: 2,
-            name: 'Bathrobe',
-            type: 'Essential',
-            weight: 6
-        },
-        {
-            category: 'Clothing',
-            id: 3,
-            name: 'Belt',
-            type: 'Essential',
-            weight: 2
-        },
-        {
-            category: 'Clothing',
-            id: 4,
-            name: 'T-short',
-            type: 'Essential',
-            weight: 8
-        }
-    ];
     isOpenAddedField = false;
     isCheckedAll = false;
     uncheckAll(): void {
@@ -128,8 +97,6 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
                 }
             });
         });
-        console.log(this.category);
-        console.log(this.listItems);
 
         this.listItems.forEach(el => {
             el.forEach(item => {

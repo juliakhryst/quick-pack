@@ -4,6 +4,8 @@ import { Item } from '../core/interfaces/item';
 import { Observable } from 'rxjs';
 import { ActivityFilter } from './filters/filter-activities/filter-activities.component';
 import { Router } from '@angular/router';
+import { LocalStorageService } from '../core/services/local-storage.service';
+import { DataSharingService } from '../core/services/data-sharing.service';
 
 export interface Filters {
   activities?: ActivityFilter;
@@ -26,10 +28,17 @@ export class DashboardComponent implements OnInit {
   typeOfGender: string;
   filterObj: Filters;
 
-  constructor(private generation: GenerationService, private router: Router) {}
+  constructor(
+    private generation: GenerationService,
+    private router: Router,
+    private data: DataSharingService,
+    private localStorage: LocalStorageService
+  ) {}
 
-  generate(filterObj): void {
-    this.items$ = this.generation.getListByParams(filterObj);
+  generate(): void {
+    this.data.objWithFilters = this.filterObj;
+    this.localStorage.setObject('filterObj', this.filterObj);
+    // this.items$ = this.generation.getListByParams(filterObj);
     this.router.navigate(['/dashboard/list']);
   }
 

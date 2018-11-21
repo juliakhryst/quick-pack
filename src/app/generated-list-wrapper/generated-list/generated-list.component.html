@@ -1,5 +1,4 @@
-<div class="card" *ngIf="listItems.length">
-
+<div class="card" *ngIf="list">
   <div class="row">
     <div>
       <mat-radio-group>
@@ -20,10 +19,11 @@
   <h2>General List</h2>
   <div class="filter-list">
     <div class="scroll-aria">
-      <div class="pack-items">
-        <ul *ngFor="let items of listItems">
+      <div class="pack-items" *ngFor="let items of list; let i = index;">
+        <h2>{{items[0].activities}}</h2>
+        <ul>
           <li [ngStyle]="{'color': item.selectedColor}" *ngFor="let item of items">
-            <qpac-pack-item (removeById)="removeById($event)" [isChecked]="isCheckedAll" [item]="item">
+            <qpac-pack-item (removeById)="removeById($event, i)" [isChecked]="isCheckedAll" [item]="item">
             </qpac-pack-item>
           </li>
         </ul>
@@ -48,7 +48,7 @@
       Cancel
     </button>
   </div>
-  <div class="btn-save">
-    <button class="btn btn-big btn-teal">Save you list</button>
+  <div *ngIf="!isOpenAddedField" (click)="toggleAddedField()">
+    <button mat-fab>+</button> Add your item
   </div>
 </div>

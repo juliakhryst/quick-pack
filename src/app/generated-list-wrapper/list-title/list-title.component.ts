@@ -9,25 +9,19 @@ import { DataSharingService } from '../../core/services/data-sharing.service';
   styleUrls: ['./list-title.component.scss']
 })
 export class ListTitleComponent implements OnInit {
-
+  @Input() listTitle: string;
   @Output() titleForList = new EventEmitter<String>();
 
   name = new FormControl('');
-  filter;
-  destination;
-  duration;
 
   constructor(public data: DataSharingService) { }
 
-  onKey(event) {
-    this.titleForList.emit(event.target.value);
+  onKey() {
+    this.titleForList.emit(this.name.value);
   }
 
   ngOnInit() {
-    this.filter = this.data.objWithFilters;
-    this.destination = this.filter.destination.name;
-    this.duration = this.filter.duration.from;
-    this.name.setValue(`${this.destination} ${this.duration}`);
+    this.name.setValue(this.listTitle);
   }
 
 }

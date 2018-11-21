@@ -1,15 +1,42 @@
-<qpac-language-switcher></qpac-language-switcher>
-<mat-card class="auth-form">
-  <mat-card-title>{{ 'auth.header.greetings.text' | translate }}</mat-card-title>
-  <mat-card-subtitle>{{ 'auth.header.hint.text' | translate }}</mat-card-subtitle>
-  <button mat-raised-button color="primary" class="social-login-btn" (click)="doFbLogin()">
-    <i class="zmdi zmdi-facebook-box"></i>
-    <span>{{ 'auth.body.facebook.text' | translate}}</span>
-  </button>
-  <button mat-raised-button color="warn" class="social-login-btn" (click)="doGoogleLogin()">
-    <i class="zmdi zmdi-google-plus-box"></i>{{ 'auth.body.google.text' | translate}}
-  </button>
-  <button mat-raised-button class="social-login-btn" (click)="doAnonymousLogin()">
-    <i class="material-icons">face</i>{{ 'auth.body.guest.text' | translate}}
-  </button>
-</mat-card>
+<div class="wrapper">
+  <header class="header">
+    <img class="header-logo" src="../../assets/img/Qpack_logo.png" alt="Logo">
+    <qpac-language-switcher></qpac-language-switcher>
+  </header>
+
+  <main class="form-wrapper">
+    <mat-card class="auth-form">
+      <mat-card-title>{{ 'auth.header.greetings.text' | translate }}</mat-card-title>
+      <mat-card-subtitle>{{ 'auth.header.hint.text' | translate }}</mat-card-subtitle>
+      <button mat-raised-button color="primary" class="social-login-btn" (click)="doFbLogin()">
+        <i class="zmdi zmdi-facebook-box"></i>
+        <span>{{ 'auth.body.facebook.text' | translate}}</span>
+      </button>
+      <button mat-raised-button color="warn" class="social-login-btn" (click)="doGoogleLogin()">
+        <i class="zmdi zmdi-google-plus-box"></i>{{ 'auth.body.google.text' | translate}}
+      </button>
+      <button mat-raised-button class="social-login-btn" (click)="doAnonymousLogin()">
+        <i class="material-icons">face</i>{{ 'auth.body.guest.text' | translate}}
+      </button>
+    </mat-card>
+  </main>
+
+  <section class="pictures">
+    <article>
+      <img src="../../assets/img/article1.png" alt="Active leisure">
+      <p>{{ 'auth.section.article-one.text' | translate}}</p>
+    </article>
+    <article>
+      <img src="../../assets/img/article2.png" alt="Business trip">
+      <p>{{ 'auth.section.article-two.text' | translate}}</p>
+    </article>
+    <article>
+      <img src="../../assets/img/article3.png" alt="Family vacation">
+      <p>{{ 'auth.section.article-three.text' | translate}}</p>
+    </article>
+    <article>
+      <img src="../../assets/img/article4.png" alt="Tourism">
+      <p>{{ 'auth.section.article-four.text' | translate}}</p>
+    </article>
+  </section>
+</div>

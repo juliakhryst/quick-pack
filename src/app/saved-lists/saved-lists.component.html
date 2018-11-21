@@ -1,0 +1,11 @@
+<div>
+  <h1>Your saved lists</h1>
+
+  <div>
+    <ul>
+      <li *ngFor="let list of savedLists">
+        <a [routerLink]="['/dashboard/list', list.id]">{{list.name}}</a>
+      </li>
+    </ul>
+  </div>
+</div>

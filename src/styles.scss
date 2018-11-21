@@ -2,6 +2,9 @@
 @import '~normalize.css/normalize.css';
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+@import "./scss/variables";
+@import "./scss/filters";
+
 .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
     font-weight: bold;
 }

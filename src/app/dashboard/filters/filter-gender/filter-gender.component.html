@@ -1,10 +1,14 @@
 <!-- <h3>{{ 'filters.gender.header.text' | translate }}</h3> -->
+<div class="row">
+    <button class="gender btn btn-green"  [class.selected]="selectedGender==Gender.Male" (click)="selectGender(Gender.Male)">
+        <i class="material-icons">person</i>
+        <span>{{ 'filters.gender.male.text' | translate }}</span>
+    </button>
+    <button class="gender btn btn-green" [class.selected]="selectedGender==Gender.Female" (click)="selectGender(Gender.Female)">
+        <i class="material-icons">person</i>
+        <span>{{ 'filters.gender.female.text' | translate }}</span>
+    </button>
 
-<button class="gender" mat-button [class.selected]="selectedGender==Gender.Male" (click)="selectGender(Gender.Male)">
-    <i class="material-icons">person</i>
-    <p>{{ 'filters.gender.male.text' | translate }}</p>
-</button>
-<button class="gender" mat-button [class.selected]="selectedGender==Gender.Female" (click)="selectGender(Gender.Female)">
-    <i class="material-icons">person</i>
-    <p>{{ 'filters.gender.female.text' | translate }}</p>
-</button>
+</div>
+
+

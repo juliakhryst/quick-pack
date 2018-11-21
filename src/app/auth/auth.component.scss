@@ -1,15 +1,114 @@
-.auth-form {
-    max-width: 400px;
-    margin: 0 auto;
-    text-align: center;
-    .social-login-btn {
-        margin-bottom: 15px;
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+    width: 100%;
+    height: 100%;
+    font-family: 'Open Sans';
+    font-size: 16px;
+    background-color: #eaeaea;
+
+    .header {
+        display: flex;
+        justify-content: space-around;
         width: 100%;
-        i{
-            margin-right: 10px;
-            font-size: 24px;
+        height: 10%;
+        padding: 0.5rem;
+
+        .header-logo {
+            height: 100%;
+            z-index: 99;
+        }
+    }
+
+    .form-wrapper {
+        display: flex;
+        width: 100%;
+        min-height: 660px;
+        margin-top: -2rem;
+        background-size: cover;
+        background-image: url('../../assets/img/headpic.png');
+        object-fit: scale-down;
+
+        .auth-form {
+            width: 30%;
+            margin: auto;
+            margin-right: 5rem;
+            background-color: rgba(0, 0, 0, 0.0);
+            box-shadow: none;
+
+            .mat-card-title {
+                font-family: 'OpenSans';
+                font-size: 2vw;
+                text-align: left;
+                color: #ffffff;
+            }
+
+            .mat-card-subtitle {
+                font-family: 'OpenSans';
+                font-size: 1vw;
+                color: #ffffff;
+            }
+
+            .mat-raised-button {
+                font-size:1vw;
+                margin-bottom: 15px;
+                width: 60%;
+                border: 1px solid;
+                border-radius: 20px;
+                min-width: 170px;
+                border: none;
+                cursor: pointer;
+            }
+
+            .mat-raised-button:hover {
+                box-shadow: inset 0 0 3px 3px rgba(0,0,0,0.5);
+              }
+
+              .social-login-btn {
+                text-align: justify;
+
+                i{
+                    margin-right: 10px;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+
+    .pictures {
+        display: flex;
+        flex-flow: row nowrap;
+        height: 100%;
+        width: 83.2%;
+        margin: 2rem auto;
+
+        article {
+            width: 30%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            img {
+                height: 90%;
+                margin: 1rem auto;
+            }
+
+            p {
+                text-align: center;
+                font-size: 1.5vw;
+            }
         }
     }
 }
+
+
+
+
+
+
 
 

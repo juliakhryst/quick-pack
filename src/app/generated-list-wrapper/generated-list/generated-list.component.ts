@@ -14,7 +14,6 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
     @Input() list: any;
     sub: Subscription;
     items;
-    leviyMasiv;
 
     categories$: Observable<any[]>;
     icons = ['scatter_plot', 'fastfood', 'create', 'print', 'waves', 'person', 'add_box', 'phone_iphone'];
@@ -104,8 +103,6 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
                 }
             });
         });
-        console.log(this.category);
-        console.log(this.list);
 
         this.list.forEach(el => {
             el.forEach(item => {

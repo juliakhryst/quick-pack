@@ -1,46 +1,78 @@
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Observable, forkJoin, of } from 'rxjs';
+import { WeatherService } from '../../dashboard/weather.service';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { Observable, forkJoin } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { map, tap, take } from 'rxjs/operators';
+import { map, take, switchMap } from 'rxjs/operators';
 import { Item } from '../interfaces/item';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GenerationService {
-  constructor(private afs: AngularFirestore) {
+
+  response;
+
+  constructor(private afs: AngularFirestore,
+    public weather: WeatherService) {
   }
 
   getEssentials(): Observable<Item[]> {
+
     return this.afs.collection<Item>('pack-items', ref => ref.where('activities', '==', 'Essential')).valueChanges();
   }
 
   getItemsByParams(weather, type, activity): Observable<Item[]> {
-    console.log(activity);
+
     return this.afs.collection<Item>('pack-items', ref => {
-      return ref.where('weather', 'array-contains', 'cold'/*weather*/)
+
+      return ref.where('weather', 'array-contains', weather)
                 .where('type', '==', type)
                 .where('activities', '==', activity);
       }).valueChanges();
   }
 
-  getListByParams(filterObj) {
-    const activitiesRequests = this.getActivitiesRequests(filterObj.weather, filterObj.type, filterObj.activities);
-    console.log(activitiesRequests);
+  getWeatherStringValue(filterObj): Observable<string> {
 
-    return forkJoin([
-      this.getEssentials().pipe(take(1)),
-      ...this.extractRequests(activitiesRequests),
-    ]);
+    return this.weather.getWeather(filterObj.duration).pipe(
+      map( (data) => {
+        if ( data.currently.temperature <= 4 ) {
+
+          return 'cold';
+        } else if ( data.currently.temperature > 0 && data.currently.temperature <= 17 ) {
+
+          return 'average';
+        } else {
+
+          return 'warm';
+        }
+      })
+    );
   }
 
   private getActivitiesRequests(weather, type, activities): Observable<Item[]>[] {
+
     return Object.keys(activities)
             .filter(activity => activities[activity])
             .map(activity => this.getItemsByParams(weather, type, activity));
   }
 
   private extractRequests(requests) {
+
     return requests.map(collection => collection.pipe(take(1)));
   }
+
+  getListByParams(filterObj) {
+
+    return this.getWeatherStringValue(filterObj).pipe(
+     take(1),
+     switchMap((weather) => {
+       const activitiesRequests = this.getActivitiesRequests(weather, filterObj.type, filterObj.activities);
+       return forkJoin([
+         this.getEssentials().pipe(take(1)),
+       ...this.extractRequests(activitiesRequests),
+       ]);
+     }),
+   );
+ }
+
 }

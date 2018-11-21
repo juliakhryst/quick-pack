@@ -1,5 +1,7 @@
+
 <div class="card" *ngIf="listItems.length">
-  <div>
+
+  <div class="row">
     <div>
       <mat-radio-group>
         <mat-radio-button (change)="uncheckAll()" value="check">
@@ -16,37 +18,40 @@
       <div class="item-details-weight">{{ totalWeight }}kg</div>
     </div>
   </div>
-  <h2>General List</h2>
-  <div class="pack-items">
-    <ul *ngFor="let items of this.listItems">
-      <li *ngFor="let item of items">
+  <div class="scroll-aria">
+    <h2>General List</h2>
+    <div class="pack-items">
+      <ul *ngFor="let items of listItems">
+        <li *ngFor="let item of items">
           <qpac-pack-item
                   (removeById)="removeById($event)"
                   [isChecked]="isCheckedAll"
                   [item]="item" >
           </qpac-pack-item>
         </li>
-    </ul>
+      </ul>
+    </div>
+    <div *ngIf="isOpenAddedField" class="add-item">
+      <input #newItem  type="text">
+      <button mat-raised-button
+              color="accent"
+              (click)="addNewItem(newItem)">
+        Add
+      </button>
+      <button  mat-raised-button
+               color="accent"
+               (click)="toggleAddedField()">
+        Cancel
+      </button>
+    </div>
+    <div *ngIf="!isOpenAddedField" (click)="toggleAddedField()">
+      <button mat-fab>+</button> Add your item
+    </div>
   </div>
-  <div *ngIf="isOpenAddedField" class="add-item">
-    <input #newItem  type="text">
-    <button mat-raised-button
-            color="accent"
-            (click)="addNewItem(newItem)">
-      Add
-    </button>
-    <button  mat-raised-button
-             color="accent"
-            (click)="toggleAddedField()">
-      Cancel
-    </button>
-  </div>
-  <div *ngIf="!isOpenAddedField" (click)="toggleAddedField()">
-    <button mat-fab>+</button> Add your item
-  </div>
-  <div class="p">
-    <button mat-raised-button color="accent">Save you list</button>
+  <div class="btn-save">
+    <button class="btn btn-big btn-teal">Save you list</button>
   </div>
 </div>
+
 
 

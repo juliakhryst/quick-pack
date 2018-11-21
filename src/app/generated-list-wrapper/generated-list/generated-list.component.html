@@ -18,7 +18,7 @@
   </div>
   <h2>General List</h2>
   <div class="pack-items">
-    <ul *ngFor="let items of listItems">
+    <ul *ngFor="let items of this.listItems">
       <li *ngFor="let item of items">
           <qpac-pack-item
                   (removeById)="removeById($event)"

@@ -4,6 +4,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 import {
@@ -32,6 +33,7 @@ const MODULES = [
   MatDatepickerModule,
   MatNativeDateModule,
   MatIconModule,
+  MatRadioModule,
   MatStepperModule,
   MatAutocompleteModule,
   MatProgressSpinnerModule,

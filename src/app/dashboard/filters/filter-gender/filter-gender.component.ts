@@ -1,8 +1,8 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 enum Gender {
-  Male,
-  Female
+  Male = 'male',
+  Female = 'female'
 }
 
 @Component({

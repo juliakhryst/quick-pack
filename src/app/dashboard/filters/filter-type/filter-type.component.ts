@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 enum Type {
-  Business,
-  Leisure
+  Business = 'Business',
+  Leisure = 'Leisure'
 }
 
 @Component({

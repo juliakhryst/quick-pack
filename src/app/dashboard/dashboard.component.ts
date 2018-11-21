@@ -1,7 +1,9 @@
+import { GenerationService } from './../generation.service';
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { Item } from '../core/interfaces/item';
 import { Observable } from 'rxjs';
 import { ActivityFilter } from './filters/filter-activities/filter-activities.component';
+import { Router } from '@angular/router';
 
 export interface Filters {
   activities?: ActivityFilter;
@@ -13,19 +15,28 @@ export interface Filters {
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
+
 export class DashboardComponent implements OnInit {
-  item$: Observable<any>;
+
+  items$: Observable<Item[]>;
+  response: Object;
+
+  fromDate: string;
+  typeOfTrip: string;
+  typeOfGender: string;
   filterObj: Filters;
 
-  constructor(private afs: AngularFirestore) { }
+  constructor(private generation: GenerationService, private router: Router) {}
 
-  ngOnInit() {
-    // this.item$ = this.afs.collection('pack-items', ref => ref.where('category', '==', 'Clothing')).valueChanges();
+  generate(filterObj): void {
+    this.items$ = this.generation.getListByParams(filterObj);
+    this.router.navigate(['/dashboard/list']);
   }
+
+  ngOnInit() {}
 
   handleFilter(filter) {
-    console.log(filter);
     this.filterObj = Object.assign({}, this.filterObj, filter);
-    console.log(this.filterObj);
   }
+
 }

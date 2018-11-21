@@ -19,7 +19,7 @@ export class FilterDestinationComponent implements OnInit {
   suggestedCities: City[] = [];
   city: City;
 
-  @Output() changedCity = new EventEmitter<City>();
+  @Output() changedCity = new EventEmitter<Object>();
 
   ngOnInit() {
 
@@ -40,6 +40,10 @@ export class FilterDestinationComponent implements OnInit {
   }
 
   cityChange(city) {
-    this.changedCity.emit(this.city = city);
+    this.city = city;
+    const name = this.city.name;
+    const lat = this.city.lat;
+    const lng = this.city.lng;
+    this.changedCity.emit({destination: {name, lat, lng}});
   }
 }

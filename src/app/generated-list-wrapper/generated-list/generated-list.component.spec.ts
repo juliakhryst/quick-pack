@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WeatherDashboardComponent } from './weather-dashboard.component';
+import { GeneratedListComponent } from './generated-list.component';
 
-describe('WeatherDashboardComponent', () => {
-  let component: WeatherDashboardComponent;
-  let fixture: ComponentFixture<WeatherDashboardComponent>;
+describe('GeneratedListComponent', () => {
+  let component: GeneratedListComponent;
+  let fixture: ComponentFixture<GeneratedListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WeatherDashboardComponent ]
+      declarations: [ GeneratedListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WeatherDashboardComponent);
+    fixture = TestBed.createComponent(GeneratedListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

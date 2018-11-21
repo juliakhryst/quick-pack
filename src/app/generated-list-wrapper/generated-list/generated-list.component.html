@@ -1,12 +1,12 @@
 <div class="card" *ngIf="list">
-  <div>
+  <div class="row">
     <div>
       <mat-radio-group>
         <mat-radio-button (change)="uncheckAll()" value="check">
           Uncheck All
         </mat-radio-button>
 
-        <mat-radio-button  (change)="checkAll()" value="uncheck">
+        <mat-radio-button (change)="checkAll()" value="uncheck">
           Check All
         </mat-radio-button>
       </mat-radio-group>
@@ -17,32 +17,39 @@
     </div>
   </div>
   <h2>General List</h2>
-  <div class="pack-items" *ngFor="let items of list; let i = index;">
-    <h2>{{items[0].activities}}</h2>
-    <ul>
-      <li *ngFor="let item of items">
-        <qpac-pack-item
-          (removeById)="removeById($event, i)"
-          [isChecked]="isCheckedAll"
-          [item]="item" >
-        </qpac-pack-item>
-      </li>
-    </ul>
+  <div class="filter-list">
+    <div class="scroll-aria">
+      <div class="pack-items" *ngFor="let items of list; let i = index;">
+        <h2>{{items[0].activities}}</h2>
+        <ul>
+          <li [ngStyle]="{'color': item.selectedColor}" *ngFor="let item of items">
+            <qpac-pack-item (removeById)="removeById($event, i)" [isChecked]="isCheckedAll" [item]="item">
+            </qpac-pack-item>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="title-filter">Highlight the category</h3>
+      <button mat-button class="filter-button" id="{{item.value}}" *ngFor="let item of categories$ | async; let i = index"
+        (click)="selecFilter($event)">
+        <span> <i class="material-icons">{{icons[i]}}</i> {{ item.value }} </span>
+      </button>
+    </div>
   </div>
+
   <div *ngIf="isOpenAddedField" class="add-item">
-    <input #newItem  type="text">
-    <button mat-raised-button
-            color="accent"
-            (click)="addNewItem(newItem)">
+    <input #newItem type="text">
+    <button mat-raised-button color="accent" (click)="addNewItem(newItem)">
       Add
     </button>
-    <button  mat-raised-button
-             color="accent"
-            (click)="toggleAddedField()">
+    <button mat-raised-button color="accent" (click)="toggleAddedField()">
       Cancel
     </button>
   </div>
   <div *ngIf="!isOpenAddedField" (click)="toggleAddedField()">
     <button mat-fab>+</button> Add your item
   </div>
+</div>
 </div>

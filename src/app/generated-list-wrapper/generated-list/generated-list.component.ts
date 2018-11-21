@@ -2,16 +2,23 @@ import { DataSharingService } from '../../core/services/data-sharing.service';
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { tap, take } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'qpac-generated-list',
-  templateUrl: './generated-list.component.html',
-  styleUrls: ['./generated-list.component.scss']
+    selector: 'qpac-generated-list',
+    templateUrl: './generated-list.component.html',
+    styleUrls: ['./generated-list.component.scss']
 })
 export class GeneratedListComponent implements OnInit, OnDestroy {
     @Input() list: any;
     sub: Subscription;
     items;
+    leviyMasiv;
+
+    categories$: Observable<any[]>;
+    icons = ['scatter_plot', 'fastfood', 'create', 'print', 'waves', 'person', 'add_box', 'phone_iphone'];
+    category = '';
 
     isOpenAddedField = false;
     isCheckedAll = false;
@@ -47,9 +54,10 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
             weight: 0
         });
     }
-    constructor(public data: DataSharingService) { }
+    constructor(public data: DataSharingService, private db: AngularFirestore) { }
 
     ngOnInit() {
+        this.categories$ = this.db.collection('/pack-items-categories').valueChanges();
         console.log(this.list);
         // this.sub = this.data.packList.pipe(
         //     take(1),
@@ -61,5 +69,54 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
         // this.sub.unsubscribe();
     }
 
+
+    showListService() {
+        return this.list;
+    }
+    selecFilter(event) {
+        this.category = event.currentTarget.id;
+        this.list.forEach(function (element) {
+            element.forEach(function (el) {
+                Object.assign(el, { selectedColor: '' });
+                if (el.category === 'Clothing') {
+                    Object.assign(el, { style: '#000099' });
+                }
+                if (el.category === 'Documents') {
+                    Object.assign(el, { style: '#e62e00' });
+                }
+                if (el.category === 'Gadgets') {
+                    Object.assign(el, { style: '#cc00ff' });
+                }
+                if (el.category === 'Health') {
+                    Object.assign(el, { style: '#660066' });
+                }
+                if (el.category === 'Miscellaneous') {
+                    Object.assign(el, { style: '#e62e00' });
+                }
+                if (el.category === 'Food') {
+                    Object.assign(el, { style: '#cc00cc' });
+                }
+                if (el.category === 'To-Dos') {
+                    Object.assign(el, { style: '#e60073' });
+                }
+                if (el.category === 'Hygiene') {
+                    Object.assign(el, { style: '#002db3' });
+                }
+            });
+        });
+        console.log(this.category);
+        console.log(this.list);
+
+        this.list.forEach(el => {
+            el.forEach(item => {
+                if (item.category === event.currentTarget.id) {
+                    item.selectedColor = item.style;
+                } else {
+                    item.selectedColor = '';
+                }
+            });
+        });
+        return this.category;
+    }
 }
 

@@ -1,5 +1,5 @@
 import { DataSharingService } from '../../core/services/data-sharing.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { tap, take } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { AngularFirestore } from 'angularfire2/firestore';
@@ -11,8 +11,8 @@ import { Observable } from 'rxjs';
     styleUrls: ['./generated-list.component.scss']
 })
 export class GeneratedListComponent implements OnInit, OnDestroy {
+    @Input() list: any;
     sub: Subscription;
-    listItems = [];
     items;
 
     categories$: Observable<any[]>;
@@ -31,44 +31,50 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
         this.isOpenAddedField = !this.isOpenAddedField;
     }
     get totalWeight() {
-        return this.listItems.reduce((accumulator, currentValue) => {
-            return accumulator + currentValue.weight;
-        }, 0);
+        let weight = 0;
+        this.list.forEach(listArray => {
+            weight += listArray.reduce((accumulator, currentValue) => {
+                return accumulator + currentValue.weight;
+            }, 0);
+        });
+
+        return Number((weight).toFixed(2));
     }
-    removeById(id): void {
-        this.listItems = this.listItems.filter(item => item.id !== id);
+    removeById(id, arrayIndex): void {
+        this.list[arrayIndex] = this.list[arrayIndex].filter( item => item.id !== id);
     }
     addNewItem(item): void {
         // only for testing
-        this.listItems.push({
+        this.list.push( {
             category: 'Clothing',
-            id: this.listItems.length,
+            id: this.list.length,
             name: item.value,
             type: 'Essential',
             weight: 0
         });
     }
     constructor(public data: DataSharingService, private db: AngularFirestore) { }
+
     ngOnInit() {
         this.categories$ = this.db.collection('/pack-items-categories').valueChanges();
-        this.sub = this.data.packList.pipe(
-            take(1),
-            tap(data => this.listItems = data),
-        ).subscribe();
-
+        console.log(this.list);
+        // this.sub = this.data.packList.pipe(
+        //     take(1),
+        //     tap(data => this.list = data),
+        // ).subscribe();
     }
 
     ngOnDestroy(): void {
-        this.sub.unsubscribe();
+        // this.sub.unsubscribe();
     }
 
 
     showListService() {
-        return this.listItems;
+        return this.list;
     }
     selecFilter(event) {
         this.category = event.currentTarget.id;
-        this.listItems.forEach(function (element) {
+        this.list.forEach(function (element) {
             element.forEach(function (el) {
                 Object.assign(el, { selectedColor: '' });
                 if (el.category === 'Clothing') {
@@ -98,7 +104,7 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
             });
         });
 
-        this.listItems.forEach(el => {
+        this.list.forEach(el => {
             el.forEach(item => {
                 if (item.category === event.currentTarget.id) {
                     item.selectedColor = item.style;

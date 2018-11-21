@@ -49,6 +49,9 @@ export class GenerationService {
         }
       })
     );
+
+    // To hardcode the weather
+    // return Observable.create(observer => { observer.next('cold'); });
   }
 
   private getActivitiesRequests(weather, type, activities): Observable<Item[]>[] {

@@ -21,6 +21,7 @@ import { SearchService } from './filters/filter-destination/search.service';
 import { GeneratedListComponent } from '../generated-list-wrapper/generated-list/generated-list.component';
 import { PackItemComponent } from '../generated-list-wrapper/pack-item/pack-item.component';
 import { ListTitleComponent } from '../generated-list-wrapper/list-title/list-title.component';
+import { SavedListsComponent } from '../saved-lists/saved-lists.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -54,7 +55,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     FilterDestinationComponent,
     PackItemComponent,
     GeneratedListWrapperComponent,
-    ListTitleComponent
+    ListTitleComponent,
+    SavedListsComponent
   ],
   providers: [WeatherService, SearchService],
 })

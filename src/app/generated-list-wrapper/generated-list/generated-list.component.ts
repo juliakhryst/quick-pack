@@ -1,14 +1,16 @@
 import { DataSharingService } from '../../core/services/data-sharing.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { tap, take } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'qpac-generated-list',
   templateUrl: './generated-list.component.html',
   styleUrls: ['./generated-list.component.scss']
 })
-export class GeneratedListComponent implements OnInit {
-
-    listItems;
+export class GeneratedListComponent implements OnInit, OnDestroy {
+    sub: Subscription;
+    listItems = [];
     items;
 
     ITEMS = [
@@ -53,18 +55,18 @@ export class GeneratedListComponent implements OnInit {
         this.isOpenAddedField = !this.isOpenAddedField;
     }
     get totalWeight() {
-        return this.ITEMS.reduce((accumulator, currentValue) => {
+        return this.listItems.reduce((accumulator, currentValue) => {
             return accumulator + currentValue.weight;
         }, 0);
     }
     removeById(id): void {
-        this.ITEMS = this.ITEMS.filter( item => item.id !== id);
+        this.listItems = this.listItems.filter( item => item.id !== id);
     }
     addNewItem(item): void {
         // only for testing
-        this.ITEMS.push( {
+        this.listItems.push( {
             category: 'Clothing',
-            id: this.ITEMS.length,
+            id: this.listItems.length,
             name: item.value,
             type: 'Essential',
             weight: 0
@@ -72,14 +74,19 @@ export class GeneratedListComponent implements OnInit {
     }
     constructor(public data: DataSharingService) { }
     ngOnInit() {
+        this.sub = this.data.packList.pipe(
+            take(1),
+            tap(data => this.listItems = data),
+        ).subscribe();
+    }
+
+    ngOnDestroy(): void {
+        this.sub.unsubscribe();
     }
 
 
-    showListService() {
-        this.listItems = this.data.packList;
-        console.log(this.listItems);
-
+    showListService() {;
         return this.listItems;
-        }
+    }
 }
 

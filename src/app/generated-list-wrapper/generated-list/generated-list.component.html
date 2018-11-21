@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" *ngIf="listItems.length">
   <h2>Lviv</h2>
   <p>
     October 23 - November 7
@@ -8,7 +8,7 @@
     <button (click)="showListService()">ListItem</button>
   </div>
   <div>
-    <div *ngIf="ITEMS.length > 0">
+    <div>
       <mat-radio-group>
         <mat-radio-button (change)="uncheckAll()" value="check">
           Uncheck All
@@ -21,12 +21,12 @@
     </div>
     <div class="item-details">
       <h3>Total weight</h3>
-      <div class="item-details-weight">{{totalWeight}}kg</div>
+      <div class="item-details-weight">{{ totalWeight }}kg</div>
     </div>
   </div>
   <h2>General List</h2>
   <div class="pack-items">
-    <ul *ngFor="let items of listItems| async">
+    <ul *ngFor="let items of listItems">
       <li *ngFor="let item of items">
           <qpac-pack-item
                   (removeById)="removeById($event)"

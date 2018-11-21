@@ -1,5 +1,5 @@
 <!-- <h3> {{ 'filters.duration.header.text' | translate}}</h3> -->
-<mat-form-field>
+<mat-form-field color="accent">
   <input 
     [min]="minDate()" 
     [(ngModel)]='from' 
@@ -13,7 +13,7 @@
 </mat-form-field>
 
 
-<mat-form-field>
+<mat-form-field color="accent">
   <input 
     [min]="from" 
     [disabled]='!from' 
@@ -25,8 +25,3 @@
   <mat-datepicker-toggle matSuffix [for]="dateTo"></mat-datepicker-toggle>
   <mat-datepicker touchUi #dateTo></mat-datepicker>
 </mat-form-field>
-
-
-<div *ngIf="from && to">
-  {{from | date}} - {{to | date}}
-</div>

@@ -1,0 +1,16 @@
+@import "../../scss/variables";
+mat-vertical-stepper {
+  background: #69f0ae;
+  padding: 10px 80px;
+  border-radius: 3px;
+  box-shadow: 0 0 6px rgba(0,0,0,.4);
+  color: $brown;
+}
+.generate-wrap {
+  margin-top: 40px;
+}
+.filter-title {
+  color: $brown;
+  font-size: 20px;
+  font-weight: normal;
+}

@@ -1,51 +1,55 @@
 <qpac-header></qpac-header>
 
-<mat-vertical-stepper [linear]="true" #stepper>
-  <mat-step>
-    <ng-template matStepLabel><h3>{{ 'filters.destination.header.text' | translate}}</h3></ng-template>
+<mat-vertical-stepper
+        [linear]="true" #stepper>
+  <mat-step >
+    <ng-template matStepLabel><h3 class="filter-title">{{ 'filters.destination.header.text' | translate}}</h3></ng-template>
     <qpac-filter-destination (changedCity)="handleFilter($event)"></qpac-filter-destination>
     <div>
-      <button mat-button matStepperPrevious>{{'dashboard.controls.back' | translate}}</button>
-      <button mat-button matStepperNext>{{'dashboard.controls.next' | translate}}</button>
+      <button class="btn-hover-pink" mat-button matStepperPrevious>{{'dashboard.controls.back' | translate}}</button>
+      <button class="btn-hover-pink" mat-button matStepperNext>{{'dashboard.controls.next' | translate}}</button>
     </div>
   </mat-step>
 
   <mat-step>
-    <ng-template matStepLabel><h3>{{ 'filters.duration.header.text' | translate}}</h3></ng-template>
+    <ng-template matStepLabel><h3 class="filter-title">{{ 'filters.duration.header.text' | translate}}</h3></ng-template>
     <qpac-filter-duration (changedDepartureDate)="handleFilter($event)"></qpac-filter-duration>
     <div>
-      <button mat-button matStepperPrevious>{{'dashboard.controls.back' | translate}}</button>
-      <button mat-button matStepperNext>{{'dashboard.controls.next' | translate}}</button>
+      <button class="btn-hover-pink" mat-button matStepperPrevious>{{'dashboard.controls.back' | translate}}</button>
+      <button class="btn-hover-pink" mat-button matStepperNext>{{'dashboard.controls.next' | translate}}</button>
     </div>
   </mat-step>
 
   <mat-step>
-    <ng-template matStepLabel><h3>{{ 'filters.type.header.text' | translate }}</h3></ng-template>
+    <ng-template matStepLabel><h3 class="filter-title">{{ 'filters.type.header.text' | translate }}</h3></ng-template>
     <qpac-filter-type (changedType)="handleFilter($event)"></qpac-filter-type>
     <div>
-      <button mat-button matStepperPrevious>{{'dashboard.controls.back' | translate}}</button>
-      <button mat-button matStepperNext>{{'dashboard.controls.next' | translate}}</button>
+      <button class="btn-hover-pink" mat-button matStepperPrevious>{{'dashboard.controls.back' | translate}}</button>
+      <button class="btn-hover-pink" mat-button matStepperNext>{{'dashboard.controls.next' | translate}}</button>
     </div>
   </mat-step>
 
   <mat-step>
-      <ng-template matStepLabel><h3>{{ 'filters.gender.header.text' | translate}}</h3></ng-template>
+      <ng-template matStepLabel><h3 class="filter-title">{{ 'filters.gender.header.text' | translate}}</h3></ng-template>
       <qpac-filter-gender (changedGender)="handleFilter($event)"></qpac-filter-gender>
       <div>
-        <button mat-button matStepperPrevious>{{'dashboard.controls.back' | translate}}</button>
-        <button mat-button matStepperNext>{{'dashboard.controls.next' | translate}}</button>
+        <button class="btn-hover-pink" mat-button matStepperPrevious>{{'dashboard.controls.back' | translate}}</button>
+        <button class="btn-hover-pink" mat-button matStepperNext>{{'dashboard.controls.next' | translate}}</button>
       </div>
     </mat-step>
 
   <mat-step>
-    <ng-template matStepLabel><h3>{{ 'filters.activities.header.text'| translate }}</h3></ng-template>
+    <ng-template matStepLabel><h3 class="filter-title">{{ 'filters.activities.header.text'| translate }}</h3></ng-template>
     <qpac-filter-activities (activitiesChanged)="handleFilter($event)"></qpac-filter-activities>
     <div>
-      <button mat-button matStepperPrevious>{{'dashboard.controls.back' | translate}}</button>
-      <button mat-button (click)="stepper.reset()">{{'dashboard.controls.reset' | translate }}</button>
-      <button mat-button color="primary"
-      (click)="generate(this.filterObj)">{{'dashboard.controls.generate' | translate }}</button>
-    </div>
+      <button class="btn-hover-pink" mat-button matStepperPrevious>{{'dashboard.controls.back' | translate}}</button>
+      <button class="btn-hover-pink" mat-button (click)="stepper.reset()">{{'dashboard.controls.reset' | translate }}</button>
+      <div class="generate-wrap">
+        <button class="btn btn-yellow"
+                (click)="generate(this.filterObj)">{{'dashboard.controls.generate' | translate }}</button>
+      </div>
+      </div>
+
   </mat-step>
 
 </mat-vertical-stepper>

@@ -1,0 +1,44 @@
+
+.row {
+  display: flex;
+  padding: 10px;
+}
+.btn {
+  display: flex;
+  padding: 15px 40px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  min-width: 200px;
+  border: none;
+  cursor: pointer;
+  transition: background-color .3s;
+  color: $brown;
+  box-shadow: 0 0 4px rgba(0,0,0,.35);
+  &-hover-pink:hover {
+    background: $pink;
+  }
+  &-green {
+    background: $light-green;
+  }
+  &-yellow {
+    background: $yellow;
+  }
+  &:focus {
+    outline: none;
+  }
+  &.selected {
+    background: $yellow;
+  }
+  i {
+    opacity: .6;
+    margin-right: 8px;
+  }
+}
+.mat-step-icon-selected {
+  background: $pink !important;
+}
+.mat-step-header .mat-step-icon-state-edit {
+  background: $yellow !important;
+}
+

@@ -85,7 +85,7 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
     }
 
 
-    showListService() {;
+    showListService() {
         return this.listItems;
     }
 }

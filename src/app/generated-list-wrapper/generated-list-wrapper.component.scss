@@ -13,7 +13,23 @@
 .generated-list {
   max-width: 740px;
   background: $green;
+  &-header {
+    background: $pink;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+  }
   @include respond(medium) {
     display: block;
   }
+}
+.is-loading ::ng-deep .mat-option-text {
+  display: flex;
+  justify-content: center;
+}
+.btn-save {
+  padding: 20px 15px;
+  display: flex;
+  justify-content: center;
 }

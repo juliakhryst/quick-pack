@@ -36,6 +36,7 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   generate(): void {
+    console.log(this.filterObj);
     this.data.objWithFilters = this.filterObj;
     this.localStorage.setObject('filterObj', this.filterObj);
     // this.items$ = this.generation.getListByParams(filterObj);

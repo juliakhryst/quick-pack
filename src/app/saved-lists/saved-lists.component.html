@@ -1,3 +1,4 @@
+<qpac-header></qpac-header>
 <div>
   <h1>{{ 'savedLists.header.text' | translate }}</h1>
 
@@ -5,6 +6,11 @@
     <ul>
       <li *ngFor="let list of savedLists">
         <a [routerLink]="['/dashboard/list', list.id]">{{list.name}}</a>
+        <i
+          (click)="removeList(list.id)"
+          class="material-icons">
+          delete
+        </i>
       </li>
     </ul>
   </div>

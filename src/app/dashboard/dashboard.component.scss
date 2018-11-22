@@ -1,6 +1,7 @@
 @import "../../scss/variables";
 @import "../../scss/mixins";
 
+
 .container {
   min-height: 100vh;
   padding: 30px 100px;
@@ -34,6 +35,6 @@ mat-vertical-stepper {
   font-size: 25px;
   font-weight: normal;
   @include respond(medium) {
-    font-size: 20px;
+    font-size: 18px;
   }
 }

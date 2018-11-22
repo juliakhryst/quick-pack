@@ -21,12 +21,12 @@ export class GenerationService {
 
   getEssentials(): Observable<Item[]> {
 
-    return this.afs.collection<Item>('pack-items', ref => ref.where('activities', '==', 'Essential').limit(25)).valueChanges();
+    return this.afs.collection<Item>('pack-items-full', ref => ref.where('activities', '==', 'Essential').limit(25)).valueChanges();
   }
 
   getItemsByParams(weather, type, activity): Observable<Item[]> {
 
-    return this.afs.collection<Item>('pack-items', ref => {
+    return this.afs.collection<Item>('pack-items-full', ref => {
 
       return ref.where('weather', 'array-contains', weather)
                 .where('type', '==', type)
@@ -50,8 +50,6 @@ export class GenerationService {
       })
     );
 
-    // To hardcode the weather
-    // return Observable.create(observer => { observer.next('cold'); });
   }
 
   private getActivitiesRequests(weather, type, activities): Observable<Item[]>[] {

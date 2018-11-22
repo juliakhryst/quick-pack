@@ -1,6 +1,6 @@
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { DataSharingService } from '../../core/services/data-sharing.service';
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, EventEmitter, Output } from '@angular/core';
 import { tap, take } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { AngularFirestore } from 'angularfire2/firestore';
@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class GeneratedListComponent implements OnInit, OnDestroy {
     @Input() list: any;
+    @Output() listUpdate: EventEmitter<any> = new EventEmitter();
     sub: Subscription;
     items;
     lang;
@@ -23,18 +24,22 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
 
     isOpenAddedField = false;
     isCheckedAll = false;
-    uncheckAll(): void {
-        this.isCheckedAll = false;
-    }
-    checkAll(): void {
-        this.isCheckedAll = true;
+
+    toggleAll(isChecked): void {
+        this.list.items.forEach(listArray => {
+            listArray.forEach(item => {
+                item.checked = isChecked;
+            });
+        });
+
+        this.listUpdate.emit(this.list);
     }
     toggleAddedField(): void {
         this.isOpenAddedField = !this.isOpenAddedField;
     }
     get totalWeight() {
         let weight = 0;
-        this.list.forEach(listArray => {
+        this.list.items.forEach(listArray => {
             weight += listArray.reduce((accumulator, currentValue) => {
                 return accumulator + currentValue.weight;
             }, 0);
@@ -43,13 +48,14 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
         return Number((weight).toFixed(2));
     }
     removeById(id, arrayIndex): void {
-        this.list[arrayIndex] = this.list[arrayIndex].filter( item => item.id !== id);
+        this.list.items[arrayIndex] = this.list.items[arrayIndex].filter( item => item.id !== id);
+        this.listUpdate.emit(this.list);
     }
     // addNewItem(item): void {
     //     // only for testing
-    //     this.list.push( {
+    //     this.list.items.push( {
     //         category: 'Clothing',
-    //         id: this.list.length,
+    //         id: this.list.items.length,
     //         name: item.value,
     //         type: 'Essential',
     //         weight: 0
@@ -57,6 +63,10 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
     // }
     constructor(public data: DataSharingService, private db: AngularFirestore, private translate: TranslateService) {
         this.lang = this.translate.currentLang;
+
+        this.sub = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+          this.lang = event.lang;
+        });
     }
 
     ngOnInit() {
@@ -75,11 +85,11 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
 
 
     showListService() {
-        return this.list;
+        return this.list.items;
     }
     selecFilter(event) {
         this.category = event.currentTarget.id;
-        this.list.forEach(function (element) {
+        this.list.items.forEach(function (element) {
             element.forEach(function (el) {
                 Object.assign(el, { selectedColor: '' });
                 if (el.category === 'Clothing') {
@@ -109,7 +119,7 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
             });
         });
 
-        this.list.forEach(el => {
+        this.list.items.forEach(el => {
             el.forEach(item => {
                 if (item.category === event.currentTarget.id) {
                     item.selectedColor = item.style;

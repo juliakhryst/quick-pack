@@ -6,11 +6,13 @@ import { LanguageSwitcherComponent } from './components/language-switcher/langua
 import { HeaderComponent } from './components/header/header.component';
 import { MaterialModule } from '../material/material.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { RouterModule } from '../../../node_modules/@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
+    RouterModule,
     TranslateModule.forChild({})
   ],
   declarations: [

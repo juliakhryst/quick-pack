@@ -1,11 +1,13 @@
-<div>
-  <h1>{{ 'savedLists.header.text' | translate }}</h1>
+<div class="container">
+  <div class="list-wrapper">
+    <h1 class="list-wrapper-header">{{ 'savedLists.header.text' | translate }}</h1>
 
-  <div>
-    <ul>
-      <li *ngFor="let list of savedLists">
-        <a [routerLink]="['/dashboard/list', list.id]">{{list.name}}</a>
-      </li>
-    </ul>
+    <div>
+      <ul>
+        <li *ngFor="let list of savedLists" class="list-wrapper-item">
+          <a [routerLink]="['/dashboard/list', list.id]">{{list.name}}</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

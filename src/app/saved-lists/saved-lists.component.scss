@@ -1,0 +1,45 @@
+@import "../../scss/variables";
+@import "../../scss/mixins";
+
+.container {
+  min-height: 100vh;
+  padding: 30px 100px;
+  background: $light-gray;
+  background-image: url('../../assets/img/bags.png');
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  @include respond(medium) {
+    padding: 10px;
+  }
+  .list-wrapper {
+    min-height: 80vh;
+    max-width: 50vw;
+    background: $green;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 1, 0.25);
+    &-header {
+        padding: 4vw;
+        margin: 1%;
+        font-size: 2vw;
+    }
+    ul {
+        padding: 0;
+        margin: 0;
+    }
+    &-item {
+        background: $pink;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5%;
+        margin-bottom: 2%;
+        font-size: 2vw;
+        a {
+            text-decoration: none;
+            color: $white;
+        }
+    }
+    @include respond(medium) {
+        max-width: 90vw;
+    }
+  }
+}

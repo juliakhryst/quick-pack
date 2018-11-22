@@ -2,8 +2,11 @@
 <div class="container">
     <div class="generated-list">
         <div class="generated-list-header">
-            <qpac-list-title [listTitle]="listName" (titleForList)="handleTitleChange($event)" *ngIf="listName"></qpac-list-title>
-            <!-- <qpac-weather-display></qpac-weather-display> -->
+            <div class="listTitleWrapper">
+                <p>{{ 'generatedList.header.destination.text' | translate }}</p>
+                <qpac-list-title [listTitle]="listName" (titleForList)="handleTitleChange($event)" *ngIf="listName"></qpac-list-title>
+            </div>
+            <qpac-weather-display></qpac-weather-display>
         </div>
         <mat-option *ngIf="isLoading" class="is-loading"><mat-spinner color="accent" diameter="30"></mat-spinner></mat-option>
         <ng-container *ngIf="!isLoading">

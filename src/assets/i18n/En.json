@@ -38,6 +38,7 @@
     "generatedList.items.uncheckAll.text": "Uncheck All",
     "generatedList.items.toltalWeight.text": "Total weight",
     "generatedList.items.saveList.text": "Save my list",
+    "generatedList.header.destination.text": "Your pack list for trip is ready.",
     "savedLists.header.text": "Your saved lists",
     "generatedList.items.weight.kg": "kg"
 }

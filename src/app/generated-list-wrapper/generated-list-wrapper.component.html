@@ -6,7 +6,7 @@
         <qpac-generated-list [list]="generatedList" *ngIf="generatedList"></qpac-generated-list>
 
         <div class="p">
-            <button mat-raised-button color="accent" (click)="saveList()">Save you list</button>
+            <button mat-raised-button color="accent" (click)="saveList()">{{ 'generatedList.items.saveList.text' | translate }}</button>
         </div>
     </div>
 </div>

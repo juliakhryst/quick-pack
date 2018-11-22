@@ -28,7 +28,16 @@
     "dashboard.controls.back": "Назад",
     "dashboard.controls.reset": "Скинути",
     "dashboard.controls.generate": "Згенерувати мій список речей",
-    "weather.display.temperature.text": "Прогнозована температура:",
-    "weather.display.summary.text": "Прогнозована погода:",
-    "weather.display.location.text": "Місцевість:"
-} 
+    "weather.display.temperature.text": "Температура:",
+    "weather.display.summary.text": "Погода:",
+    "weather.display.precip.text": "Ймовірність опадів:",
+    "weather.display.location.text": "Місцевість:",
+    "generatedList.items.generalList.text": "Загальний список речей.",
+    "generatedList.items.filters.header.text": "Категорії.",
+    "generatedList.items.checkAll.text": "Відмітити все",
+    "generatedList.items.uncheckAll.text": "Очистити все",
+    "generatedList.items.toltalWeight.text": "Загальна вага",
+    "generatedList.items.saveList.text": "Зберегти мій список",
+    "savedLists.header.text": "Твої збережені списки",
+    "generatedList.items.weight.kg": "кг"
+}

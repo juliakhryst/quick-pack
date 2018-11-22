@@ -28,7 +28,16 @@
     "dashboard.controls.back": "Back",
     "dashboard.controls.reset": "Reset",
     "dashboard.controls.generate":"Generate my packing list",
-    "weather.display.temperature.text": "Forecasted temperature:",
-    "weather.display.summary.text": "Forecasted weather:",
-    "weather.display.location.text": "Location:"
+    "weather.display.temperature.text": "Temperature:",
+    "weather.display.summary.text": "Weather:",
+    "weather.display.precip.text": "Precip probability:",
+    "weather.display.location.text": "Location:",
+    "generatedList.items.generalList.text": "General list of items.",
+    "generatedList.items.filters.header.text": "Categories.",
+    "generatedList.items.checkAll.text": "Check All",
+    "generatedList.items.uncheckAll.text": "Uncheck All",
+    "generatedList.items.toltalWeight.text": "Total weight",
+    "generatedList.items.saveList.text": "Save my list",
+    "savedLists.header.text": "Your saved lists",
+    "generatedList.items.weight.kg": "kg"
 }

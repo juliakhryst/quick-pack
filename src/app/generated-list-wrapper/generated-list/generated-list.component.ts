@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { DataSharingService } from '../../core/services/data-sharing.service';
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { tap, take } from 'rxjs/operators';
@@ -14,6 +15,7 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
     @Input() list: any;
     sub: Subscription;
     items;
+    lang;
 
     categories$: Observable<any[]>;
     icons = ['scatter_plot', 'fastfood', 'create', 'print', 'waves', 'person', 'add_box', 'phone_iphone'];
@@ -43,21 +45,24 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
     removeById(id, arrayIndex): void {
         this.list[arrayIndex] = this.list[arrayIndex].filter( item => item.id !== id);
     }
-    addNewItem(item): void {
-        // only for testing
-        this.list.push( {
-            category: 'Clothing',
-            id: this.list.length,
-            name: item.value,
-            type: 'Essential',
-            weight: 0
-        });
+    // addNewItem(item): void {
+    //     // only for testing
+    //     this.list.push( {
+    //         category: 'Clothing',
+    //         id: this.list.length,
+    //         name: item.value,
+    //         type: 'Essential',
+    //         weight: 0
+    //     });
+    // }
+    constructor(public data: DataSharingService, private db: AngularFirestore, private translate: TranslateService) {
+        this.lang = this.translate.currentLang;
     }
-    constructor(public data: DataSharingService, private db: AngularFirestore) { }
 
     ngOnInit() {
         this.categories$ = this.db.collection('/pack-items-categories').valueChanges();
-        console.log(this.list);
+        // console.log(this.list);
+
         // this.sub = this.data.packList.pipe(
         //     take(1),
         //     tap(data => this.list = data),

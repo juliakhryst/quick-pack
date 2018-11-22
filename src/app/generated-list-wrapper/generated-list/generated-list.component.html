@@ -2,21 +2,23 @@
   <div class="row">
     <div>
       <mat-radio-group>
-        <mat-radio-button (change)="uncheckAll()" value="check">
-          Uncheck All
-        </mat-radio-button>
 
         <mat-radio-button (change)="checkAll()" value="uncheck">
-          Check All
+          {{ 'generatedList.items.checkAll.text' | translate }}
         </mat-radio-button>
+
+        <mat-radio-button (change)="uncheckAll()" value="check">
+          {{ 'generatedList.items.uncheckAll.text' | translate }}
+        </mat-radio-button>
+
       </mat-radio-group>
     </div>
     <div class="item-details">
-      <h3>Total weight</h3>
-      <div class="item-details-weight">{{ totalWeight }}kg</div>
+      <h3>{{ 'generatedList.items.toltalWeight.text' | translate }}</h3>
+      <div class="item-details-weight">{{ totalWeight }} {{ 'generatedList.items.weight.kg' | translate }}</div>
     </div>
   </div>
-  <h2>General List</h2>
+  <h2>{{ 'generatedList.items.generalList.text' | translate }}</h2>
   <div class="filter-list">
     <div class="scroll-aria">
       <div class="pack-items" *ngFor="let items of list; let i = index;">
@@ -31,15 +33,16 @@
     </div>
 
     <div>
-      <h3 class="title-filter">Highlight the category</h3>
+      <h3 class="title-filter">{{ 'generatedList.items.filters.header.text' | translate}}</h3>
       <button mat-button class="filter-button" id="{{item.value}}" *ngFor="let item of categories$ | async; let i = index"
         (click)="selecFilter($event)">
-        <span> <i class="material-icons">{{icons[i]}}</i> {{ item.value }} </span>
+        <span *ngIf="lang === 'Ua'"> <i class="material-icons"> {{icons[i]}} </i> {{ item.valueUa }} </span>
+        <span *ngIf="lang === 'En'"> <i class="material-icons"> {{icons[i]}} </i> {{ item.value }} </span>
       </button>
     </div>
   </div>
 
-  <div *ngIf="isOpenAddedField" class="add-item">
+  <!-- <div *ngIf="isOpenAddedField" class="add-item">
     <input #newItem type="text">
     <button mat-raised-button color="accent" (click)="addNewItem(newItem)">
       Add
@@ -50,6 +53,5 @@
   </div>
   <div *ngIf="!isOpenAddedField" (click)="toggleAddedField()">
     <button mat-fab>+</button> Add your item
-  </div>
-</div>
+  </div> -->
 </div>

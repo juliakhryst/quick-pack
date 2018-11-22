@@ -21,7 +21,7 @@ export class GenerationService {
 
   getEssentials(): Observable<Item[]> {
 
-    return this.afs.collection<Item>('pack-items', ref => ref.where('activities', '==', 'Essential')).valueChanges();
+    return this.afs.collection<Item>('pack-items', ref => ref.where('activities', '==', 'Essential').limit(25)).valueChanges();
   }
 
   getItemsByParams(weather, type, activity): Observable<Item[]> {

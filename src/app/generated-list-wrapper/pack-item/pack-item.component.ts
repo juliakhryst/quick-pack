@@ -17,7 +17,7 @@ export class PackItemComponent {
     this.removeById.emit(item.id);
   }
   constructor(private translate: TranslateService) {
-    // this.lang = this.translate.currentLang;
+    this.lang = this.translate.currentLang;
 
     this.sub = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.lang = event.lang;

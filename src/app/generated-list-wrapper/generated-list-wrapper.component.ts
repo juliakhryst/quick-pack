@@ -48,6 +48,7 @@ export class GeneratedListWrapperComponent implements OnInit {
           const listsArray = this.localStorage.getObject(userData.uid);
           listsArray.forEach(list => {
             if (list.id === Number(this.listId)) {
+              this.isLoading = false;
               this.generatedList = list.items;
               // console.log(this.generatedList);
               this.listName = list.name;

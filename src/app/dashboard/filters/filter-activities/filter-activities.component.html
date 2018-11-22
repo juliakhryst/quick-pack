@@ -1,7 +1,10 @@
 <!-- <h3>Choose activities</h3> -->
 
 <div class="checkbox-wrapper">
-    <mat-checkbox color="accent" [(ngModel)]="activities.baby" (change)="activityChange($event)">Baby</mat-checkbox>
-    <mat-checkbox color="accent" [(ngModel)]="activities.pet" (change)="activityChange($event)">Pet</mat-checkbox>
-    <mat-checkbox color="accent" [(ngModel)]="activities.sport" (change)="activityChange($event)">Sport</mat-checkbox>
+    <mat-checkbox color="accent" [(ngModel)]="activities.baby" 
+    (change)="activityChange($event)">{{ 'filters.activities.label.baby' | translate }}</mat-checkbox>
+    <mat-checkbox color="accent" [(ngModel)]="activities.pet" 
+    (change)="activityChange($event)">{{ 'filters.activities.label.pet' | translate }}</mat-checkbox>
+    <mat-checkbox color="accent" [(ngModel)]="activities.sport" 
+    (change)="activityChange($event)">{{ 'filters.activities.label.sport' | translate }}</mat-checkbox>
 </div>

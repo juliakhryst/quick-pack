@@ -34,5 +34,9 @@
     "weather.display.location.text": "Місцевість:",
     "generatedList.items.generalList.text": "Загальний список речей.",
     "generatedList.items.filters.header.text": "Категорії.",
+    "generatedList.items.checkAll.text": "Відмітити все",
+    "generatedList.items.uncheckAll.text": "Очистити все",
+    "generatedList.items.toltalWeight.text": "Загальна вага",
+    "generatedList.items.saveList.text": "Зберегти мій список",
     "generatedList.items.weight.kg": "кг"
-} 
+}

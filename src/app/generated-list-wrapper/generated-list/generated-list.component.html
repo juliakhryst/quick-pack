@@ -2,17 +2,19 @@
   <div class="row">
     <div>
       <mat-radio-group>
-        <mat-radio-button (change)="uncheckAll()" value="check">
-          Uncheck All
-        </mat-radio-button>
 
         <mat-radio-button (change)="checkAll()" value="uncheck">
-          Check All
+          {{ 'generatedList.items.checkAll.text' | translate }}
         </mat-radio-button>
+
+        <mat-radio-button (change)="uncheckAll()" value="check">
+          {{ 'generatedList.items.uncheckAll.text' | translate }}
+        </mat-radio-button>
+
       </mat-radio-group>
     </div>
     <div class="item-details">
-      <h3>Total weight</h3>
+      <h3>{{ 'generatedList.items.toltalWeight.text' | translate }}</h3>
       <div class="item-details-weight">{{ totalWeight }} {{ 'generatedList.items.weight.kg' | translate }}</div>
     </div>
   </div>
@@ -40,7 +42,7 @@
     </div>
   </div>
 
-  <div *ngIf="isOpenAddedField" class="add-item">
+  <!-- <div *ngIf="isOpenAddedField" class="add-item">
     <input #newItem type="text">
     <button mat-raised-button color="accent" (click)="addNewItem(newItem)">
       Add
@@ -51,5 +53,5 @@
   </div>
   <div *ngIf="!isOpenAddedField" (click)="toggleAddedField()">
     <button mat-fab>+</button> Add your item
-  </div>
+  </div> -->
 </div>

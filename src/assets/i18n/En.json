@@ -34,5 +34,9 @@
     "weather.display.location.text": "Location:",
     "generatedList.items.generalList.text": "General list of items.",
     "generatedList.items.filters.header.text": "Categories.",
+    "generatedList.items.checkAll.text": "Check All",
+    "generatedList.items.uncheckAll.text": "Uncheck All",
+    "generatedList.items.toltalWeight.text": "Total weight",
+    "generatedList.items.saveList.text": "Save my list",
     "generatedList.items.weight.kg": "kg"
 }

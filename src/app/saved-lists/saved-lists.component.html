@@ -1,17 +1,20 @@
-<qpac-header></qpac-header>
-<div>
-  <h1>{{ 'savedLists.header.text' | translate }}</h1>
 
-  <div>
-    <ul>
-      <li *ngFor="let list of savedLists">
-        <a [routerLink]="['/dashboard/list', list.id]">{{list.name}}</a>
-        <i
-          (click)="removeList(list.id)"
-          class="material-icons">
-          delete
-        </i>
-      </li>
-    </ul>
+<qpac-header></qpac-header>
+<div class="container">
+  <div class="list-wrapper">
+    <h1 class="list-wrapper-header">{{ 'savedLists.header.text' | translate }}</h1>
+
+    <div>
+      <ul>
+        <li *ngFor="let list of savedLists" class="list-wrapper-item">
+          <a [routerLink]="['/dashboard/list', list.id]">{{list.name}}</a>
+          <i
+            (click)="removeList(list.id)"
+            class="material-icons">
+            delete
+          </i>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

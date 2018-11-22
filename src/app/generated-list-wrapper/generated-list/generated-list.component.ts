@@ -1,7 +1,6 @@
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { DataSharingService } from '../../core/services/data-sharing.service';
-import { Component, OnInit, OnDestroy, Input, EventEmitter, Output } from '@angular/core';
-import { tap, take } from 'rxjs/operators';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
@@ -11,11 +10,10 @@ import { Observable } from 'rxjs';
     templateUrl: './generated-list.component.html',
     styleUrls: ['./generated-list.component.scss']
 })
-export class GeneratedListComponent implements OnInit, OnDestroy {
+export class GeneratedListComponent implements OnInit {
     @Input() list: any;
     @Output() listUpdate: EventEmitter<any> = new EventEmitter();
     sub: Subscription;
-    items;
     lang;
 
     categories$: Observable<any[]>;
@@ -25,42 +23,6 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
     isOpenAddedField = false;
     isCheckedAll = false;
 
-    toggleAll(isChecked): void {
-        this.list.items.forEach(listArray => {
-            listArray.forEach(item => {
-                item.checked = isChecked;
-            });
-        });
-
-        this.listUpdate.emit(this.list);
-    }
-    toggleAddedField(): void {
-        this.isOpenAddedField = !this.isOpenAddedField;
-    }
-    get totalWeight() {
-        let weight = 0;
-        this.list.items.forEach(listArray => {
-            weight += listArray.reduce((accumulator, currentValue) => {
-                return accumulator + currentValue.weight;
-            }, 0);
-        });
-
-        return Number((weight).toFixed(2));
-    }
-    removeById(id, arrayIndex): void {
-        this.list.items[arrayIndex] = this.list.items[arrayIndex].filter( item => item.id !== id);
-        this.listUpdate.emit(this.list);
-    }
-    // addNewItem(item): void {
-    //     // only for testing
-    //     this.list.items.push( {
-    //         category: 'Clothing',
-    //         id: this.list.items.length,
-    //         name: item.value,
-    //         type: 'Essential',
-    //         weight: 0
-    //     });
-    // }
     constructor(public data: DataSharingService, private db: AngularFirestore, private translate: TranslateService) {
         this.lang = this.translate.currentLang;
 
@@ -94,22 +56,41 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
                 }
             });
         });
-        // console.log(this.list);
-
-        // this.sub = this.data.packList.pipe(
-        //     take(1),
-        //     tap(data => this.list = data),
-        // ).subscribe();
     }
 
-    ngOnDestroy(): void {
-        // this.sub.unsubscribe();
+    toggleAll(isChecked): void {
+        this.list.items.forEach(listArray => {
+            listArray.forEach(item => {
+                item.checked = isChecked;
+            });
+        });
+
+        this.listUpdate.emit(this.list);
     }
 
+    get totalWeight() {
+        const weight = this.list.items.reduce((memo, listArray) => {
+            return memo + listArray.reduce((accumulator, currentValue) => {
+                return accumulator + currentValue.weight;
+            }, 0);
+        }, 0);
+
+        return parseInt(weight.toFixed(2), 10);
+    }
+
+    toggleAddedField(): void {
+        this.isOpenAddedField = !this.isOpenAddedField;
+    }
+
+    removeById(id, arrayIndex): void {
+        this.list.items[arrayIndex] = this.list.items[arrayIndex].filter( item => item.id !== id);
+        this.listUpdate.emit(this.list);
+    }
 
     showListService() {
         return this.list.items;
     }
+
     selecFilter(event) {
         this.category = event.currentTarget.id;
         this.list.items.forEach(el => {
@@ -121,6 +102,7 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
                 }
             });
         });
+
         return this.category;
     }
 }

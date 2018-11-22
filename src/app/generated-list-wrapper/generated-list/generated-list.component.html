@@ -36,8 +36,7 @@
       <h3 class="title-filter">{{ 'generatedList.items.filters.header.text' | translate}}</h3>
       <mat-radio-button id="{{item.value}}" *ngFor="let item of categories$ | async; let i = index"
       (click)="selecFilter($event)">
-      <span *ngIf="lang === 'Ua'"> <i class="material-icons"> {{icons[i]}} </i> {{ item.valueUa }} </span>
-      <span *ngIf="lang === 'En'"> <i class="material-icons"> {{icons[i]}} </i> {{ item.value }} </span>
+      <span><i class="material-icons"> {{icons[i]}} </i> {{ lang === 'Ua' || lang === undefined ? item.valueUa : item.value }} </span>
       </mat-radio-button>
     </div>
   </div>

@@ -1,7 +1,7 @@
 <div class="pack-item">
   <mat-checkbox [(ngModel)]="isChecked"></mat-checkbox>
     <span class="pack-item-name">{{item.name}}</span>
-    <span *ngIf="item.weight !== 0" class="pack-item-weight">{{item.weight + "Kg" }}</span>
+    <span *ngIf="item.weight !== 0" class="pack-item-weight">{{item.weight }} {{ 'generatedList.items.weight.kg' | translate }}</span>
   <i
       (click)="removeItem(item)"
       class="material-icons">

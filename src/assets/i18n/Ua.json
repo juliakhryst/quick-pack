@@ -28,7 +28,9 @@
     "dashboard.controls.back": "Назад",
     "dashboard.controls.reset": "Скинути",
     "dashboard.controls.generate": "Згенерувати мій список речей",
-    "weather.display.temperature.text": "Прогнозована температура:",
-    "weather.display.summary.text": "Прогнозована погода:",
-    "weather.display.location.text": "Місцевість:"
+    "weather.display.temperature.text": "Температура:",
+    "weather.display.summary.text": "Погода:",
+    "weather.display.precip.text": "Ймовірність опадів:",
+    "weather.display.location.text": "Місцевість:",
+    "generatedList.items.weight.kg": "кг"
 } 

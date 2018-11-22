@@ -32,6 +32,7 @@ export class WeatherDisplayComponent implements OnInit {
         }
       })
     );
+    console.log(this.weatherIcon);
 
     this.response = this.weather.getWeather(this.filterObj.duration, this.filterObj.destination).pipe(take(1), map(data => [data]));
   }

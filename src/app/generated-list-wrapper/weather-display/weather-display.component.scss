@@ -1,0 +1,45 @@
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.weatherWrapper {
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+    margin-left: auto;
+    margin-top: 20px;
+    width: 32%;
+    text-align: center;
+    background-color: rgb(168, 247, 168);
+}
+
+.rain, .cloudly, .snow, .sun, .average {
+    margin-top: 10px;
+    width: 4rem;
+    height: 4rem;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.rain {
+    background-image: url(../../../assets/weatherIcons/rain.png);
+}
+
+.cloudly {
+    background-image: url(../../../assets/weatherIcons/cloudly.png);
+}
+
+.sun {
+    background-image: url(../../../assets/weatherIcons/sun.png);
+}
+
+.snow {
+    background-image: url(../../../assets/weatherIcons/snow.png);
+}
+
+.average {
+    background-image: url(../../../assets/weatherIcons/average.png);
+}

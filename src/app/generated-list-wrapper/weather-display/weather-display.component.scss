@@ -1,23 +1,20 @@
+@import "../../../scss/variables";
 ul {
     list-style: none;
     padding-left: 0;
 }
 
 .weatherWrapper {
-    border-radius: 30px;
+    border-radius: 50px;
+    padding: 10px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 20px;
-    margin-left: auto;
-    margin-top: 20px;
-    width: 32%;
     text-align: center;
-    background-color: rgb(168, 247, 168);
+    background-color: $light-green;
 }
 
 .rain, .cloudly, .snow, .sun, .average {
-    margin-top: 10px;
     width: 4rem;
     height: 4rem;
     background-repeat: no-repeat;

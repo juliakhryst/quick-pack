@@ -13,7 +13,19 @@
 .generated-list {
   max-width: 740px;
   background: $green;
+  &-header {
+    background: $pink;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+  }
   @include respond(medium) {
     display: block;
   }
+}
+.btn-save {
+  padding: 20px 15px;
+  display: flex;
+  justify-content: center;
 }

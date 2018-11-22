@@ -32,5 +32,7 @@
     "weather.display.summary.text": "Погода:",
     "weather.display.precip.text": "Ймовірність опадів:",
     "weather.display.location.text": "Місцевість:",
+    "generatedList.items.generalList.text": "Загальний список речей.",
+    "generatedList.items.filters.header.text": "Категорії.",
     "generatedList.items.weight.kg": "кг"
 } 

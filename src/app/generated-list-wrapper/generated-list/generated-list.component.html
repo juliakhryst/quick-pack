@@ -16,7 +16,7 @@
       <div class="item-details-weight">{{ totalWeight }} {{ 'generatedList.items.weight.kg' | translate }}</div>
     </div>
   </div>
-  <h2>General List</h2>
+  <h2>{{ 'generatedList.items.generalList.text' | translate }}</h2>
   <div class="filter-list">
     <div class="scroll-aria">
       <div class="pack-items" *ngFor="let items of list; let i = index;">
@@ -31,10 +31,11 @@
     </div>
 
     <div>
-      <h3 class="title-filter">Highlight the category</h3>
+      <h3 class="title-filter">{{ 'generatedList.items.filters.header.text' | translate}}</h3>
       <button mat-button class="filter-button" id="{{item.value}}" *ngFor="let item of categories$ | async; let i = index"
         (click)="selecFilter($event)">
-        <span> <i class="material-icons">{{icons[i]}}</i> {{ item.value }} </span>
+        <span *ngIf="lang === 'Ua'"> <i class="material-icons"> {{icons[i]}} </i> {{ item.valueUa }} </span>
+        <span *ngIf="lang === 'En'"> <i class="material-icons"> {{icons[i]}} </i> {{ item.value }} </span>
       </button>
     </div>
   </div>

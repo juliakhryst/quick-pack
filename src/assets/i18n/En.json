@@ -32,5 +32,7 @@
     "weather.display.summary.text": "Weather:",
     "weather.display.precip.text": "Precip probability:",
     "weather.display.location.text": "Location:",
+    "generatedList.items.generalList.text": "General list of items.",
+    "generatedList.items.filters.header.text": "Categories.",
     "generatedList.items.weight.kg": "kg"
 }

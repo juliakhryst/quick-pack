@@ -4,18 +4,20 @@
     justify-content: flex-start;
     align-items: stretch;
     align-content: stretch;
-    max-width: 97.5%;
     height: 100%;
     font-family: 'Open Sans';
     font-size: 16px;
     background-color: #eaeaea;
     margin: 0 auto;
-
+    qpac-language-switcher {
+        align-self: center;
+    }
     .header {
+        box-sizing: border-box;
         display: flex;
         justify-content: space-around;
-        width: 100%;
-        max-height: 10vh;
+        max-width: 100%;
+        max-height: 60px;
         padding: 0.5rem;
 
         .header-logo {
@@ -31,10 +33,9 @@
 
     .form-wrapper {
         display: flex;
-        width: 90%;
+        width: 100%;
         margin: 0 auto;
         min-height: 70vh;
-        margin-top: -2vh;
         background-size: cover;
         background-position: center;
         background-image: url('../../assets/img/headpic.png');

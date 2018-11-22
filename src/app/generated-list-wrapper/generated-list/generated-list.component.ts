@@ -43,7 +43,7 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
         return Number((weight).toFixed(2));
     }
     removeById(id, arrayIndex): void {
-        this.list[arrayIndex] = this.list[arrayIndex].filter( item => item.id !== id);
+        this.list[arrayIndex] = this.list[arrayIndex].filter(item => item.id !== id);
     }
     // addNewItem(item): void {
     //     // only for testing
@@ -59,12 +59,35 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
         this.lang = this.translate.currentLang;
 
         this.sub = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
-          this.lang = event.lang;
+            this.lang = event.lang;
         });
     }
 
     ngOnInit() {
         this.categories$ = this.db.collection('/pack-items-categories').valueChanges();
+        this.list.forEach(function (element) {
+            element.forEach(function (el) {
+                Object.assign(el, { selectedColor: '' });
+                switch (el.category) {
+                    case 'Clothing':
+                        return Object.assign(el, { style: 'rgba(0, 0, 153, 0.3)' });
+                    case 'Documents':
+                        return Object.assign(el, { style: 'rgba(230, 46, 0, 0.3)' });
+                    case 'Gadgets':
+                        return Object.assign(el, { style: 'rgba(204, 0, 255, 0.3)' });
+                    case 'Health':
+                        return Object.assign(el, { style: 'rgba(102, 0, 102, 0.3)' });
+                    case 'Miscellaneous':
+                        return Object.assign(el, { style: 'rgba(230, 46, 0, 0.3)' });
+                    case 'Food':
+                        return Object.assign(el, { style: 'rgba(204, 0, 204, 0.3)' });
+                    case 'To-Dos':
+                        return Object.assign(el, { style: 'rgba(230, 0, 115, 0.3)' });
+                    case 'Hygiene':
+                        return Object.assign(el, { style: 'rgba(0, 45, 179, 0.3)' });
+                }
+            });
+        });
         // console.log(this.list);
 
         // this.sub = this.data.packList.pipe(
@@ -83,36 +106,6 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
     }
     selecFilter(event) {
         this.category = event.currentTarget.id;
-        this.list.forEach(function (element) {
-            element.forEach(function (el) {
-                Object.assign(el, { selectedColor: '' });
-                if (el.category === 'Clothing') {
-                    Object.assign(el, { style: '#000099' });
-                }
-                if (el.category === 'Documents') {
-                    Object.assign(el, { style: '#e62e00' });
-                }
-                if (el.category === 'Gadgets') {
-                    Object.assign(el, { style: '#cc00ff' });
-                }
-                if (el.category === 'Health') {
-                    Object.assign(el, { style: '#660066' });
-                }
-                if (el.category === 'Miscellaneous') {
-                    Object.assign(el, { style: '#e62e00' });
-                }
-                if (el.category === 'Food') {
-                    Object.assign(el, { style: '#cc00cc' });
-                }
-                if (el.category === 'To-Dos') {
-                    Object.assign(el, { style: '#e60073' });
-                }
-                if (el.category === 'Hygiene') {
-                    Object.assign(el, { style: '#002db3' });
-                }
-            });
-        });
-
         this.list.forEach(el => {
             el.forEach(item => {
                 if (item.category === event.currentTarget.id) {

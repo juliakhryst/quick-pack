@@ -1,4 +1,4 @@
-<div class="pack-item">
+<div class="pack-item" [style.background-color]="item.selectedColor">
   <mat-checkbox [(ngModel)]="isChecked"></mat-checkbox>
     <span class="pack-item-name">{{lang === 'Ua' || lang === undefined ? item.nameUa : item.name }}</span>
     <span *ngIf="item.weight !== 0" class="pack-item-weight">{{item.weight }} {{ 'generatedList.items.weight.kg' | translate }}</span>

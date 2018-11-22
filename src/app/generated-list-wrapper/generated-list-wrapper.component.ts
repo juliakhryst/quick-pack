@@ -3,7 +3,6 @@ import { DataSharingService } from '../core/services/data-sharing.service';
 import { LocalStorageService } from '../core/services/local-storage.service';
 import { GenerationService } from '../core/services/generation.service';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 import { UserService } from '../core/services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -17,7 +16,7 @@ export class GeneratedListWrapperComponent implements OnInit {
   destination: any;
   duration: any;
   listName: string;
-  isLoading = false;
+  isLoading = true;
 
   itemsSub: Observable<any>;
   generatedList: any;
@@ -57,9 +56,7 @@ export class GeneratedListWrapperComponent implements OnInit {
         });
       } else {
         this.itemsSub = this.generationService.getListByParams(this.filterObj);
-        this.itemsSub.pipe(
-          tap(() => this.isLoading = true),
-        ).subscribe(list => {
+        this.itemsSub.subscribe(list => {
          // console.log('Get list', list);
           this.isLoading = false;
           this.generatedList = list;

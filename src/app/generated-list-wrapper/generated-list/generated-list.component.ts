@@ -24,11 +24,15 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
 
     isOpenAddedField = false;
     isCheckedAll = false;
-    uncheckAll(): void {
-        this.isCheckedAll = false;
-    }
-    checkAll(): void {
-        this.isCheckedAll = true;
+
+    toggleAll(isChecked): void {
+        this.list.items.forEach(listArray => {
+            listArray.forEach(item => {
+                item.checked = isChecked;
+            });
+        });
+
+        this.listUpdate.emit(this.list);
     }
     toggleAddedField(): void {
         this.isOpenAddedField = !this.isOpenAddedField;

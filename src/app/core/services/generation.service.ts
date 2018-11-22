@@ -35,23 +35,23 @@ export class GenerationService {
   }
 
   getWeatherStringValue(filterObj): Observable<string> {
-    // return this.weather.getWeather(filterObj.duration, filterObj.destination).pipe(
-    //   map( (data) => {
-    //     if ( data.currently.temperature <= 4 ) {
+    return this.weather.getWeather(filterObj.duration, filterObj.destination).pipe(
+      map( (data) => {
+        if ( data.currently.temperature <= 4 ) {
 
-    //       return 'cold';
-    //     } else if ( data.currently.temperature > 0 && data.currently.temperature <= 17 ) {
+          return 'cold';
+        } else if ( data.currently.temperature > 0 && data.currently.temperature <= 17 ) {
 
-    //       return 'average';
-    //     } else {
+          return 'average';
+        } else {
 
-    //       return 'warm';
-    //     }
-    //   })
-    // );
+          return 'warm';
+        }
+      })
+    );
 
     // To hardcode the weather
-    return Observable.create(observer => { observer.next('cold'); });
+    // return Observable.create(observer => { observer.next('cold'); });
   }
 
   private getActivitiesRequests(weather, type, activities): Observable<Item[]>[] {

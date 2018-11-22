@@ -17,11 +17,11 @@ export class PackItemComponent {
   removeItem(item): void {
     this.removeById.emit(item.id);
   }
-  
+
    toggleCheck(checked) {
     this.checkedChange.emit(checked);
   }
-  
+
   constructor(private translate: TranslateService) {
     this.lang = this.translate.currentLang;
     this.sub = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {

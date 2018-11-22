@@ -22,8 +22,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.user.getCurrentUser().then(userInfo => {
+      const userId = this.localStorage.getObject(userInfo.uid);
       this.currentUser = userInfo;
-      this.listNumber = this.localStorage.getObject(userInfo.uid).length;
+      this.listNumber = userId ? this.localStorage.getObject(userInfo.uid).length : 0;
     });
   }
 

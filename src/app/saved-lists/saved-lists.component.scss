@@ -37,6 +37,10 @@
             text-decoration: none;
             color: $white;
         }
+        i {
+            font-size: 3vw;
+            color: $white;
+        }
     }
     @include respond(medium) {
         max-width: 90vw;

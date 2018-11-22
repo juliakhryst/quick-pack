@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'qpac-pack-item',
@@ -6,11 +7,14 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
   styleUrls: ['./pack-item.component.scss']
 })
 export class PackItemComponent {
+  lang;
   @Input() item;
   @Output() removeById = new EventEmitter();
   @Input() isChecked;
   removeItem(item): void {
     this.removeById.emit(item.id);
   }
-  constructor() { }
+  constructor(private translate: TranslateService) {
+    this.lang = this.translate.currentLang;
+   }
 }

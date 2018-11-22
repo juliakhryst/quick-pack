@@ -5,6 +5,9 @@
   min-height: 100vh;
   padding: 30px 100px;
   background: $light-gray;
+  background-image: url('../../assets/img/bags.png');
+  background-repeat: no-repeat;
+  background-position: bottom right;
   @include respond(medium) {
     padding: 10px;
   }

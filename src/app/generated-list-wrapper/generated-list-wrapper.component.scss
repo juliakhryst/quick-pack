@@ -24,6 +24,10 @@
     display: block;
   }
 }
+.is-loading ::ng-deep .mat-option-text {
+  display: flex;
+  justify-content: center;
+}
 .btn-save {
   padding: 20px 15px;
   display: flex;

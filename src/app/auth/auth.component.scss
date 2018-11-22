@@ -15,7 +15,7 @@
         display: flex;
         justify-content: space-around;
         width: 100%;
-        max-height: 10vh;
+        max-height: 8vh;
         padding: 0.5rem;
 
         .header-logo {
@@ -23,8 +23,13 @@
             height: 5%;
             z-index: 1;
         }
+
         qpac-language-switcher {
-            width: 20%;
+            margin-top: -1%;
+        }
+
+        .mat-form-field-wrapper {
+            width: 15%;
             height: 5%;
         }
     }
@@ -33,7 +38,7 @@
         display: flex;
         width: 90%;
         margin: 0 auto;
-        min-height: 70vh;
+        min-height: 55vh;
         margin-top: -2vh;
         background-size: cover;
         background-position: center;

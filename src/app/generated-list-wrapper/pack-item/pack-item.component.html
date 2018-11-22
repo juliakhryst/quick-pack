@@ -1,7 +1,7 @@
 <div class="pack-item">
   <mat-checkbox [(ngModel)]="isChecked"></mat-checkbox>
-    <span class="pack-item-name" *ngIf="lang === 'Ua'" >{{item.nameUa}}</span>
-    <span class="pack-item-name" *ngIf="lang === 'En'">{{item.name}}</span>
+    <span class="pack-item-name">{{lang === 'Ua' ? item.nameUa : item.name }}</span>
+    <!-- <span class="pack-item-name" *ngIf="lang === 'En'">{{item.name}}</span> -->
     <span *ngIf="item.weight !== 0" class="pack-item-weight">{{item.weight }} {{ 'generatedList.items.weight.kg' | translate }}</span>
   <i
       (click)="removeItem(item)"

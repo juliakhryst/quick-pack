@@ -4,8 +4,11 @@
 .container {
   padding: 30px 100px;
   min-height: 100vh;
-  background-color: $light-gray;
   border-right: 4px;
+  background: $light-gray;
+  background-image: url('../../assets/img/bags.png');
+  background-repeat: no-repeat;
+  background-position: bottom right;
   @include respond(medium) {
     padding: 10px;
   }
@@ -19,6 +22,11 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px;
+    color: $light-gray;
+    .listTitleWrapper {
+      font-size: 24px;
+      color: $light-gray;
+    }
   }
   @include respond(medium) {
     display: block;

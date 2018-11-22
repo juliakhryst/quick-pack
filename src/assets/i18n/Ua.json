@@ -38,6 +38,7 @@
     "generatedList.items.uncheckAll.text": "Очистити все",
     "generatedList.items.toltalWeight.text": "Загальна вага",
     "generatedList.items.saveList.text": "Зберегти мій список",
+    "generatedList.header.destination.text": "Твій список для подорожі готовий.",
     "savedLists.header.text": "Твої збережені списки",
     "generatedList.items.weight.kg": "кг"
 }

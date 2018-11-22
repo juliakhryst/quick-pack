@@ -1,5 +1,8 @@
 <div class="checkbox-wrapper">
-    <mat-checkbox color="accent" [(ngModel)]="activities.baby" (change)="activityChange()">Baby</mat-checkbox>
-    <mat-checkbox color="accent" [(ngModel)]="activities.pet" (change)="activityChange()">Pet</mat-checkbox>
-    <mat-checkbox color="accent" [(ngModel)]="activities.sport" (change)="activityChange()">Sport</mat-checkbox>
+    <mat-checkbox color="accent" [(ngModel)]="activities.baby" 
+    (change)="activityChange()">{{ 'filters.activities.label.baby' | translate }}</mat-checkbox>
+    <mat-checkbox color="accent" [(ngModel)]="activities.pet" 
+    (change)="activityChange()">{{ 'filters.activities.label.pet' | translate }}</mat-checkbox>
+    <mat-checkbox color="accent" [(ngModel)]="activities.sport" 
+    (change)="activityChange()">{{ 'filters.activities.label.sport' | translate }}</mat-checkbox>
 </div>

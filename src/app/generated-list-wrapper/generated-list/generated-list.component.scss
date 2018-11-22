@@ -1,4 +1,5 @@
 @import "../../../scss/variables";
+@import "../../../scss/mixins";
 .row {
   display: flex;
   justify-content: space-between;
@@ -6,6 +7,9 @@
 .card {
   padding: 20px 100px;
   color: $brown;
+  @include respond(medium) {
+    padding: 20px;
+  }
 }
 .pack-items {
   margin: 0;
@@ -49,6 +53,9 @@ mat-radio-group {
   display: grid;
   grid-template-columns: 80% 15%;
   grid-column-gap: 5%;
+  @include respond(medium) {
+    display: block;
+  }
 }
 .title-filter{
   text-align: center;

@@ -12,8 +12,9 @@
         <ng-container *ngIf="!isLoading">
             <qpac-generated-list [list]="generatedList" *ngIf="generatedList" (listUpdate)="updateList($event)"></qpac-generated-list>
         </ng-container>
-        <div class="btn-save">
-            <button class="btn btn-big btn-teal btn-text-white" (click)="saveList()">{{ 'generatedList.items.saveList.text' | translate }}</button>
+        <div class="btn-save" *ngIf="userData">
+            <button *ngIf="!userData.isAnonymous; else notAvailable" class="btn btn-big btn-teal btn-text-white" (click)="saveList()">{{ 'generatedList.items.saveList.text' | translate }}</button>
+            <ng-template #notAvailable><span> You can't save lists in Guest mode</span></ng-template>
         </div>
     </div>
 </div>

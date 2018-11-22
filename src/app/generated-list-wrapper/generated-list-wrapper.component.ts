@@ -40,7 +40,7 @@ export class GeneratedListWrapperComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       this.listId = params.id;
-      console.log(this.listId);
+      // console.log(this.listId);
 
       if (this.listId) {
         this.user.getCurrentUser().then(userData => {
@@ -48,7 +48,7 @@ export class GeneratedListWrapperComponent implements OnInit {
           listsArray.forEach(list => {
             if (list.id === Number(this.listId)) {
               this.generatedList = list.items;
-              console.log(this.generatedList);
+              // console.log(this.generatedList);
               this.listName = list.name;
             }
           });
@@ -56,7 +56,7 @@ export class GeneratedListWrapperComponent implements OnInit {
       } else {
         this.itemsSub = this.generationService.getListByParams(this.filterObj);
         this.itemsSub.subscribe(list => {
-          console.log('Get list', list);
+         // console.log('Get list', list);
           this.generatedList = list;
         });
       }

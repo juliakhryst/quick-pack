@@ -45,23 +45,24 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
     removeById(id, arrayIndex): void {
         this.list[arrayIndex] = this.list[arrayIndex].filter( item => item.id !== id);
     }
-    addNewItem(item): void {
-        // only for testing
-        this.list.push( {
-            category: 'Clothing',
-            id: this.list.length,
-            name: item.value,
-            type: 'Essential',
-            weight: 0
-        });
-    }
+    // addNewItem(item): void {
+    //     // only for testing
+    //     this.list.push( {
+    //         category: 'Clothing',
+    //         id: this.list.length,
+    //         name: item.value,
+    //         type: 'Essential',
+    //         weight: 0
+    //     });
+    // }
     constructor(public data: DataSharingService, private db: AngularFirestore, private translate: TranslateService) {
         this.lang = this.translate.currentLang;
     }
 
     ngOnInit() {
         this.categories$ = this.db.collection('/pack-items-categories').valueChanges();
-        console.log(this.list);
+        // console.log(this.list);
+
         // this.sub = this.data.packList.pipe(
         //     take(1),
         //     tap(data => this.list = data),

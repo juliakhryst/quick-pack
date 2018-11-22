@@ -22,7 +22,7 @@
   <div class="filter-list">
     <div class="scroll-aria">
       <div class="pack-items" *ngFor="let items of list.items; let i = index;">
-        <h2>{{items[0].activities}}</h2>
+        <h2>{{ lang === 'Ua' || lang === undefined ? items[0].activitiesUa : items[0].activities }}</h2>
         <ul>
           <li [ngStyle]="{'color': item.selectedColor}" *ngFor="let item of items">
             <qpac-pack-item
@@ -40,22 +40,9 @@
       <h3 class="title-filter">{{ 'generatedList.items.filters.header.text' | translate}}</h3>
       <button mat-button class="filter-button" id="{{item.value}}" *ngFor="let item of categories$ | async; let i = index"
         (click)="selecFilter($event)">
-        <span *ngIf="lang === 'Ua'"> <i class="material-icons"> {{icons[i]}} </i> {{ item.valueUa }} </span>
-        <span *ngIf="lang === 'En'"> <i class="material-icons"> {{icons[i]}} </i> {{ item.value }} </span>
+        <span> <i class="material-icons"> {{icons[i]}} </i> {{ lang === 'Ua' || lang === undefined ? item.valueUa : item.value }} </span>
       </button>
     </div>
   </div>
 
-  <!-- <div *ngIf="isOpenAddedField" class="add-item">
-    <input #newItem type="text">
-    <button mat-raised-button color="accent" (click)="addNewItem(newItem)">
-      Add
-    </button>
-    <button mat-raised-button color="accent" (click)="toggleAddedField()">
-      Cancel
-    </button>
-  </div>
-  <div *ngIf="!isOpenAddedField" (click)="toggleAddedField()">
-    <button mat-fab>+</button> Add your item
-  </div> -->
 </div>

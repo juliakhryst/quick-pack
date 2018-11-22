@@ -1,4 +1,4 @@
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { DataSharingService } from '../../core/services/data-sharing.service';
 import { Component, OnInit, OnDestroy, Input, EventEmitter, Output } from '@angular/core';
 import { tap, take } from 'rxjs/operators';
@@ -63,6 +63,10 @@ export class GeneratedListComponent implements OnInit, OnDestroy {
     // }
     constructor(public data: DataSharingService, private db: AngularFirestore, private translate: TranslateService) {
         this.lang = this.translate.currentLang;
+
+        this.sub = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+          this.lang = event.lang;
+        });
     }
 
     ngOnInit() {

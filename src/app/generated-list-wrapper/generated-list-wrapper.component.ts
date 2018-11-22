@@ -16,6 +16,7 @@ export class GeneratedListWrapperComponent implements OnInit {
   destination: any;
   duration: any;
   listName: string;
+  isLoading = true;
 
   itemsSub: Observable<any>;
   generatedList: any = {};
@@ -58,6 +59,7 @@ export class GeneratedListWrapperComponent implements OnInit {
           this.itemsSub = this.generationService.getListByParams(this.filterObj);
           this.itemsSub.subscribe(list => {
           // console.log('Get list', list);
+            this.isLoading = false;
             this.generatedList.items = list;
             this.listName = `${this.destination} ${this.duration}`;
           });

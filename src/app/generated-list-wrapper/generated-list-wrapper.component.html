@@ -1,12 +1,16 @@
 <qpac-header></qpac-header>
 <div class="container">
     <div class="generated-list">
-        <qpac-list-title [listTitle]="listName" (titleForList)="handleTitleChange($event)" *ngIf="listName"></qpac-list-title>
-        <!-- <qpac-weather-display></qpac-weather-display> -->
-        <qpac-generated-list [list]="generatedList" *ngIf="generatedList" (listUpdate)="updateList($event)"></qpac-generated-list>
-
-        <div class="p">
-            <button mat-raised-button color="accent" (click)="saveList()">{{ 'generatedList.items.saveList.text' | translate }}</button>
+        <div class="generated-list-header">
+            <qpac-list-title [listTitle]="listName" (titleForList)="handleTitleChange($event)" *ngIf="listName"></qpac-list-title>
+            <qpac-weather-display></qpac-weather-display>
+        </div>
+        <mat-option *ngIf="isLoading" class="is-loading"><mat-spinner color="accent" diameter="30"></mat-spinner></mat-option>
+        <ng-container *ngIf="!isLoading">
+            <qpac-generated-list [list]="generatedList" *ngIf="generatedList" (listUpdate)="updateList($event)"></qpac-generated-list>
+        </ng-container>
+        <div class="btn-save">
+            <button class="btn btn-big btn-teal btn-text-white" (click)="saveList()">{{ 'generatedList.items.saveList.text' | translate }}</button>
         </div>
     </div>
 </div>

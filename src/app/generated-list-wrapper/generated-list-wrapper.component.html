@@ -5,8 +5,10 @@
             <qpac-list-title [listTitle]="listName" (titleForList)="handleTitleChange($event)"></qpac-list-title>
             <qpac-weather-display></qpac-weather-display>
         </div>
-        <qpac-generated-list [list]="generatedList" *ngIf="generatedList"></qpac-generated-list>
-
+        <mat-option *ngIf="isLoading" class="is-loading"><mat-spinner color="accent" diameter="30"></mat-spinner></mat-option>
+        <ng-container *ngIf="!isLoading">
+            <qpac-generated-list [list]="generatedList" *ngIf="generatedList"></qpac-generated-list>
+        </ng-container>
         <div class="btn-save">
             <button class="btn btn-big btn-teal btn-text-white" (click)="saveList()">{{ 'generatedList.items.saveList.text' | translate }}</button>
         </div>

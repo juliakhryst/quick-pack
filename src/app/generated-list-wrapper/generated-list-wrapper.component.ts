@@ -16,6 +16,7 @@ export class GeneratedListWrapperComponent implements OnInit {
   destination: any;
   duration: any;
   listName: string;
+  isLoading = true;
 
   itemsSub: Observable<any>;
   generatedList: any;
@@ -47,6 +48,7 @@ export class GeneratedListWrapperComponent implements OnInit {
           const listsArray = this.localStorage.getObject(userData.uid);
           listsArray.forEach(list => {
             if (list.id === Number(this.listId)) {
+              this.isLoading = false;
               this.generatedList = list.items;
               // console.log(this.generatedList);
               this.listName = list.name;
@@ -57,6 +59,7 @@ export class GeneratedListWrapperComponent implements OnInit {
         this.itemsSub = this.generationService.getListByParams(this.filterObj);
         this.itemsSub.subscribe(list => {
          // console.log('Get list', list);
+          this.isLoading = false;
           this.generatedList = list;
         });
       }

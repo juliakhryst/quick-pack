@@ -3,7 +3,7 @@
       <div [attr.class]="weatherIcon | async"></div>
       <ul>
         <li> {{ 'weather.display.temperature.text' | translate }} {{ attr.currently.temperature | json }} &#8451; </li>
-        <li> {{ 'weather.display.summary.text' | translate}} {{ attr.currently.summary | json }} </li>
+        <!-- <li> {{ 'weather.display.summary.text' | translate}} {{ attr.currently.summary | json }} </li> -->
         <li> {{ 'weather.display.precip.text' | translate}} {{ attr.currently.precipProbability | json }}</li>
       </ul>
   </div>

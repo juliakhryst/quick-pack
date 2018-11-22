@@ -18,9 +18,10 @@ export class GeneratedListWrapperComponent implements OnInit {
   listName: string;
 
   itemsSub: Observable<any>;
-  generatedList: any;
+  generatedList: any = {};
   formatedList: any = {};
   listId: string;
+  userData: any;
 
   constructor(
     public data: DataSharingService,
@@ -36,30 +37,32 @@ export class GeneratedListWrapperComponent implements OnInit {
     this.destination = this.filterObj.destination.name;
     this.duration = this.filterObj.duration.from;
 
-    this.listName = `${this.destination} ${this.duration}`;
-
     this.route.params.subscribe(params => {
       this.listId = params.id;
       // console.log(this.listId);
 
-      if (this.listId) {
-        this.user.getCurrentUser().then(userData => {
+      this.user.getCurrentUser().then(userData => {
+        this.userData = userData;
+
+        if (this.listId) {
           const listsArray = this.localStorage.getObject(userData.uid);
           listsArray.forEach(list => {
             if (list.id === Number(this.listId)) {
-              this.generatedList = list.items;
+              this.generatedList = list;
               // console.log(this.generatedList);
               this.listName = list.name;
+              console.log(this.listName);
             }
           });
-        });
-      } else {
-        this.itemsSub = this.generationService.getListByParams(this.filterObj);
-        this.itemsSub.subscribe(list => {
-         // console.log('Get list', list);
-          this.generatedList = list;
-        });
-      }
+        } else {
+          this.itemsSub = this.generationService.getListByParams(this.filterObj);
+          this.itemsSub.subscribe(list => {
+          // console.log('Get list', list);
+            this.generatedList.items = list;
+            this.listName = `${this.destination} ${this.duration}`;
+          });
+        }
+      });
     });
   }
 
@@ -67,31 +70,37 @@ export class GeneratedListWrapperComponent implements OnInit {
     this.listName = newTitle;
   }
 
-  saveList() {
+  saveList(isUpdate?: boolean) {
     this.formatedList.name = this.listName;
-    this.formatedList.id = + new Date();
-    this.formatedList.items = this.generatedList;
+    this.formatedList.id = this.generatedList.id ? this.generatedList.id : + new Date();
+    this.formatedList.items = this.generatedList.items;
 
-
-    this.user.getCurrentUser().then(userData => {
-      const savedLists = this.localStorage.getObject(userData.uid) || [];
-      const listIndex = savedLists.findIndex(list => {
-        return list.id === this.formatedList.id;
-      });
-
-      if (listIndex > 0) {
-        // Edit saved list
-        savedLists[listIndex] = this.formatedList;
-      } else {
-        // Add new list
-        savedLists.push(this.formatedList);
-      }
-
-      this.localStorage.setObject(userData.uid, savedLists);
-      this.router.navigate(['dashboard/my-lists']);
+    const savedLists = this.localStorage.getObject(this.userData.uid) || [];
+    const listIndex = savedLists.findIndex(savedList => {
+      console.log(savedList.id, this.formatedList.id);
+      return savedList.id === this.formatedList.id;
     });
 
+    if (listIndex >= 0) {
+      // Edit saved list
+      savedLists[listIndex] = this.formatedList;
+    } else {
+      // Add new list
+      savedLists.push(this.formatedList);
+    }
+
+    this.localStorage.setObject(this.userData.uid, savedLists);
+
+    if (!isUpdate && !this.listId) {
+      this.router.navigate(['dashboard/my-lists']);
+    }
+
     console.log(this.formatedList);
+  }
+
+  updateList(listArray) {
+    this.generatedList = listArray;
+    this.saveList(true);
   }
 
 

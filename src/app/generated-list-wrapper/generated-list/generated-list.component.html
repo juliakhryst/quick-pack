@@ -1,4 +1,4 @@
-<div class="card" *ngIf="list">
+<div class="card" *ngIf="list.items">
   <div class="row">
     <div>
       <mat-radio-group>
@@ -21,7 +21,7 @@
   <h2>{{ 'generatedList.items.generalList.text' | translate }}</h2>
   <div class="filter-list">
     <div class="scroll-aria">
-      <div class="pack-items" *ngFor="let items of list; let i = index;">
+      <div class="pack-items" *ngFor="let items of list.items; let i = index;">
         <h2>{{items[0].activities}}</h2>
         <ul>
           <li [ngStyle]="{'color': item.selectedColor}" *ngFor="let item of items">

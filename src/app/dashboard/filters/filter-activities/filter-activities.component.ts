@@ -24,9 +24,10 @@ public activities: ActivityFilter = {
   constructor() { }
 
   ngOnInit() {
+    this.activityChange();
   }
 
-  activityChange(event) {
+  activityChange() {
      this.activitiesChanged.emit({activities: this.activities});
   }
 

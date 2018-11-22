@@ -18,6 +18,8 @@ import {
   MatStepperModule,
   MatAutocompleteModule,
   MatProgressSpinnerModule,
+  MatBadgeModule,
+  MatSnackBarModule
 
 } from '@angular/material';
 
@@ -37,6 +39,8 @@ const MODULES = [
   MatStepperModule,
   MatAutocompleteModule,
   MatProgressSpinnerModule,
+  MatBadgeModule,
+  MatSnackBarModule
 ];
 
 @NgModule({

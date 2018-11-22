@@ -13,14 +13,20 @@ export class PackItemComponent {
   @Input() item;
   @Output() removeById = new EventEmitter();
   @Input() isChecked;
+  @Output() checkedChange = new EventEmitter();
   removeItem(item): void {
     this.removeById.emit(item.id);
   }
+  
+   toggleCheck(checked) {
+    this.checkedChange.emit(checked);
+  }
+  
   constructor(private translate: TranslateService) {
     this.lang = this.translate.currentLang;
-
     this.sub = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.lang = event.lang;
     });
    }
+
 }
